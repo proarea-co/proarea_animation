@@ -9,12 +9,13 @@ part 'company.g.dart';
 class Company extends Equatable {
   final String name;
   final String catchPhrase;
-  final String bs;
+  @JsonKey(name: 'bs')
+  final String businessScheme;
 
   const Company({
     this.name = '',
     this.catchPhrase = '',
-    this.bs = '',
+    this.businessScheme = '',
   });
 
   factory Company.fromJson(Map<String, dynamic> json) =>
@@ -26,19 +27,19 @@ class Company extends Equatable {
     return [
       name,
       catchPhrase,
-      bs,
+      businessScheme,
     ];
   }
 
   Company copyWith({
     String? name,
     String? catchPhrase,
-    String? bs,
+    String? businessScheme,
   }) {
     return Company(
       name: name ?? this.name,
       catchPhrase: catchPhrase ?? this.catchPhrase,
-      bs: bs ?? this.bs,
+      businessScheme: businessScheme ?? this.businessScheme,
     );
   }
 }
