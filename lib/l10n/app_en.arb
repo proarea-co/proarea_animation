@@ -1,0 +1,14 @@
+{
+    "@@locale": "en",
+    "weatherRandomPoint": "Weather Random Point",
+    "weatherRandomCity": "Weather Random City",
+    "ruButton": "Ru",
+    "enButton": "En",
+    "serverErrorMessage": "Server error occurred",
+    "errorInternetConnection": "Internet Connection Error",
+    "enLanguage": "English",
+    "ruLanguage": "Русский",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark"
+}

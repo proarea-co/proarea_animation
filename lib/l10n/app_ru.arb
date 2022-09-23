@@ -1,0 +1,12 @@
+{
+    "@@locale": "ru",
+    "weatherRandomPoint": "Погода в случайной точке",
+    "weatherRandomCity": "Погода в случайном городе",
+    "ruButton": "Русский",
+    "enButton": "Английский",
+    "serverErrorMessage": "Ошибка сервера",
+    "errorInternetConnection": "Ошибка соединения",
+    "theme": "Тема",
+    "light": "Светлая",
+    "dark": "Темная"
+}
