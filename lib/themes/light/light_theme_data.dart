@@ -27,7 +27,7 @@ final _lightThemeData = ThemeData(
   outlinedButtonTheme: OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
       elevation: 4,
-      primary: _colorSchemeLight.primary,
+      foregroundColor: _colorSchemeLight.primary,
       backgroundColor: _colorSchemeLight.surface,
       side: BorderSide(
         color: _colorSchemeLight.surface,

@@ -17,20 +17,10 @@ abstract class DioModule {
       ),
     )..interceptors.addAll([
         PrettyDioLogger(
+          requestBody: true,
+          error: true,
           requestHeader: true,
-          requestBody: false,
-          responseBody: true,
-        ),
-        InterceptorsWrapper(
-          onRequest: (
-            RequestOptions options,
-            RequestInterceptorHandler handler,
-          ) async {
-            final token = await tokenService.getToken();
-            options.headers['Authorization'] = 'Bearer $token';
-            if (kDebugMode) print(token);
-            return handler.next(options);
-          },
+          compact: true,
         ),
       ]);
   }

@@ -9,11 +9,15 @@ import 'package:dio/dio.dart' as _i8;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../api/dio/dio_api.dart' as _i11;
-import '../api/retrofit/weather_api.dart' as _i9;
+import '../api/dio/dio_api.dart' as _i15;
+import '../api/retrofit/app_api.dart' as _i9;
 import '../bloc/app_controller/app_controller_cubit.dart' as _i7;
-import '../routes/module/rout_module.dart' as _i10;
+import '../bloc/posts/posts_cubit.dart' as _i12;
+import '../bloc/users/users_cubit.dart' as _i13;
+import '../routes/module/rout_module.dart' as _i14;
 import '../routes/router.dart' as _i3;
+import '../services/api/posts/posts_service.dart' as _i10;
+import '../services/api/users/users_service.dart' as _i11;
 import '../services/locale/locale_service.dart' as _i4;
 import '../services/theme/theme_service.dart' as _i5;
 import '../services/token/token_service.dart'
@@ -26,7 +30,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   final gh = _i2.GetItHelper(get, environment, environmentFilter);
   final routModule = _$RoutModule();
   final dioModule = _$DioModule();
-  final weatherApiModule = _$WeatherApiModule();
+  final appApiModule = _$AppApiModule();
   gh.lazySingleton<_i3.AppRouter>(() => routModule.router());
   gh.factory<_i4.LocaleService>(() => _i4.LocaleService());
   gh.factory<_i5.ThemeService>(() => _i5.ThemeService());
@@ -34,13 +38,16 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i7.AppControllerCubit>(() => _i7.AppControllerCubit(
       get<_i4.LocaleService>(), get<_i5.ThemeService>()));
   gh.lazySingleton<_i8.Dio>(() => dioModule.client(get<_i6.TokenService>()));
-  gh.lazySingleton<_i9.WeatherApi>(
-      () => weatherApiModule.weather(get<_i8.Dio>()));
+  gh.lazySingleton<_i9.AppApi>(() => appApiModule.createAppApi(get<_i8.Dio>()));
+  gh.factory<_i10.PostsService>(() => _i10.PostsService(get<_i9.AppApi>()));
+  gh.factory<_i11.UsersService>(() => _i11.UsersService(get<_i9.AppApi>()));
+  gh.factory<_i12.PostsCubit>(() => _i12.PostsCubit(get<_i10.PostsService>()));
+  gh.factory<_i13.UsersCubit>(() => _i13.UsersCubit(get<_i11.UsersService>()));
   return get;
 }
 
-class _$RoutModule extends _i10.RoutModule {}
+class _$RoutModule extends _i14.RoutModule {}
 
-class _$DioModule extends _i11.DioModule {}
+class _$DioModule extends _i15.DioModule {}
 
-class _$WeatherApiModule extends _i9.WeatherApiModule {}
+class _$AppApiModule extends _i9.AppApiModule {}
