@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../bloc/users/users_cubit.dart';
-import '../base/app_consumer.dart';
+import '../../views/base_builders/app_consumer.dart';
 
 class UsersPage extends StatelessWidget {
   const UsersPage({super.key});

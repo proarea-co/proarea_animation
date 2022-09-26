@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../bloc/posts/posts_cubit.dart';
-import '../base/app_consumer.dart';
+import '../../views/base_builders/app_consumer.dart';
 
 class PostsPage extends StatelessWidget {
   const PostsPage({super.key});
