@@ -17,10 +17,12 @@ class PostsCubit extends BaseCubit<PostsState> {
 
   Future<void> getPosts() async {
     emit(state.copyWith(status: StateStatus.loading));
-    emit(state.copyWith(
-      status: StateStatus.loaded,
-      posts: await _postsService.getPosts(),
-    ));
+    await performSafeAction(() async {
+      emit(state.copyWith(
+        status: StateStatus.loaded,
+        posts: await _postsService.getPosts(),
+      ));
+    });
   }
 
   @override
