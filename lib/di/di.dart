@@ -10,6 +10,10 @@ final getIt = GetIt.instance;
   preferRelativeImports: true,
   asExtension: false,
 )
-GetIt configureDependencies() {
-  return $initGetIt(getIt);
+GetIt configureDependencies(Environment environment) {
+  return $initGetIt(getIt, environment: environment.name);
+}
+
+extension EnvironmentExtension on Environment {
+  static const mock = 'mock';
 }

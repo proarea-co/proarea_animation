@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
+import 'di/di.dart';
 
 import 'bloc/app_controller/app_controller_cubit.dart';
-import 'di/di.dart';
+
 import 'root.dart';
 
 void main() {
-  configureDependencies();
+  configureDependencies(const Environment(EnvironmentExtension.mock));
 
   runApp(const App());
 }
