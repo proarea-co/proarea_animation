@@ -10,7 +10,6 @@ import '../../../gen/assets.gen.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../routes/router.dart';
 import '../../../themes/theme_app.dart';
-import '../../views/base_builders/app_builder.dart';
 import '../../views/base_builders/app_consumer.dart';
 
 class SplashPage extends StatelessWidget with AutoRouteWrapper {
@@ -23,8 +22,6 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
       child: this,
     );
   }
-
-  SplashCubit _cubit(BuildContext context) => context.read();
 
   @override
   Widget build(BuildContext context) {
