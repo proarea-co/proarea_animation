@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../ui/pages/home/home_page.dart';
+import '../ui/pages/splash/splash_page.dart';
 
 part 'router.gr.dart';
 
@@ -9,9 +10,13 @@ part 'router.gr.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(
-      path: 'HomePage',
-      page: HomePage,
+      path: 'Splash',
+      page: SplashPage,
       initial: true,
+    ),
+    AutoRoute(
+      path: 'Home',
+      page: HomePage,
     ),
   ],
 )

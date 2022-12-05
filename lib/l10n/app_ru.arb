@@ -6,6 +6,9 @@
     "enButton": "Английский",
     "serverErrorMessage": "Ошибка сервера",
     "errorInternetConnection": "Ошибка соединения",
+    "oops": "Упс...",
+    "somethingWentWrong": "Что-то пошло не так, попробуйте обновить экран",
+    "ok": "Хорошо",
     "theme": "Тема",
     "light": "Светлая",
     "dark": "Темная"

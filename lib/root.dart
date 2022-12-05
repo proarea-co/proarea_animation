@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'base/bloc/base_cubit.dart';
 import 'bloc/app_controller/app_controller_cubit.dart';
-import 'bloc/base/base_cubit.dart';
+
 import 'l10n/localization_helper.dart';
 import 'routes/router.dart';
 import 'ui/views/snack_bar/show_snack_bar.dart';
@@ -19,12 +20,16 @@ class RootApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<AppControllerCubit, AppControllerState>(
       listener: (context, state) {
-        final isError = state.status == StateStatus.error;
-        final isInfo = state.status == StateStatus.info;
-
-        if (isError) showSnackBar(context, state.massage, error: true);
-
-        if (isInfo) showSnackBar(context, state.massage);
+        switch (state.status) {
+          case StateStatus.info:
+            AppSnackBar.of(context).showSuccess(state.message);
+            break;
+          case StateStatus.error:
+            AppSnackBar.of(context).showError(state.message);
+            break;
+          default:
+            break;
+        }
       },
       builder: (context, state) {
         return MaterialApp.router(

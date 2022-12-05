@@ -5,7 +5,7 @@ import '../../../api/retrofit/app_api.dart';
 import '../../../di/di.dart';
 import '../../../mock/mock_users.dart';
 import '../../../models/user.dart';
-import '../../base/base_service.dart';
+import '../../../base/service/base_service.dart';
 
 @immutable
 abstract class UsersService extends BaseService {

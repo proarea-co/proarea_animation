@@ -6,7 +6,7 @@ class PostsState extends BaseState {
 
   const PostsState({
     super.status,
-    super.massage,
+    super.message,
     this.posts = const [],
   });
 
@@ -25,7 +25,7 @@ class PostsState extends BaseState {
   }) {
     return PostsState(
       status: status ?? super.status,
-      massage: massage ?? super.massage,
+      message: massage ?? super.message,
       posts: posts ?? this.posts,
     );
   }

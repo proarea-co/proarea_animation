@@ -12,18 +12,18 @@ enum StateStatus {
 @immutable
 abstract class BaseState extends Equatable {
   final StateStatus status;
-  final String massage;
+  final String message;
 
   const BaseState({
     this.status = StateStatus.initial,
-    this.massage = '',
+    this.message = '',
   });
 
   @override
   List<Object?> get props {
     return [
       status,
-      massage,
+      message,
     ];
   }
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../base/bloc/base_cubit.dart';
 import '../../models/user.dart';
 import '../../services/api/users/users_service.dart';
-import '../base/base_cubit.dart';
 
 part 'users_state.dart';
 

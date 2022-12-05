@@ -6,7 +6,7 @@ class UsersState extends BaseState {
 
   const UsersState({
     super.status,
-    super.massage,
+    super.message,
     this.users = const [],
   });
 
@@ -25,7 +25,7 @@ class UsersState extends BaseState {
   }) {
     return UsersState(
       status: status ?? super.status,
-      massage: massage ?? super.massage,
+      message: massage ?? super.message,
       users: users ?? this.users,
     );
   }

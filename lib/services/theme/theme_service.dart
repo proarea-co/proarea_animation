@@ -2,7 +2,7 @@ import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../themes/theme_app.dart';
-import '../base/base_service.dart';
+import '../../../base/service/base_service.dart';
 
 @injectable
 class ThemeService extends BaseService {

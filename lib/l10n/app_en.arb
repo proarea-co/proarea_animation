@@ -8,6 +8,9 @@
     "errorInternetConnection": "Internet Connection Error",
     "enLanguage": "English",
     "ruLanguage": "Русский",
+    "oops": "Ooops...",
+    "somethingWentWrong": "Something went wrong. Try again later or update the screen",
+    "ok": "OK",
     "theme": "Theme",
     "light": "Light",
     "dark": "Dark"
