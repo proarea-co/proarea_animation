@@ -49,11 +49,19 @@ class _HomePageState extends State<HomePage>
   void initState() {
     super.initState();
 
-    _cubit.setController(AnimationController(
-      vsync: this,
-      value: 1,
-      duration: const Duration(milliseconds: 300),
-    ));
+    _cubit.setController(
+      AnimationController(
+        vsync: this,
+        value: 1,
+        duration: const Duration(milliseconds: 300),
+      ),
+    );
+  }
+
+  @override
+  void dispose() async {
+    await _cubit.close();
+    super.dispose();
   }
 
   Future<void> _toggleAnimation() {
@@ -72,10 +80,12 @@ class _HomePageState extends State<HomePage>
     _cubit.onDragEnd(context, details);
   }
 
-  @override
-  void dispose() async {
-    await _cubit.close();
-    super.dispose();
+  Future<bool> _onWillPop() async {
+    final fullScreen = _cubit.fullScreen;
+
+    if (fullScreen) _toggleAnimation();
+
+    return !fullScreen;
   }
 
   @override
@@ -95,7 +105,7 @@ class _HomePageState extends State<HomePage>
                     return Stack(
                       children: [
                         _buildSideTab(state),
-                        _buildPage(context, child),
+                        _buildPage(child),
                       ],
                     );
                   }),
@@ -182,20 +192,23 @@ class _HomePageState extends State<HomePage>
     });
   }
 
-  Widget _buildPage(BuildContext context, Widget child) {
+  Widget _buildPage(Widget child) {
     final rightSlide = MediaQuery.of(context).size.width * 0.6;
     final controller = _cubit.controller;
     double slide = rightSlide * controller.value;
     double scale = 1 - (controller.value * 0.12);
-    return Transform(
-      transform: Matrix4.identity()
-        ..translate(slide)
-        ..scale(scale),
-      alignment: Alignment.centerLeft,
-      child: ClipRRect(
-        clipBehavior: Clip.hardEdge,
-        borderRadius: BorderRadius.circular(4.0),
-        child: child,
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Transform(
+        transform: Matrix4.identity()
+          ..translate(slide)
+          ..scale(scale),
+        alignment: Alignment.centerLeft,
+        child: ClipRRect(
+          clipBehavior: Clip.hardEdge,
+          borderRadius: BorderRadius.circular(4.0),
+          child: child,
+        ),
       ),
     );
   }

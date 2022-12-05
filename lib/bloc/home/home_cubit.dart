@@ -32,6 +32,7 @@ class HomeCubit extends BaseCubit<HomeState> {
 
   Animation<double> get animation => _animation;
   AnimationController get controller => _animationController;
+  bool get fullScreen => controller.value == 0;
 
   void setTabs(List<TabItem>? tabs) {
     emit(state.copyWith(tabs: tabs));
