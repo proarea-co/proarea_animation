@@ -26,7 +26,6 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colorScheme.onSurface,
       body: AppConsumer<SplashCubit, SplashState>(
         withoutScaffold: true,
         listenDefault: (context, state) {
@@ -48,7 +47,7 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
                   const SizedBox(width: 4),
                   JumpingDotsProgressIndicator(
                     fontSize: 20.0,
-                    color: context.colorScheme.background,
+                    color: context.colorScheme.onPrimary,
                   ),
                 ],
               ),

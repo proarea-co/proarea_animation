@@ -9,7 +9,7 @@ class AppControllerState extends BaseState {
     super.status,
     super.message,
     this.locale = const Locale('en'),
-    this.themeType = ThemeType.light,
+    this.themeType = ThemeType.dark,
   });
 
   @override
