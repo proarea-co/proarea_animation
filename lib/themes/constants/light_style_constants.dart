@@ -2,7 +2,7 @@ import 'package:flutter/rendering.dart';
 
 class LightStyleConstants {
   static const whiteShade = Color(0xFFFAFBFF);
-  static const white = Color(0xFFFFF7C0);
+  static const white = Color(0xFFFFFFFF);
   static const whiteO10 = Color(0x1AFFFFFF);
   static const charcoal = Color(0xFF00849F);
   static const charcoalTint1 = Color(0xFF414141);

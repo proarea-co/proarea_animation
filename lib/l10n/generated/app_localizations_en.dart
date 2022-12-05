@@ -57,4 +57,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get loading => 'Loading';
+
+  @override
+  String get yourPosts => 'Your posts';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get remove => 'Remove';
 }
