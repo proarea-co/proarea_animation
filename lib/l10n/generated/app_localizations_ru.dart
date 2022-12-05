@@ -45,4 +45,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get dark => 'Темная';
+
+  @override
+  String get loading => 'Загрузка';
 }
