@@ -48,4 +48,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get loading => 'Загрузка';
+
+  @override
+  String get yourPosts => 'Ваши посты';
+
+  @override
+  String get edit => 'Изменить';
+
+  @override
+  String get remove => 'Удалить';
 }

@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../ui/pages/home/home_page.dart';
+import '../ui/pages/posts/posts_page.dart';
 import '../ui/pages/splash/splash_page.dart';
 
 part 'router.gr.dart';
@@ -17,6 +18,10 @@ part 'router.gr.dart';
     AutoRoute(
       path: 'Home',
       page: HomePage,
+    ),
+    AutoRoute(
+      path: 'Posts',
+      page: PostsPage,
     ),
   ],
 )
