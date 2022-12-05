@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +19,7 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<HomeCubit>(
-      create: (_) => locator()..init(_tabs(context)),
+      create: (_) => locator()..setTabs(_tabs(context)),
       child: this,
     );
   }
@@ -41,70 +43,38 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<double> _animation;
-
   HomeCubit get _cubit => context.read<HomeCubit>();
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
+
+    _cubit.setController(AnimationController(
       vsync: this,
       value: 1,
       duration: const Duration(milliseconds: 300),
-    );
-    _animation = CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeInOut,
-    );
+    ));
   }
 
   Future<void> _toggleAnimation() {
-    return _animationController.isDismissed
-        ? _animationController.forward()
-        : _animationController.reverse();
+    return _cubit.toggleAnimation();
   }
 
   void _onDragStart(DragStartDetails details) {
-    print(MediaQuery.of(context).size.width * 0.4);
-    bool isDragOpenFromLeft = _animationController.isDismissed &&
-        details.globalPosition.dx < MediaQuery.of(context).size.width * 0.4;
-    bool isDragClosedFromRight = _animationController.isCompleted &&
-        details.globalPosition.dx > MediaQuery.of(context).size.width * 0.6;
-    final canBeDragged = isDragClosedFromRight || isDragOpenFromLeft;
-    _cubit.setCanBeDragged(canBeDragged);
+    _cubit.onDragStart(context, details);
   }
 
   void _onDragUpdate(DragUpdateDetails details) {
-    final canBeDragged = _cubit.state.canBeDragged;
-    if (canBeDragged) {
-      double delta =
-          (details.primaryDelta ?? 0) / MediaQuery.of(context).size.width * 1.2;
-      _animationController.value += delta;
-    }
+    _cubit.onDragUpdate(context, details);
   }
 
   void _onDragEnd(DragEndDetails details) {
-    if (_animationController.isDismissed || _animationController.isCompleted) {
-      return;
-    }
-    if (details.velocity.pixelsPerSecond.dx.abs() >=
-        MediaQuery.of(context).size.width) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx /
-          MediaQuery.of(context).size.width *
-          0.9;
-      _animationController.fling(velocity: visualVelocity);
-    } else if (_animationController.value < 0.5) {
-      _animationController.forward();
-    } else {
-      _animationController.reverse();
-    }
+    _cubit.onDragEnd(context, details);
   }
 
   @override
-  void dispose() {
-    _animationController.dispose();
+  void dispose() async {
+    await _cubit.close();
     super.dispose();
   }
 
@@ -120,7 +90,7 @@ class _HomePageState extends State<HomePage>
               onHorizontalDragEnd: _onDragEnd,
               onHorizontalDragUpdate: _onDragUpdate,
               child: AnimatedBuilder(
-                  animation: _animation,
+                  animation: _cubit.animation,
                   builder: (_, __) {
                     return Stack(
                       children: [
@@ -214,8 +184,9 @@ class _HomePageState extends State<HomePage>
 
   Widget _buildPage(BuildContext context, Widget child) {
     final rightSlide = MediaQuery.of(context).size.width * 0.6;
-    double slide = rightSlide * _animationController.value;
-    double scale = 1 - (_animationController.value * 0.12);
+    final controller = _cubit.controller;
+    double slide = rightSlide * controller.value;
+    double scale = 1 - (controller.value * 0.12);
     return Transform(
       transform: Matrix4.identity()
         ..translate(slide)
