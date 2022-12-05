@@ -47,5 +47,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get dark => 'Темная';
 
   @override
+  String get flutterDev => 'Flutter Dev';
+
+  @override
+  String get posts => 'Posts';
+
+  @override
+  String get userList => 'User List';
+
+  @override
   String get loading => 'Загрузка';
 }

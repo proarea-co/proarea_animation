@@ -14,5 +14,8 @@
     "theme": "Theme",
     "light": "Light",
     "dark": "Dark",
+    "flutterDev": "Flutter Dev",
+    "posts": "Posts",
+    "userList": "User List",
     "loading": "Loading"
 }

@@ -177,6 +177,24 @@ abstract class AppLocalizations {
   /// **'Dark'**
   String get dark;
 
+  /// No description provided for @flutterDev.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Dev'**
+  String get flutterDev;
+
+  /// No description provided for @posts.
+  ///
+  /// In en, this message translates to:
+  /// **'Posts'**
+  String get posts;
+
+  /// No description provided for @userList.
+  ///
+  /// In en, this message translates to:
+  /// **'User List'**
+  String get userList;
+
   /// No description provided for @loading.
   ///
   /// In en, this message translates to:

@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<SplashCubit>(
-      create: (_) => getIt()..init(),
+      create: (_) => locator()..init(),
       child: this,
     );
   }
