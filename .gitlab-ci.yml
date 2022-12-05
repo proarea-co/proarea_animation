@@ -9,7 +9,7 @@ before_script:
 
 flutter_build:
   tags:
-    - 3wella-mobile
+    - ProArea Animations
   stage: build
   script:
     - flutter analyze
