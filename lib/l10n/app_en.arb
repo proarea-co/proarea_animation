@@ -13,5 +13,6 @@
     "ok": "OK",
     "theme": "Theme",
     "light": "Light",
-    "dark": "Dark"
+    "dark": "Dark",
+    "loading": "Loading"
 }
