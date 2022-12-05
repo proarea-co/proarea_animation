@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 
-import '../base/base_service.dart';
+import '../../../base/service/base_service.dart';
 
 @injectable
 class TokenService extends BaseService {

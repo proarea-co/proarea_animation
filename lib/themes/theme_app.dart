@@ -18,8 +18,8 @@ enum ThemeType {
 
   String getLocalizedName(BuildContext context) {
     final themeToNameMap = {
-      ThemeType.light: getLocalizations(context).light,
-      ThemeType.dark: getLocalizations(context).dark,
+      ThemeType.light: context.strings.light,
+      ThemeType.dark: context.strings.dark,
     };
     return themeToNameMap[this]!;
   }
@@ -34,4 +34,9 @@ enum ThemeType {
   }
 
   ThemeData get themeData => themeDataMap[this]!;
+}
+
+extension BuildContextExt on BuildContext {
+  TextTheme get textTheme => Theme.of(this).textTheme;
+  ColorScheme get colorScheme => Theme.of(this).colorScheme;
 }

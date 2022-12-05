@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../base/bloc/base_cubit.dart';
 import '../../models/post.dart';
 import '../../services/api/posts/posts_service.dart';
-import '../base/base_cubit.dart';
-
 part 'posts_state.dart';
 
 @injectable

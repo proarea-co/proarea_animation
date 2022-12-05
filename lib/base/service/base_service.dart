@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
-import '../../../exceptions/application_exception.dart';
-import '../../exceptions/api_exception.dart';
+import '../exceptions/application_exception.dart';
+import '../exceptions/api_exception.dart';
 import '../../l10n/localization_helper.dart';
 import 'models/base_error.dart';
 

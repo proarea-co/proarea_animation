@@ -141,6 +141,24 @@ abstract class AppLocalizations {
   /// **'Русский'**
   String get ruLanguage;
 
+  /// No description provided for @oops.
+  ///
+  /// In en, this message translates to:
+  /// **'Ooops...'**
+  String get oops;
+
+  /// No description provided for @somethingWentWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong. Try again later or update the screen'**
+  String get somethingWentWrong;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
   /// No description provided for @theme.
   ///
   /// In en, this message translates to:

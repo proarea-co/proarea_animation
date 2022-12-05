@@ -29,6 +29,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get ruLanguage => 'Русский';
 
   @override
+  String get oops => 'Ooops...';
+
+  @override
+  String get somethingWentWrong => 'Something went wrong. Try again later or update the screen';
+
+  @override
+  String get ok => 'OK';
+
+  @override
   String get theme => 'Theme';
 
   @override

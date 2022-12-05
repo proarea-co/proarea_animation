@@ -7,7 +7,7 @@ class AppControllerState extends BaseState {
 
   const AppControllerState({
     super.status,
-    super.massage,
+    super.message,
     this.locale = const Locale('en'),
     this.themeType = ThemeType.light,
   });
@@ -29,7 +29,7 @@ class AppControllerState extends BaseState {
   }) {
     return AppControllerState(
       status: status ?? super.status,
-      massage: massage ?? super.massage,
+      message: massage ?? super.message,
       locale: locale ?? this.locale,
       themeType: themeType ?? this.themeType,
     );

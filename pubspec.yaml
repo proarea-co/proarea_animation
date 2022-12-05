@@ -26,6 +26,7 @@ dependencies:
   pretty_dio_logger: ^1.2.0-beta-1
   retrofit: ^3.0.1+1
   json_annotation: ^4.7.0
+  lottie: ^2.0.0
   
 
 dev_dependencies:
@@ -37,7 +38,10 @@ dev_dependencies:
   injectable_generator: ^1.5.4
   retrofit_generator: ^4.0.3+2
   json_serializable: ^6.3.2
+  flutter_gen_runner: ^5.1.0+1
 
 flutter:
   uses-material-design: true
   
+  assets:
+    - assets/lottie/

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class AppLoader extends StatelessWidget {
+class AppCircularLoader extends StatelessWidget {
   final double size;
   final bool withBackground;
 
-  const AppLoader({
+  const AppCircularLoader({
     Key? key,
     this.size = 56,
     this.withBackground = true,

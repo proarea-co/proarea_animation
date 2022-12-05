@@ -16,7 +16,7 @@ final _localizations = {
   const Locale('ru'): getLocaleLocalizations().ruLanguage,
 };
 
-AppLocalizations getLocalizations(BuildContext context) {
+AppLocalizations _getLocalizations(BuildContext context) {
   final localizations = AppLocalizations.of(context);
   if (localizations != null) return localizations;
   return defaultLocalize;
@@ -40,4 +40,8 @@ AppLocalizations getLocaleLocalizations([Locale? locale]) {
 String getLocaleName(Locale locale) {
   final langName = _localizations[locale];
   return langName ?? getLocaleLocalizations().enLanguage;
+}
+
+extension ContextExt on BuildContext {
+  AppLocalizations get strings => _getLocalizations(this);
 }
