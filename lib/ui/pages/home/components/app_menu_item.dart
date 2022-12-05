@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../models/tab_item/tab_item.dart';
+import '../../../../themes/extensions/extensions.dart';
+import '../../../../themes/theme_app.dart';
 
 class AppMenuItem extends StatelessWidget {
   final TabItem routeItem;
@@ -14,22 +16,16 @@ class AppMenuItem extends StatelessWidget {
     this.selected = false,
   });
 
-  LinearGradient _getGradient() {
-    return const LinearGradient(
-      colors: [
-        Color(0xFF6A00FC),
-        Color(0xFF6E02F5),
-        Color(0xFF7B06E0),
-        Color(0xFF8F0EBF),
-        Color(0xFFAB1891),
-        Color(0xFFCF2557),
-        Color(0xFFEE3024),
-        Color(0xFFFDC70C),
-      ],
-      begin: Alignment.bottomLeft,
-      end: Alignment.topRight,
-      stops: [0.05, 0.08, 0.1, 0.15, 0.2, 0.3, 0.55, 0.8],
-    );
+  Color? _getColor(BuildContext context) {
+    final extension = context.extension<AppMenuItemStyles>();
+    final selectedColor = extension?.selectedColor;
+    final unSelectedColor = extension?.unSelectedColor;
+
+    return selected ? selectedColor : unSelectedColor;
+  }
+
+  LinearGradient? _getGradient(BuildContext context) {
+    return selected ? context.extension<AppMenuItemStyles>()?.gradient : null;
   }
 
   @override
@@ -38,7 +34,7 @@ class AppMenuItem extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 2),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
-        gradient: selected ? _getGradient() : null,
+        gradient: _getGradient(context),
       ),
       padding: const EdgeInsets.all(2),
       child: GestureDetector(
@@ -46,7 +42,7 @@ class AppMenuItem extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
-            color: selected ? const Color(0xFF373737) : const Color(0xFF212121),
+            color: _getColor(context),
           ),
           padding: const EdgeInsets.all(16),
           child: Row(

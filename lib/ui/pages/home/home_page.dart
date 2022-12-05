@@ -10,6 +10,8 @@ import '../../../di/di.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../models/tab_item/tab_item.dart';
 import '../../../routes/router.dart';
+import '../../../themes/extensions/extensions.dart';
+import '../../../themes/theme_app.dart';
 import '../../views/base_builders/app_builder.dart';
 import 'components/app_menu_item.dart';
 
@@ -101,18 +103,26 @@ class _HomePageState extends State<HomePage>
               onHorizontalDragUpdate: _onDragUpdate,
               child: AnimatedBuilder(
                   animation: _cubit.animation,
-                  builder: (_, __) {
-                    return Stack(
-                      children: [
-                        _buildSideTab(state),
-                        _buildPage(child),
-                      ],
-                    );
-                  }),
+                  builder: (_, __) => _buildContent(state, child)),
             );
           },
         );
       },
+    );
+  }
+
+  Widget _buildContent(HomeState state, Widget child) {
+    final extension = context.extension<AppMenuItemStyles>();
+    return Container(
+      color: extension?.backgroundColor,
+      child: SafeArea(
+        child: Stack(
+          children: [
+            _buildSideTab(state),
+            _buildPage(child),
+          ],
+        ),
+      ),
     );
   }
 

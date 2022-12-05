@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../l10n/localization_helper.dart';
 import 'constants/light_style_constants.dart';
+import 'extensions/extensions.dart';
 
 part 'dark/dark_theme_data.dart';
 part 'light/light_theme_data.dart';
@@ -38,4 +39,5 @@ enum ThemeType {
 extension BuildContextExt on BuildContext {
   TextTheme get textTheme => Theme.of(this).textTheme;
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
+  T? extension<T>() => Theme.of(this).extension<T>();
 }
