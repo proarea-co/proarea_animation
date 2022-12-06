@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../models/animated_text/animated_text.dart';
 
-class FunnyTextsMock {
-  static List<AnimatedTextModel> animatedTextExamples({VoidCallback? onTap}) =>
+class AnimatedTextsMock {
+  static List<AnimatedTextModel> animatedTexts({VoidCallback? onTap}) =>
       <AnimatedTextModel>[
         AnimatedTextModel(
           label: 'Rotate',

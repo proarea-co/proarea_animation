@@ -43,7 +43,8 @@ class _$AppRouter extends RootStackRouter {
     },
     AnimatedTextRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const AnimatedTextPage());
+          routeData: routeData,
+          child: WrappedRoute(child: const AnimatedTextPage()));
     },
     CylinderLogoRoute.name: (routeData) {
       return MaterialPageX<dynamic>(

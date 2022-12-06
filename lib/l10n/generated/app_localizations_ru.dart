@@ -86,5 +86,8 @@ class AppLocalizationsRu extends AppLocalizations {
   String get textActivity => 'Текстовая активность';
 
   @override
+  String get next => 'Следующий';
+
+  @override
   String get proArea => 'ProArea';
 }

@@ -255,6 +255,12 @@ abstract class AppLocalizations {
   /// **'Text Activity'**
   String get textActivity;
 
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
   /// No description provided for @proArea.
   ///
   /// In en, this message translates to:

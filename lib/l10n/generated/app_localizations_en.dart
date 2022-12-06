@@ -86,5 +86,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get textActivity => 'Text Activity';
 
   @override
+  String get next => 'Next';
+
+  @override
   String get proArea => 'ProArea';
 }
