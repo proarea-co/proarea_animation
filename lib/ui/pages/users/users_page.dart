@@ -28,8 +28,8 @@ class _UsersPageState extends State<UsersPage> {
   BoxDecoration get _boxDecoration => BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            context.colorScheme.primary,
-            context.colorScheme.onPrimary,
+            context.colorScheme.tertiary,
+            context.colorScheme.onTertiary,
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,

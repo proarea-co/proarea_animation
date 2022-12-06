@@ -36,6 +36,10 @@ class _$AppRouter extends RootStackRouter {
     LiquidSwipeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const LiquidSwipePage());
+    },
+    ShatterRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const ShatterPage());
     }
   };
 
@@ -53,7 +57,9 @@ class _$AppRouter extends RootStackRouter {
           RouteConfig(PostsRoute.name, path: 'posts', parent: HomeRoute.name),
           RouteConfig(UsersRoute.name, path: 'users', parent: HomeRoute.name),
           RouteConfig(LiquidSwipeRoute.name,
-              path: 'liquidSwipe', parent: HomeRoute.name)
+              path: 'liquidSwipe', parent: HomeRoute.name),
+          RouteConfig(ShatterRoute.name,
+              path: 'shatter', parent: HomeRoute.name)
         ])
       ];
 }
@@ -97,4 +103,12 @@ class LiquidSwipeRoute extends PageRouteInfo<void> {
   const LiquidSwipeRoute() : super(LiquidSwipeRoute.name, path: 'liquidSwipe');
 
   static const String name = 'LiquidSwipeRoute';
+}
+
+/// generated route for
+/// [ShatterPage]
+class ShatterRoute extends PageRouteInfo<void> {
+  const ShatterRoute() : super(ShatterRoute.name, path: 'shatter');
+
+  static const String name = 'ShatterRoute';
 }

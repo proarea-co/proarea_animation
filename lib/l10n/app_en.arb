@@ -17,9 +17,12 @@
     "flutterDev": "Flutter Dev",
     "posts": "Posts",
     "userList": "User List",
+    "shatteringPage": "Shattering Page",
     "liquidSwipe": "Liquid Swipe",
     "loading": "Loading",
     "yourPosts": "Your posts",
     "edit": "Edit",
-    "remove": "Remove"
+    "remove": "Remove",
+    "welcomeBack": "Welcome back",
+    "shatter": "Shatter"
 }
