@@ -12,6 +12,7 @@ import '../../../themes/extensions/extensions.dart';
 import '../../../themes/theme_app.dart';
 import '../../views/base_builders/app_builder.dart';
 import 'components/app_menu_item.dart';
+import 'components/tabs.dart';
 
 class HomePage extends StatefulWidget with AutoRouteWrapper {
   const HomePage({super.key});
@@ -19,24 +20,9 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<HomeCubit>(
-      create: (_) => locator()..setTabs(_tabs(context)),
+      create: (_) => locator(),
       child: this,
     );
-  }
-
-  List<TabItem> _tabs(BuildContext context) {
-    return [
-      TabItem(
-        (context) => context.strings.posts,
-        Icons.article,
-        const PostsRoute(),
-      ),
-      TabItem(
-        (context) => context.strings.userList,
-        Icons.account_circle,
-        const UsersRoute(),
-      ),
-    ];
   }
 
   @override
@@ -95,15 +81,16 @@ class _HomePageState extends State<HomePage>
     return AppBuilder<HomeCubit, HomeState>(
       builder: (state) {
         return AutoTabsRouter(
-          routes: state.routes,
+          routes: HomeTabs.routes,
           builder: (context, child, animation) {
             return GestureDetector(
               onHorizontalDragStart: _onDragStart,
               onHorizontalDragEnd: _onDragEnd,
               onHorizontalDragUpdate: _onDragUpdate,
               child: AnimatedBuilder(
-                  animation: _cubit.animation,
-                  builder: (_, __) => _buildContent(state, child)),
+                animation: _cubit.animation,
+                builder: (_, __) => _buildContent(state, child),
+              ),
             );
           },
         );
@@ -171,12 +158,13 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _buildMenu(HomeState state) {
+    final tabs = HomeTabs.tabs;
     return ListView(
       physics: const AlwaysScrollableScrollPhysics(
         parent: BouncingScrollPhysics(),
       ),
-      children: List.generate(state.tabs.length, (index) {
-        final tab = state.tabs[index];
+      children: List.generate(tabs.length, (index) {
+        final tab = tabs[index];
         return _buildMenuItem(tab, index);
       }),
     );
