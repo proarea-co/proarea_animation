@@ -33,7 +33,7 @@ class ArrowIconsView extends StatelessWidget {
               color: context.colorScheme.primary,
               icon: const Icon(Icons.arrow_downward),
               onPressed: () {
-                switchUser(false);
+                switchUser(true);
               },
             ),
           ),

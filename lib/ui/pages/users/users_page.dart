@@ -35,6 +35,7 @@ class _UsersPageState extends State<UsersPage> {
           end: Alignment.bottomCenter,
         ),
       );
+  UsersCubit get _cubit => context.read();
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class _UsersPageState extends State<UsersPage> {
               child: Stack(
                 children: <Widget>[
                   ArrowIconsView(
-                    switchUser: (next) {},
+                    switchUser: _cubit.switchUser,
                   ),
                   _buildLine(),
                   _buildUserDetails(state),
@@ -62,7 +63,8 @@ class _UsersPageState extends State<UsersPage> {
   }
 
   Widget _buildUserDetails(UsersState state) {
-    if (state.users.isEmpty) return const SizedBox.shrink();
+    final index = state.userIndex;
+    if (state.users.length - 1 < index) return const SizedBox.shrink();
     return Positioned.fill(
       left: 30,
       top: 36,
@@ -70,7 +72,7 @@ class _UsersPageState extends State<UsersPage> {
         duration: const Duration(milliseconds: 250),
         child: UserDetailsView(
           key: UniqueKey(),
-          user: state.users[0],
+          user: state.users[index],
         ),
       ),
     );

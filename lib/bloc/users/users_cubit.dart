@@ -18,11 +18,28 @@ class UsersCubit extends BaseCubit<UsersState> {
   Future<void> getUsers() async {
     emit(state.copyWith(status: StateStatus.loading));
     await performSafeAction(() async {
+      final users = await _usersService.getUsers();
       emit(state.copyWith(
         status: StateStatus.loaded,
-        users: await _usersService.getUsers(),
+        users: users,
       ));
     });
+  }
+
+  void switchUser(bool next) {
+    next ? _nextUser() : _previousUser();
+  }
+
+  void _nextUser() {
+    final index = state.userIndex;
+    if (index >= state.users.length - 1) return;
+    emit(state.copyWith(userIndex: index + 1));
+  }
+
+  void _previousUser() {
+    final index = state.userIndex;
+    if (index <= 0) return;
+    emit(state.copyWith(userIndex: index - 1));
   }
 
   @override
