@@ -200,6 +200,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shattering Page'**
   String get shatteringPage;
+
   /// No description provided for @liquidSwipe.
   ///
   /// In en, this message translates to:
