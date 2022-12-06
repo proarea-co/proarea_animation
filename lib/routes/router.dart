@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../ui/pages/home/home_page.dart';
 import '../ui/pages/posts/posts_page.dart';
+import '../ui/pages/shatter/shatter_page.dart';
 import '../ui/pages/splash/splash_page.dart';
 import '../ui/pages/users/users_page.dart';
 
@@ -28,6 +29,10 @@ part 'router.gr.dart';
         AutoRoute(
           path: 'users',
           page: UsersPage,
+        ),
+        AutoRoute(
+          path: 'shatter',
+          page: ShatterPage
         ),
       ],
     ),

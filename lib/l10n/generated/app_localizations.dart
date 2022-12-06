@@ -195,6 +195,12 @@ abstract class AppLocalizations {
   /// **'User List'**
   String get userList;
 
+  /// No description provided for @shatteringPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Shattering Page'**
+  String get shatteringPage;
+
   /// No description provided for @loading.
   ///
   /// In en, this message translates to:
@@ -218,6 +224,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove'**
   String get remove;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back'**
+  String get welcomeBack;
+
+  /// No description provided for @shatter.
+  ///
+  /// In en, this message translates to:
+  /// **'Shatter'**
+  String get shatter;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

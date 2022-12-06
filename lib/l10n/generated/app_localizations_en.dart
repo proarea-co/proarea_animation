@@ -56,6 +56,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get userList => 'User List';
 
   @override
+  String get shatteringPage => 'Shattering Page';
+
+  @override
   String get loading => 'Loading';
 
   @override
@@ -66,4 +69,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get remove => 'Remove';
+
+  @override
+  String get welcomeBack => 'Welcome back';
+
+  @override
+  String get shatter => 'Shatter';
 }

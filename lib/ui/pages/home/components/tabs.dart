@@ -18,6 +18,11 @@ class HomeTabs{
         Icons.account_circle,
         const UsersRoute(),
       ),
+      TabItem(
+        (context) => context.strings.shatteringPage,
+        Icons.deselect_outlined,
+        const ShatterRoute(),
+      ),
     ];
   }
 
