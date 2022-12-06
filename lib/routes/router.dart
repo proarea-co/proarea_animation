@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/pages/cylinder_logo/cylinder_logo_page.dart';
 import '../ui/pages/home/home_page.dart';
 import '../ui/pages/liquid_swipe/liquid_swipe_page.dart';
 import '../ui/pages/posts/posts_page.dart';
@@ -38,6 +39,10 @@ part 'router.gr.dart';
         AutoRoute(
           path: 'shatter',
           page: ShatterPage
+        ),
+        AutoRoute(
+          path: 'cylinderLogo',
+          page: CylinderLogoPage,
         ),
       ],
     ),

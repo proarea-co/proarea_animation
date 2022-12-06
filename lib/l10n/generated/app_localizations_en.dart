@@ -78,4 +78,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shatter => 'Shatter';
+
+  @override
+  String get textActivity => 'Text Activity';
+
+  @override
+  String get proArea => 'ProArea';
 }

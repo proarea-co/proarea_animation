@@ -24,5 +24,7 @@
     "edit": "Edit",
     "remove": "Remove",
     "welcomeBack": "Welcome back",
-    "shatter": "Shatter"
+    "shatter": "Shatter",
+    "textActivity": "Text Activity",
+    "proArea": "ProArea"
 }
