@@ -266,6 +266,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'ProArea'**
   String get proArea;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

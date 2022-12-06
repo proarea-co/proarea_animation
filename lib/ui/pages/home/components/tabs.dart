@@ -38,6 +38,11 @@ class HomeTabs {
         Icons.local_activity,
         const CylinderLogoRoute(),
       ),
+      TabItem(
+        (context) => context.strings.signOut,
+        Icons.exit_to_app,
+        const SignOutRoute(),
+      ),
     ];
   }
 
