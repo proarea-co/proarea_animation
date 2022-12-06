@@ -20,7 +20,6 @@ class HomeState extends BaseState {
   HomeState copyWith({
     StateStatus? status,
     String? message,
-    List<TabItem>? tabs,
     bool? canBeDragged,
   }) {
     return HomeState(

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,49 +32,87 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  bool get _fullScreen => _animationController.value == 0;
   HomeCubit get _cubit => context.read<HomeCubit>();
+  double get _getSlide {
+    final rightSlide = MediaQuery.of(context).size.width * 0.6;
+    return rightSlide * _animationController.value;
+  }
+
+  double get scale {
+    return 1 - (_animationController.value * 0.12);
+  }
 
   @override
   void initState() {
     super.initState();
 
-    _cubit.setController(
-      AnimationController(
-        vsync: this,
-        value: 1,
-        duration: const Duration(milliseconds: 300),
-      ),
+    _animationController = AnimationController(
+      vsync: this,
+      value: 1,
+      duration: const Duration(milliseconds: 300),
+    );
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
     );
   }
 
   @override
-  void dispose() async {
-    await _cubit.close();
+  void dispose() {
+    _animationController.dispose();
     super.dispose();
   }
 
   Future<void> _toggleAnimation() {
-    return _cubit.toggleAnimation();
+    return _animationController.isDismissed
+        ? _animationController.forward()
+        : _animationController.reverse();
   }
 
   void _onDragStart(DragStartDetails details) {
-    _cubit.onDragStart(context, details);
+    log('${MediaQuery.of(context).size.width * 0.4}');
+    bool isDragOpenFromLeft = _animationController.isDismissed &&
+        details.globalPosition.dx < MediaQuery.of(context).size.width * 0.4;
+    bool isDragClosedFromRight = _animationController.isCompleted &&
+        details.globalPosition.dx > MediaQuery.of(context).size.width * 0.6;
+    final canBeDragged = isDragClosedFromRight || isDragOpenFromLeft;
+    _cubit.setCanBeDragged(canBeDragged);
   }
 
-  void _onDragUpdate(DragUpdateDetails details) {
-    _cubit.onDragUpdate(context, details);
+  void _onDragUpdate(HomeState state, DragUpdateDetails details) {
+    final canBeDragged = state.canBeDragged;
+    if (canBeDragged) {
+      double delta =
+          (details.primaryDelta ?? 0) / MediaQuery.of(context).size.width * 1.2;
+      _animationController.value += delta;
+    }
   }
 
   void _onDragEnd(DragEndDetails details) {
-    _cubit.onDragEnd(context, details);
+    if (_animationController.isDismissed || _animationController.isCompleted) {
+      return;
+    }
+    if (details.velocity.pixelsPerSecond.dx.abs() >=
+        MediaQuery.of(context).size.width) {
+      double visualVelocity = details.velocity.pixelsPerSecond.dx /
+          MediaQuery.of(context).size.width *
+          0.9;
+      _animationController.fling(velocity: visualVelocity);
+    } else if (_animationController.value < 0.5) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
   }
 
   Future<bool> _onWillPop() async {
-    final fullScreen = _cubit.fullScreen;
+    if (_fullScreen) _toggleAnimation();
 
-    if (fullScreen) _toggleAnimation();
-
-    return !fullScreen;
+    return !_fullScreen;
   }
 
   @override
@@ -85,9 +125,11 @@ class _HomePageState extends State<HomePage>
             return GestureDetector(
               onHorizontalDragStart: _onDragStart,
               onHorizontalDragEnd: _onDragEnd,
-              onHorizontalDragUpdate: _onDragUpdate,
+              onHorizontalDragUpdate: (details) {
+                _onDragUpdate(state, details);
+              },
               child: AnimatedBuilder(
-                animation: _cubit.animation,
+                animation: _animation,
                 builder: (_, __) => _buildContent(state, child),
               ),
             );
@@ -190,8 +232,8 @@ class _HomePageState extends State<HomePage>
       onWillPop: _onWillPop,
       child: Transform(
         transform: Matrix4.identity()
-          ..translate(_cubit.getSlide(context))
-          ..scale(_cubit.scale),
+          ..translate(_getSlide)
+          ..scale(scale),
         alignment: Alignment.centerLeft,
         child: ClipRRect(
           clipBehavior: Clip.hardEdge,
