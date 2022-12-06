@@ -56,6 +56,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get userList => 'User List';
 
   @override
+  String get shatteringPage => 'Разрушительная страница';
+
+  @override
   String get liquidSwipe => 'Liquid Swipe';
 
   @override
@@ -69,4 +72,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get remove => 'Удалить';
+
+  @override
+  String get welcomeBack => 'С возвращением';
+
+  @override
+  String get shatter => 'Разбить';
 }

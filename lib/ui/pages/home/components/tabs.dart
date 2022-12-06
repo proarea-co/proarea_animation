@@ -23,6 +23,11 @@ class HomeTabs {
         Icons.swipe,
         const LiquidSwipeRoute(),
       ),
+      TabItem(
+        (context) => context.strings.shatteringPage,
+        Icons.deselect_outlined,
+        const ShatterRoute(),
+      ),
     ];
   }
 
