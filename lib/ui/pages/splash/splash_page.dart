@@ -30,7 +30,9 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
         withoutScaffold: true,
         listenDefault: (context, state) {
           if (state is! SplashLoaded) return;
-          context.router.push(const HomeRoute());
+          // TODO uncomment after fixing
+          // context.router.push(const HomeRoute());
+          context.router.push(const UsersRoute());
         },
         builder: (state) {
           return Column(

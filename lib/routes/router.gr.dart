@@ -27,7 +27,11 @@ class _$AppRouter extends RootStackRouter {
     },
     PostsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const PostsPage());
+          routeData: routeData, child: WrappedRoute(child: const PostsPage()));
+    },
+    UsersRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const UsersPage());
     }
   };
 
@@ -37,7 +41,8 @@ class _$AppRouter extends RootStackRouter {
             path: '/', redirectTo: 'Splash', fullMatch: true),
         RouteConfig(SplashRoute.name, path: 'Splash'),
         RouteConfig(HomeRoute.name, path: 'Home'),
-        RouteConfig(PostsRoute.name, path: 'Posts')
+        RouteConfig(PostsRoute.name, path: 'Posts'),
+        RouteConfig(UsersRoute.name, path: 'users')
       ];
 }
 
@@ -63,4 +68,12 @@ class PostsRoute extends PageRouteInfo<void> {
   const PostsRoute() : super(PostsRoute.name, path: 'Posts');
 
   static const String name = 'PostsRoute';
+}
+
+/// generated route for
+/// [UsersPage]
+class UsersRoute extends PageRouteInfo<void> {
+  const UsersRoute() : super(UsersRoute.name, path: 'users');
+
+  static const String name = 'UsersRoute';
 }
