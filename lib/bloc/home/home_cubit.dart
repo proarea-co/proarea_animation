@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
@@ -11,6 +10,7 @@ part 'home_state.dart';
 
 @injectable
 class HomeCubit extends BaseCubit<HomeState> {
+  // TODO refactor animation
   late AnimationController _animationController;
   late Animation<double> _animation;
 
