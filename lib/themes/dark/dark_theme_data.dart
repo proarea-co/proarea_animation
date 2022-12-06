@@ -12,4 +12,7 @@ final _darkThemeData = ThemeData(
       fontWeight: FontWeight.w600,
     ),
   ),
+  extensions: [
+    AppMenuItemStyles.dark(),
+  ],
 );

@@ -15,7 +15,7 @@ class UsersPage extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<UsersCubit>(
-      create: (_) => getIt()..getUsers(),
+      create: (_) => locator()..getUsers(),
       child: this,
     );
   }

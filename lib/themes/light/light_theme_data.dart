@@ -6,6 +6,9 @@ final _lightThemeData = ThemeData(
     error: LightStyleConstants.error,
     tertiary: LightStyleConstants.charcoalTint3,
   ),
+  extensions: [
+    AppMenuItemStyles.light(),
+  ],
   textTheme: const TextTheme(
     headline1: TextStyle(
       color: LightStyleConstants.white,

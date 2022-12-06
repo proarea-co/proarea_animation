@@ -18,7 +18,7 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<SplashCubit>(
-      create: (_) => getIt()..init(),
+      create: (_) => locator()..init(),
       child: this,
     );
   }
@@ -30,9 +30,7 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
         withoutScaffold: true,
         listenDefault: (context, state) {
           if (state is! SplashLoaded) return;
-          // TODO uncomment after fixing
-          // context.router.push(const HomeRoute());
-          context.router.push(const UsersRoute());
+          context.router.replace(const HomeRoute());
         },
         builder: (state) {
           return Column(

@@ -19,7 +19,7 @@ class PostsPage extends StatefulWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<PostsCubit>(
-      create: (_) => getIt()..getPosts(),
+      create: (_) => locator()..getPosts(),
       child: Theme(
         data: ThemeType.light.themeData,
         child: this,

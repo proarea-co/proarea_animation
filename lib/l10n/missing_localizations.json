@@ -1,6 +1,9 @@
 {
   "ru": [
     "enLanguage",
-    "ruLanguage"
+    "ruLanguage",
+    "flutterDev",
+    "posts",
+    "userList"
   ]
 }

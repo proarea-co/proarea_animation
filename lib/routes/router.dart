@@ -12,21 +12,24 @@ part 'router.gr.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(
-      path: 'Splash',
+      path: 'splash',
       page: SplashPage,
       initial: true,
     ),
     AutoRoute(
-      path: 'Home',
+      path: 'home',
       page: HomePage,
-    ),
-    AutoRoute(
-      path: 'Posts',
-      page: PostsPage,
-    ),
-    AutoRoute(
-      path: 'users',
-      page: UsersPage,
+      children: [
+        AutoRoute(
+          path: 'posts',
+          page: PostsPage,
+          initial: true,
+        ),
+        AutoRoute(
+          path: 'users',
+          page: UsersPage,
+        ),
+      ],
     ),
   ],
 )
