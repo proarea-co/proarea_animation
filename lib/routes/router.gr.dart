@@ -40,6 +40,10 @@ class _$AppRouter extends RootStackRouter {
     ShatterRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ShatterPage());
+    },
+    FunnyTextRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const FunnyTextPage());
     }
   };
 
@@ -59,7 +63,9 @@ class _$AppRouter extends RootStackRouter {
           RouteConfig(LiquidSwipeRoute.name,
               path: 'liquidSwipe', parent: HomeRoute.name),
           RouteConfig(ShatterRoute.name,
-              path: 'shatter', parent: HomeRoute.name)
+              path: 'shatter', parent: HomeRoute.name),
+          RouteConfig(FunnyTextRoute.name,
+              path: 'funnyText', parent: HomeRoute.name)
         ])
       ];
 }
@@ -111,4 +117,12 @@ class ShatterRoute extends PageRouteInfo<void> {
   const ShatterRoute() : super(ShatterRoute.name, path: 'shatter');
 
   static const String name = 'ShatterRoute';
+}
+
+/// generated route for
+/// [FunnyTextPage]
+class FunnyTextRoute extends PageRouteInfo<void> {
+  const FunnyTextRoute() : super(FunnyTextRoute.name, path: 'funnyText');
+
+  static const String name = 'FunnyTextRoute';
 }

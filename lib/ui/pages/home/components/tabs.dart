@@ -28,6 +28,11 @@ class HomeTabs {
         Icons.deselect_outlined,
         const ShatterRoute(),
       ),
+      TabItem(
+        (context) => context.strings.textAnimations,
+        Icons.smart_toy_outlined,
+        const FunnyTextRoute(),
+      ),
     ];
   }
 

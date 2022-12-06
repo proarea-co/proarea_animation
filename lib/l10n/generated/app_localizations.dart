@@ -195,17 +195,23 @@ abstract class AppLocalizations {
   /// **'User List'**
   String get userList;
 
+  /// No description provided for @liquidSwipe.
+  ///
+  /// In en, this message translates to:
+  /// **'Liquid Swipe'**
+  String get liquidSwipe;
+
   /// No description provided for @shatteringPage.
   ///
   /// In en, this message translates to:
   /// **'Shattering Page'**
   String get shatteringPage;
 
-  /// No description provided for @liquidSwipe.
+  /// No description provided for @textAnimations.
   ///
   /// In en, this message translates to:
-  /// **'Liquid Swipe'**
-  String get liquidSwipe;
+  /// **'Text Animations'**
+  String get textAnimations;
 
   /// No description provided for @loading.
   ///
