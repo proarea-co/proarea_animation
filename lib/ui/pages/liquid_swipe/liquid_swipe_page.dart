@@ -35,7 +35,7 @@ class LiquidSwipePage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: page.words.map((word) {
           return Builder(builder: (context) {
-            return Text(word, style: context.textTheme.bodyLarge);
+            return Text(word, style: context.textTheme.headlineLarge);
           });
         }).toList(),
       ),

@@ -6,13 +6,13 @@ final _darkThemeData = ThemeData(
     primary: LightStyleConstants.blue,
     onPrimary: LightStyleConstants.purple,
   ),
-  textTheme: TextTheme(
-    bodyLarge: const TextStyle(
+  textTheme: const TextTheme(
+    headlineLarge: TextStyle(
       fontSize: 64,
       fontFamily: FontFamily.billy,
       fontWeight: FontWeight.w600,
     ),
-    subtitle1: const TextStyle(
+    subtitle1: TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.w600,
     ),
