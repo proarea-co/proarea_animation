@@ -2,14 +2,22 @@ part of '../theme_app.dart';
 
 final _darkThemeData = ThemeData(
   brightness: Brightness.dark,
-  extensions: [
-    AppMenuItemStyles.dark(),
-  ],
-  textTheme: const TextTheme(
-    bodyLarge: TextStyle(
+  colorScheme: const ColorScheme.dark(
+    primary: LightStyleConstants.blue,
+    onPrimary: LightStyleConstants.purple,
+  ),
+  textTheme: TextTheme(
+    bodyLarge: const TextStyle(
       fontSize: 64,
-      fontFamily: 'Billy',
+      fontFamily: FontFamily.billy,
+      fontWeight: FontWeight.w600,
+    ),
+    subtitle1: const TextStyle(
+      fontSize: 28,
       fontWeight: FontWeight.w600,
     ),
   ),
+  extensions: [
+    AppMenuItemStyles.dark(),
+  ],
 );
