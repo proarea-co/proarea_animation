@@ -47,6 +47,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dark => 'Dark';
 
   @override
+  String get flutterDev => 'Flutter Dev';
+
+  @override
+  String get posts => 'Posts';
+
+  @override
+  String get userList => 'User List';
+
+  @override
   String get loading => 'Loading';
 
   @override

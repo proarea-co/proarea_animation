@@ -27,24 +27,35 @@ class _$AppRouter extends RootStackRouter {
     },
     PostsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const PostsPage());
+          routeData: routeData, child: WrappedRoute(child: const PostsPage()));
+    },
+    UsersRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const UsersPage());
     }
   };
 
   @override
   List<RouteConfig> get routes => [
         RouteConfig('/#redirect',
-            path: '/', redirectTo: 'Splash', fullMatch: true),
-        RouteConfig(SplashRoute.name, path: 'Splash'),
-        RouteConfig(HomeRoute.name, path: 'Home'),
-        RouteConfig(PostsRoute.name, path: 'Posts')
+            path: '/', redirectTo: 'splash', fullMatch: true),
+        RouteConfig(SplashRoute.name, path: 'splash'),
+        RouteConfig(HomeRoute.name, path: 'home', children: [
+          RouteConfig('#redirect',
+              path: '',
+              parent: HomeRoute.name,
+              redirectTo: 'posts',
+              fullMatch: true),
+          RouteConfig(PostsRoute.name, path: 'posts', parent: HomeRoute.name),
+          RouteConfig(UsersRoute.name, path: 'users', parent: HomeRoute.name)
+        ])
       ];
 }
 
 /// generated route for
 /// [SplashPage]
 class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute() : super(SplashRoute.name, path: 'Splash');
+  const SplashRoute() : super(SplashRoute.name, path: 'splash');
 
   static const String name = 'SplashRoute';
 }
@@ -52,7 +63,8 @@ class SplashRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [HomePage]
 class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute() : super(HomeRoute.name, path: 'Home');
+  const HomeRoute({List<PageRouteInfo>? children})
+      : super(HomeRoute.name, path: 'home', initialChildren: children);
 
   static const String name = 'HomeRoute';
 }
@@ -60,7 +72,15 @@ class HomeRoute extends PageRouteInfo<void> {
 /// generated route for
 /// [PostsPage]
 class PostsRoute extends PageRouteInfo<void> {
-  const PostsRoute() : super(PostsRoute.name, path: 'Posts');
+  const PostsRoute() : super(PostsRoute.name, path: 'posts');
 
   static const String name = 'PostsRoute';
+}
+
+/// generated route for
+/// [UsersPage]
+class UsersRoute extends PageRouteInfo<void> {
+  const UsersRoute() : super(UsersRoute.name, path: 'users');
+
+  static const String name = 'UsersRoute';
 }

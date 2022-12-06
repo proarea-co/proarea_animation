@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../ui/pages/home/home_page.dart';
 import '../ui/pages/posts/posts_page.dart';
 import '../ui/pages/splash/splash_page.dart';
+import '../ui/pages/users/users_page.dart';
 
 part 'router.gr.dart';
 
@@ -11,17 +12,24 @@ part 'router.gr.dart';
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
     AutoRoute(
-      path: 'Splash',
+      path: 'splash',
       page: SplashPage,
       initial: true,
     ),
     AutoRoute(
-      path: 'Home',
+      path: 'home',
       page: HomePage,
-    ),
-    AutoRoute(
-      path: 'Posts',
-      page: PostsPage,
+      children: [
+        AutoRoute(
+          path: 'posts',
+          page: PostsPage,
+          initial: true,
+        ),
+        AutoRoute(
+          path: 'users',
+          page: UsersPage,
+        ),
+      ],
     ),
   ],
 )

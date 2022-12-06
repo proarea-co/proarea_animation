@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 
 import 'di.config.dart';
 
-final getIt = GetIt.instance;
+final locator = GetIt.instance;
 
 @InjectableInit(
   initializerName: r'$initGetIt',
@@ -11,7 +11,7 @@ final getIt = GetIt.instance;
   asExtension: false,
 )
 GetIt configureDependencies(Environment environment) {
-  return $initGetIt(getIt, environment: environment.name);
+  return $initGetIt(locator, environment: environment.name);
 }
 
 extension EnvironmentExtension on Environment {
