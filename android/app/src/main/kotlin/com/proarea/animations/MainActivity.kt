@@ -1,4 +1,4 @@
-package com.example.proarea_animations
+package com.proarea.animations
 
 import io.flutter.embedding.android.FlutterActivity
 
