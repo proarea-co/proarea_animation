@@ -175,8 +175,8 @@ class PolygonStripGenerator {
     var random = Random(2);
 
     var triangles = [
-      Triangle(Offset(0, 0), Offset(0, 1), Offset(1, 0)),
-      Triangle(Offset(1, 1), Offset(0, 1), Offset(1, 0)),
+      Triangle(const Offset(0, 0), const Offset(0, 1), const Offset(1, 0)),
+      Triangle(const Offset(1, 1), const Offset(0, 1), const Offset(1, 0)),
     ];
 
     0.until(complexity).forEach((_) {
