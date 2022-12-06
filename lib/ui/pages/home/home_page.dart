@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +11,7 @@ import '../../../themes/extensions/extensions.dart';
 import '../../../themes/theme_app.dart';
 import '../../views/base_builders/app_builder.dart';
 import 'components/app_menu_item.dart';
+import 'components/home_swipe_detector.dart';
 import 'components/tabs.dart';
 
 class HomePage extends StatefulWidget with AutoRouteWrapper {
@@ -73,42 +72,6 @@ class _HomePageState extends State<HomePage>
         : _animationController.reverse();
   }
 
-  void _onDragStart(DragStartDetails details) {
-    log('${MediaQuery.of(context).size.width * 0.4}');
-    bool isDragOpenFromLeft = _animationController.isDismissed &&
-        details.globalPosition.dx < MediaQuery.of(context).size.width * 0.4;
-    bool isDragClosedFromRight = _animationController.isCompleted &&
-        details.globalPosition.dx > MediaQuery.of(context).size.width * 0.6;
-    final canBeDragged = isDragClosedFromRight || isDragOpenFromLeft;
-    _cubit.setCanBeDragged(canBeDragged);
-  }
-
-  void _onDragUpdate(HomeState state, DragUpdateDetails details) {
-    final canBeDragged = state.canBeDragged;
-    if (canBeDragged) {
-      double delta =
-          (details.primaryDelta ?? 0) / MediaQuery.of(context).size.width * 1.2;
-      _animationController.value += delta;
-    }
-  }
-
-  void _onDragEnd(DragEndDetails details) {
-    if (_animationController.isDismissed || _animationController.isCompleted) {
-      return;
-    }
-    if (details.velocity.pixelsPerSecond.dx.abs() >=
-        MediaQuery.of(context).size.width) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx /
-          MediaQuery.of(context).size.width *
-          0.9;
-      _animationController.fling(velocity: visualVelocity);
-    } else if (_animationController.value < 0.5) {
-      _animationController.forward();
-    } else {
-      _animationController.reverse();
-    }
-  }
-
   Future<bool> _onWillPop() async {
     if (_fullScreen) _toggleAnimation();
 
@@ -122,17 +85,18 @@ class _HomePageState extends State<HomePage>
         return AutoTabsRouter(
           routes: HomeTabs.routes,
           builder: (context, child, animation) {
-            return GestureDetector(
-              onHorizontalDragStart: _onDragStart,
-              onHorizontalDragEnd: _onDragEnd,
-              onHorizontalDragUpdate: (details) {
-                _onDragUpdate(state, details);
+            return HomeSwipeDetector(
+              setCanBeDragged: (dragged) {
+                _cubit.setCanBeDragged(dragged);
               },
+              animationController: _animationController,
+              canBeDragged: state.canBeDragged,
               child: AnimatedBuilder(
                 animation: _animation,
                 builder: (_, __) => _buildContent(state, child),
               ),
             );
+
           },
         );
       },
