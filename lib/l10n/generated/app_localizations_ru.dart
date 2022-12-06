@@ -57,6 +57,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get shatteringPage => 'Разрушительная страница';
+  String get liquidSwipe => 'Liquid Swipe';
 
   @override
   String get loading => 'Загрузка';

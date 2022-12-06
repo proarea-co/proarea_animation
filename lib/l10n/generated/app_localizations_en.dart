@@ -57,6 +57,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get shatteringPage => 'Shattering Page';
+  String get liquidSwipe => 'Liquid Swipe';
 
   @override
   String get loading => 'Loading';

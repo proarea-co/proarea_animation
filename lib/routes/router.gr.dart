@@ -33,6 +33,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: WrappedRoute(child: const UsersPage()));
     },
+    LiquidSwipeRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const LiquidSwipePage());
+    },
     ShatterRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ShatterPage());
@@ -52,6 +56,8 @@ class _$AppRouter extends RootStackRouter {
               fullMatch: true),
           RouteConfig(PostsRoute.name, path: 'posts', parent: HomeRoute.name),
           RouteConfig(UsersRoute.name, path: 'users', parent: HomeRoute.name),
+          RouteConfig(LiquidSwipeRoute.name,
+              path: 'liquidSwipe', parent: HomeRoute.name),
           RouteConfig(ShatterRoute.name,
               path: 'shatter', parent: HomeRoute.name)
         ])
@@ -89,6 +95,14 @@ class UsersRoute extends PageRouteInfo<void> {
   const UsersRoute() : super(UsersRoute.name, path: 'users');
 
   static const String name = 'UsersRoute';
+}
+
+/// generated route for
+/// [LiquidSwipePage]
+class LiquidSwipeRoute extends PageRouteInfo<void> {
+  const LiquidSwipeRoute() : super(LiquidSwipeRoute.name, path: 'liquidSwipe');
+
+  static const String name = 'LiquidSwipeRoute';
 }
 
 /// generated route for
