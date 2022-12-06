@@ -7,6 +7,11 @@ final _darkThemeData = ThemeData(
     onPrimary: LightStyleConstants.purple,
   ),
   textTheme: const TextTheme(
+    headlineLarge: TextStyle(
+      fontSize: 64,
+      fontFamily: FontFamily.billy,
+      fontWeight: FontWeight.w600,
+    ),
     subtitle1: TextStyle(
       fontSize: 28,
       fontWeight: FontWeight.w600,

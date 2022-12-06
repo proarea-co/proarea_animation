@@ -56,6 +56,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get userList => 'User List';
 
   @override
+  String get liquidSwipe => 'Liquid Swipe';
+
+  @override
   String get loading => 'Loading';
 
   @override
