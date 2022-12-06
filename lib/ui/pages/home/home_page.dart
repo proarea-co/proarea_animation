@@ -24,18 +24,20 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
     );
   }
 
-  List<TabItem> _tabs(BuildContext context) => [
-        TabItem(
-          context.strings.posts,
-          Icons.article,
-          const PostsRoute(),
-        ),
-        TabItem(
-          context.strings.userList,
-          Icons.account_circle,
-          const UsersRoute(),
-        ),
-      ];
+  List<TabItem> _tabs(BuildContext context) {
+    return [
+      TabItem(
+        (context) => context.strings.posts,
+        Icons.article,
+        const PostsRoute(),
+      ),
+      TabItem(
+        (context) => context.strings.userList,
+        Icons.account_circle,
+        const UsersRoute(),
+      ),
+    ];
+  }
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -139,29 +141,25 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _buildHeading() {
-    return Builder(
-      builder: (context) {
-        return Row(
-          children: [
-            SizedBox(
-              height: 48,
-              width: 48,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(48),
-                child: Image.network(
-                  ApiConstants.photosUrl,
-                  fit: BoxFit.cover,
-                ),
-              ),
+    return Row(
+      children: [
+        SizedBox(
+          height: 48,
+          width: 48,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(48),
+            child: Image.network(
+              ApiConstants.photosUrl,
+              fit: BoxFit.cover,
             ),
-            const SizedBox(width: 16),
-            Text(
-              context.strings.flutterDev,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ],
-        );
-      },
+          ),
+        ),
+        const SizedBox(width: 16),
+        Text(
+          context.strings.flutterDev,
+          style: Theme.of(context).textTheme.headline6,
+        ),
+      ],
     );
   }
 
@@ -201,16 +199,12 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _buildPage(Widget child) {
-    final rightSlide = MediaQuery.of(context).size.width * 0.6;
-    final controller = _cubit.controller;
-    double slide = rightSlide * controller.value;
-    double scale = 1 - (controller.value * 0.12);
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Transform(
         transform: Matrix4.identity()
-          ..translate(slide)
-          ..scale(scale),
+          ..translate(_cubit.getSlide(context))
+          ..scale(_cubit.scale),
         alignment: Alignment.centerLeft,
         child: ClipRRect(
           clipBehavior: Clip.hardEdge,

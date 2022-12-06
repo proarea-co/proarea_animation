@@ -92,4 +92,13 @@ class HomeCubit extends BaseCubit<HomeState> {
       _animationController.reverse();
     }
   }
+
+  double getSlide(BuildContext context) {
+    final rightSlide = MediaQuery.of(context).size.width * 0.6;
+    return rightSlide * _animationController.value;
+  }
+
+  double get scale {
+    return 1 - (controller.value * 0.12);
+  }
 }

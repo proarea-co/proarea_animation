@@ -50,7 +50,7 @@ class AppMenuItem extends StatelessWidget {
               Icon(routeItem.icon),
               const SizedBox(width: 12),
               Text(
-                routeItem.name,
+                routeItem.name(context),
                 style: const TextStyle(fontSize: 16),
               ),
             ],
