@@ -84,4 +84,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get proArea => 'ProArea';
+
+  @override
+  String get signOut => 'Sign Out';
 }
