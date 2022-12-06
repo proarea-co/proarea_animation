@@ -40,6 +40,10 @@ class _$AppRouter extends RootStackRouter {
     ShatterRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ShatterPage());
+    },
+    CylinderLogoRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const CylinderLogoPage());
     }
   };
 
@@ -59,7 +63,9 @@ class _$AppRouter extends RootStackRouter {
           RouteConfig(LiquidSwipeRoute.name,
               path: 'liquidSwipe', parent: HomeRoute.name),
           RouteConfig(ShatterRoute.name,
-              path: 'shatter', parent: HomeRoute.name)
+              path: 'shatter', parent: HomeRoute.name),
+          RouteConfig(CylinderLogoRoute.name,
+              path: 'cylinderLogo', parent: HomeRoute.name)
         ])
       ];
 }
@@ -111,4 +117,13 @@ class ShatterRoute extends PageRouteInfo<void> {
   const ShatterRoute() : super(ShatterRoute.name, path: 'shatter');
 
   static const String name = 'ShatterRoute';
+}
+
+/// generated route for
+/// [CylinderLogoPage]
+class CylinderLogoRoute extends PageRouteInfo<void> {
+  const CylinderLogoRoute()
+      : super(CylinderLogoRoute.name, path: 'cylinderLogo');
+
+  static const String name = 'CylinderLogoRoute';
 }

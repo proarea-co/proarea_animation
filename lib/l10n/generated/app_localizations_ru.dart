@@ -78,4 +78,10 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get shatter => 'Разбить';
+
+  @override
+  String get textActivity => 'Текстовая активность';
+
+  @override
+  String get proArea => 'ProArea';
 }

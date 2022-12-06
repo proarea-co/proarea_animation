@@ -28,6 +28,11 @@ class HomeTabs {
         Icons.deselect_outlined,
         const ShatterRoute(),
       ),
+      TabItem(
+        (context) => context.strings.textActivity,
+        Icons.local_activity,
+        const CylinderLogoRoute(),
+      ),
     ];
   }
 
