@@ -11,6 +11,7 @@ import '../../../themes/extensions/extensions.dart';
 import '../../../themes/theme_app.dart';
 import '../../views/base_builders/app_builder.dart';
 import 'components/app_menu_item.dart';
+import 'components/home_swipe_detector.dart';
 import 'components/tabs.dart';
 
 class HomePage extends StatefulWidget with AutoRouteWrapper {
@@ -30,49 +31,51 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _animation;
+
+  bool get _fullScreen => _animationController.value == 0;
   HomeCubit get _cubit => context.read<HomeCubit>();
+  double get _getSlide {
+    final rightSlide = MediaQuery.of(context).size.width * 0.6;
+    return rightSlide * _animationController.value;
+  }
+
+  double get scale {
+    return 1 - (_animationController.value * 0.12);
+  }
 
   @override
   void initState() {
     super.initState();
 
-    _cubit.setController(
-      AnimationController(
-        vsync: this,
-        value: 1,
-        duration: const Duration(milliseconds: 300),
-      ),
+    _animationController = AnimationController(
+      vsync: this,
+      value: 1,
+      duration: const Duration(milliseconds: 300),
+    );
+    _animation = CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.easeInOut,
     );
   }
 
   @override
-  void dispose() async {
-    await _cubit.close();
+  void dispose() {
+    _animationController.dispose();
     super.dispose();
   }
 
   Future<void> _toggleAnimation() {
-    return _cubit.toggleAnimation();
-  }
-
-  void _onDragStart(DragStartDetails details) {
-    _cubit.onDragStart(context, details);
-  }
-
-  void _onDragUpdate(DragUpdateDetails details) {
-    _cubit.onDragUpdate(context, details);
-  }
-
-  void _onDragEnd(DragEndDetails details) {
-    _cubit.onDragEnd(context, details);
+    return _animationController.isDismissed
+        ? _animationController.forward()
+        : _animationController.reverse();
   }
 
   Future<bool> _onWillPop() async {
-    final fullScreen = _cubit.fullScreen;
+    if (_fullScreen) _toggleAnimation();
 
-    if (fullScreen) _toggleAnimation();
-
-    return !fullScreen;
+    return !_fullScreen;
   }
 
   @override
@@ -82,15 +85,18 @@ class _HomePageState extends State<HomePage>
         return AutoTabsRouter(
           routes: HomeTabs.routes,
           builder: (context, child, animation) {
-            return GestureDetector(
-              onHorizontalDragStart: _onDragStart,
-              onHorizontalDragEnd: _onDragEnd,
-              onHorizontalDragUpdate: _onDragUpdate,
+            return HomeSwipeDetector(
+              setCanBeDragged: (dragged) {
+                _cubit.setCanBeDragged(dragged);
+              },
+              animationController: _animationController,
+              canBeDragged: state.canBeDragged,
               child: AnimatedBuilder(
-                animation: _cubit.animation,
+                animation: _animation,
                 builder: (_, __) => _buildContent(state, child),
               ),
             );
+
           },
         );
       },
@@ -190,8 +196,8 @@ class _HomePageState extends State<HomePage>
       onWillPop: _onWillPop,
       child: Transform(
         transform: Matrix4.identity()
-          ..translate(_cubit.getSlide(context))
-          ..scale(_cubit.scale),
+          ..translate(_getSlide)
+          ..scale(scale),
         alignment: Alignment.centerLeft,
         child: ClipRRect(
           clipBehavior: Clip.hardEdge,

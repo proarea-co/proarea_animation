@@ -31,7 +31,12 @@ class HomeTabs {
       TabItem(
         (context) => context.strings.textAnimations,
         Icons.smart_toy_outlined,
-        const FunnyTextRoute(),
+        const AnimatedTextRoute(),
+      ),
+      TabItem(
+        (context) => context.strings.textActivity,
+        Icons.local_activity,
+        const CylinderLogoRoute(),
       ),
     ];
   }

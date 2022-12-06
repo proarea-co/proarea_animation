@@ -41,9 +41,13 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ShatterPage());
     },
-    FunnyTextRoute.name: (routeData) {
+    AnimatedTextRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const FunnyTextPage());
+          routeData: routeData, child: const AnimatedTextPage());
+    },
+    CylinderLogoRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const CylinderLogoPage());
     }
   };
 
@@ -64,8 +68,10 @@ class _$AppRouter extends RootStackRouter {
               path: 'liquidSwipe', parent: HomeRoute.name),
           RouteConfig(ShatterRoute.name,
               path: 'shatter', parent: HomeRoute.name),
-          RouteConfig(FunnyTextRoute.name,
-              path: 'funnyText', parent: HomeRoute.name)
+          RouteConfig(AnimatedTextRoute.name,
+              path: 'animatedText', parent: HomeRoute.name),
+          RouteConfig(CylinderLogoRoute.name,
+              path: 'cylinderLogo', parent: HomeRoute.name)
         ])
       ];
 }
@@ -120,9 +126,19 @@ class ShatterRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [FunnyTextPage]
-class FunnyTextRoute extends PageRouteInfo<void> {
-  const FunnyTextRoute() : super(FunnyTextRoute.name, path: 'funnyText');
+/// [AnimatedTextPage]
+class AnimatedTextRoute extends PageRouteInfo<void> {
+  const AnimatedTextRoute()
+      : super(AnimatedTextRoute.name, path: 'animatedText');
 
-  static const String name = 'FunnyTextRoute';
+  static const String name = 'AnimatedTextRoute';
+}
+
+/// generated route for
+/// [CylinderLogoPage]
+class CylinderLogoRoute extends PageRouteInfo<void> {
+  const CylinderLogoRoute()
+      : super(CylinderLogoRoute.name, path: 'cylinderLogo');
+
+  static const String name = 'CylinderLogoRoute';
 }

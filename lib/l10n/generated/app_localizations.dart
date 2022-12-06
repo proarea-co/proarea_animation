@@ -248,6 +248,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Shatter'**
   String get shatter;
+
+  /// No description provided for @textActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Text Activity'**
+  String get textActivity;
+
+  /// No description provided for @proArea.
+  ///
+  /// In en, this message translates to:
+  /// **'ProArea'**
+  String get proArea;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
