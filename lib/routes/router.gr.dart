@@ -32,6 +32,10 @@ class _$AppRouter extends RootStackRouter {
     UsersRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const UsersPage());
+    },
+    LiquidSwipeRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const LiquidSwipePage());
     }
   };
 
@@ -47,7 +51,9 @@ class _$AppRouter extends RootStackRouter {
               redirectTo: 'posts',
               fullMatch: true),
           RouteConfig(PostsRoute.name, path: 'posts', parent: HomeRoute.name),
-          RouteConfig(UsersRoute.name, path: 'users', parent: HomeRoute.name)
+          RouteConfig(UsersRoute.name, path: 'users', parent: HomeRoute.name),
+          RouteConfig(LiquidSwipeRoute.name,
+              path: 'liquidSwipe', parent: HomeRoute.name)
         ])
       ];
 }
@@ -83,4 +89,12 @@ class UsersRoute extends PageRouteInfo<void> {
   const UsersRoute() : super(UsersRoute.name, path: 'users');
 
   static const String name = 'UsersRoute';
+}
+
+/// generated route for
+/// [LiquidSwipePage]
+class LiquidSwipeRoute extends PageRouteInfo<void> {
+  const LiquidSwipeRoute() : super(LiquidSwipeRoute.name, path: 'liquidSwipe');
+
+  static const String name = 'LiquidSwipeRoute';
 }

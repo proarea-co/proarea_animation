@@ -5,7 +5,7 @@ import '../../../../l10n/localization_helper.dart';
 import '../../../../models/tab_item/tab_item.dart';
 import '../../../../routes/router.dart';
 
-class HomeTabs{
+class HomeTabs {
   static List<TabItem> get tabs {
     return [
       TabItem(
@@ -17,6 +17,11 @@ class HomeTabs{
         (context) => context.strings.userList,
         Icons.account_circle,
         const UsersRoute(),
+      ),
+      TabItem(
+        (context) => context.strings.liquidSwipe,
+        Icons.swipe,
+        const LiquidSwipeRoute(),
       ),
     ];
   }
