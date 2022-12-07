@@ -129,6 +129,12 @@ abstract class AppLocalizations {
   /// **'Internet Connection Error'**
   String get errorInternetConnection;
 
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
   /// No description provided for @enLanguage.
   ///
   /// In en, this message translates to:
