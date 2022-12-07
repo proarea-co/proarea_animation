@@ -62,7 +62,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get shatteringPage => 'Страница краш-эффект';
 
   @override
-  String get textAnimations => 'Text Animations';
+  String get textAnimations => 'Текстовые анимации';
 
   @override
   String get loading => 'Загрузка';

@@ -39,7 +39,7 @@ class HomeTabs {
         const CylinderLogoRoute(),
       ),
       TabItem(
-        (context) => context.strings.signOut,
+        (context) => context.strings.settings,
         Icons.settings_suggest_outlined,
         const SettingsRoute(),
       ),

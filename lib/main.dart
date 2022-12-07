@@ -7,8 +7,9 @@ import 'bloc/app_controller/app_controller_cubit.dart';
 
 import 'root.dart';
 
-void main() {
-  configureDependencies(const Environment(EnvironmentExtension.mock));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies(const Environment(EnvironmentExtension.mock));
 
   runApp(const App());
 }
