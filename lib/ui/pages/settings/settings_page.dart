@@ -2,13 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../bloc/app_controller/app_controller_cubit.dart';
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
-import '../../../l10n/localization_helper.dart';
-import '../../views/base_builders/app_builder.dart';
 import '../../views/base_builders/app_consumer.dart';
-import '../../views/bottom_sheet/app_bottom_sheet.dart';
 import 'components/language_card.dart';
 import 'components/theme_card.dart';
 

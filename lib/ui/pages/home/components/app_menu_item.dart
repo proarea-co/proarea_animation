@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/tab_item/tab_item.dart';
@@ -6,12 +7,14 @@ import '../../../../themes/theme_app.dart';
 
 class AppMenuItem extends StatelessWidget {
   final TabItem routeItem;
+  final AutoSizeGroup? group;
   final VoidCallback? onTap;
   final bool selected;
 
   const AppMenuItem({
     super.key,
     required this.routeItem,
+    required this.group,
     this.onTap,
     this.selected = false,
   });
@@ -49,9 +52,13 @@ class AppMenuItem extends StatelessWidget {
             children: [
               Icon(routeItem.icon),
               const SizedBox(width: 12),
-              Text(
-                routeItem.name(context),
-                style: const TextStyle(fontSize: 16),
+              Expanded(
+                child: AutoSizeText(
+                  routeItem.name(context),
+                  group: group,
+                  maxLines: 1,
+                  style: const TextStyle(fontSize: 16),
+                ),
               ),
             ],
           ),

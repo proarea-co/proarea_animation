@@ -32,6 +32,7 @@ dependencies:
   supercharged_dart: ^2.1.1
   liquid_swipe: ^3.0.0
   animated_text_kit: ^4.2.2
+  auto_size_text: ^3.0.0
   
 
 dev_dependencies:
