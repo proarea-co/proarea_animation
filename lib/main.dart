@@ -19,8 +19,8 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<AppControllerCubit>(
-      create: (_) => getIt()..init(),
-      child: RootApp(router: getIt()),
+      create: (_) => locator()..init(),
+      child: RootApp(router: locator()),
     );
   }
 }

@@ -25,6 +25,22 @@ class UsersCubit extends BaseCubit<UsersState> {
     });
   }
 
+  void switchUser(bool next) {
+    next ? _nextUser() : _previousUser();
+  }
+
+  void _nextUser() {
+    final index = state.userIndex;
+    if (index >= state.users.length - 1) return;
+    emit(state.copyWith(userIndex: index + 1));
+  }
+
+  void _previousUser() {
+    final index = state.userIndex;
+    if (index <= 0) return;
+    emit(state.copyWith(userIndex: index - 1));
+  }
+
   @override
   void handleError(String massage) {
     emit(state.copyWith(

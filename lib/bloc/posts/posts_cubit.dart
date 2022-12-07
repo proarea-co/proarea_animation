@@ -24,6 +24,13 @@ class PostsCubit extends BaseCubit<PostsState> {
     });
   }
 
+  void removePost(Post post) {
+    final posts = state.posts.toList();
+    if (!posts.contains(post)) return;
+    posts.remove(post);
+    emit(state.copyWith(posts: posts));
+  }
+
   @override
   void handleError(String massage) {
     emit(state.copyWith(

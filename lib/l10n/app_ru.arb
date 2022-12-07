@@ -12,5 +12,15 @@
     "theme": "Тема",
     "light": "Светлая",
     "dark": "Темная",
-    "loading": "Загрузка"
+    "loading": "Загрузка",
+    "yourPosts": "Ваши посты",
+    "edit": "Изменить",
+    "remove": "Удалить",
+    "shatteringPage": "Разрушительная страница",
+    "welcomeBack": "С возвращением",
+    "shatter": "Разбить",
+    "textActivity": "Текстовая активность",
+    "next": "Следующий",
+    "proArea": "ProArea",
+    "signOut": "Выйти"
 }

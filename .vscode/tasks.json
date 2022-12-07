@@ -148,7 +148,7 @@
         {
             "label": "Rename App Package",
             "type": "shell",
-            "command": "flutter pub run change_app_package_name:main com.e.ee",
+            "command": "flutter pub run change_app_package_name:main com.proarea.animations",
             "group": "build",
             "options": {
                 "cwd": "${cwd}"

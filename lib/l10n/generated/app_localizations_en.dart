@@ -47,5 +47,50 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dark => 'Dark';
 
   @override
+  String get flutterDev => 'Flutter Dev';
+
+  @override
+  String get posts => 'Posts';
+
+  @override
+  String get userList => 'User List';
+
+  @override
+  String get liquidSwipe => 'Liquid Swipe';
+
+  @override
+  String get shatteringPage => 'Shattering Page';
+
+  @override
+  String get textAnimations => 'Text Animations';
+
+  @override
   String get loading => 'Loading';
+
+  @override
+  String get yourPosts => 'Your posts';
+
+  @override
+  String get edit => 'Edit';
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String get welcomeBack => 'Welcome back';
+
+  @override
+  String get shatter => 'Shatter';
+
+  @override
+  String get textActivity => 'Text Activity';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get proArea => 'ProArea';
+
+  @override
+  String get signOut => 'Sign Out';
 }

@@ -47,5 +47,50 @@ class AppLocalizationsRu extends AppLocalizations {
   String get dark => 'Темная';
 
   @override
+  String get flutterDev => 'Flutter Dev';
+
+  @override
+  String get posts => 'Posts';
+
+  @override
+  String get userList => 'User List';
+
+  @override
+  String get liquidSwipe => 'Liquid Swipe';
+
+  @override
+  String get shatteringPage => 'Разрушительная страница';
+
+  @override
+  String get textAnimations => 'Text Animations';
+
+  @override
   String get loading => 'Загрузка';
+
+  @override
+  String get yourPosts => 'Ваши посты';
+
+  @override
+  String get edit => 'Изменить';
+
+  @override
+  String get remove => 'Удалить';
+
+  @override
+  String get welcomeBack => 'С возвращением';
+
+  @override
+  String get shatter => 'Разбить';
+
+  @override
+  String get textActivity => 'Текстовая активность';
+
+  @override
+  String get next => 'Следующий';
+
+  @override
+  String get proArea => 'ProArea';
+
+  @override
+  String get signOut => 'Выйти';
 }

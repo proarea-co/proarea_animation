@@ -177,11 +177,101 @@ abstract class AppLocalizations {
   /// **'Dark'**
   String get dark;
 
+  /// No description provided for @flutterDev.
+  ///
+  /// In en, this message translates to:
+  /// **'Flutter Dev'**
+  String get flutterDev;
+
+  /// No description provided for @posts.
+  ///
+  /// In en, this message translates to:
+  /// **'Posts'**
+  String get posts;
+
+  /// No description provided for @userList.
+  ///
+  /// In en, this message translates to:
+  /// **'User List'**
+  String get userList;
+
+  /// No description provided for @liquidSwipe.
+  ///
+  /// In en, this message translates to:
+  /// **'Liquid Swipe'**
+  String get liquidSwipe;
+
+  /// No description provided for @shatteringPage.
+  ///
+  /// In en, this message translates to:
+  /// **'Shattering Page'**
+  String get shatteringPage;
+
+  /// No description provided for @textAnimations.
+  ///
+  /// In en, this message translates to:
+  /// **'Text Animations'**
+  String get textAnimations;
+
   /// No description provided for @loading.
   ///
   /// In en, this message translates to:
   /// **'Loading'**
   String get loading;
+
+  /// No description provided for @yourPosts.
+  ///
+  /// In en, this message translates to:
+  /// **'Your posts'**
+  String get yourPosts;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
+
+  /// No description provided for @remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get remove;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back'**
+  String get welcomeBack;
+
+  /// No description provided for @shatter.
+  ///
+  /// In en, this message translates to:
+  /// **'Shatter'**
+  String get shatter;
+
+  /// No description provided for @textActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Text Activity'**
+  String get textActivity;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @proArea.
+  ///
+  /// In en, this message translates to:
+  /// **'ProArea'**
+  String get proArea;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Out'**
+  String get signOut;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

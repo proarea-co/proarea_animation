@@ -2,7 +2,7 @@ import 'package:flutter/rendering.dart';
 
 class LightStyleConstants {
   static const whiteShade = Color(0xFFFAFBFF);
-  static const white = Color(0xFFFFF7C0);
+  static const white = Color(0xFFFFFFFF);
   static const whiteO10 = Color(0x1AFFFFFF);
   static const charcoal = Color(0xFF00849F);
   static const charcoalTint1 = Color(0xFF414141);
@@ -20,6 +20,8 @@ class LightStyleConstants {
   static const electricBlueTint = Color(0xFF4D69F2);
   static const electricBlueTint2 = Color(0xFFDEE3FD);
   static const electricBlueTint3 = Color(0xFFECEFFE);
+  static const blue = Color.fromRGBO(76, 61, 243, 1);
+  static const purple = Color.fromRGBO(120, 58, 183, 1);
   static const radical = Color(0xFFFF195E);
   static const error = Color(0xFFEE6161);
   static const errorTint1 = Color(0xFFFEF0F0);

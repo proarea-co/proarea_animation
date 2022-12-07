@@ -14,5 +14,20 @@
     "theme": "Theme",
     "light": "Light",
     "dark": "Dark",
-    "loading": "Loading"
+    "flutterDev": "Flutter Dev",
+    "posts": "Posts",
+    "userList": "User List",
+    "liquidSwipe": "Liquid Swipe",
+    "shatteringPage": "Shattering Page",
+    "textAnimations": "Text Animations",
+    "loading": "Loading",
+    "yourPosts": "Your posts",
+    "edit": "Edit",
+    "remove": "Remove",
+    "welcomeBack": "Welcome back",
+    "shatter": "Shatter",
+    "textActivity": "Text Activity",
+    "next": "Next",
+    "proArea": "ProArea",
+    "signOut": "Sign Out"
 }
