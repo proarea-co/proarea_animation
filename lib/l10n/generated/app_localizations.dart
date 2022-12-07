@@ -279,6 +279,12 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settings;
 
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'App version: {value} '**
+  String version(String value);
+
   /// No description provided for @signOut.
   ///
   /// In en, this message translates to:

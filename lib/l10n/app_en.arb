@@ -31,5 +31,13 @@
     "next": "Next",
     "proArea": "ProArea",
     "settings": "Settings",
+    "version": "App version: {value} ",
+    "@version": {
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
     "signOut": "Sign Out"
 }
