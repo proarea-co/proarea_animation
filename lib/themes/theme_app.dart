@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../gen/fonts.gen.dart';
 import '../l10n/localization_helper.dart';
+import 'constants/dark_style_constants.dart';
 import 'constants/light_style_constants.dart';
 import 'extensions/extensions.dart';
 

@@ -23,6 +23,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get errorInternetConnection => 'Ошибка соединения';
 
   @override
+  String get language => 'Язык';
+
+  @override
   String get enLanguage => 'English';
 
   @override
@@ -62,7 +65,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get shatteringPage => 'Страница краш-эффект';
 
   @override
-  String get textAnimations => 'Text Animations';
+  String get textAnimations => 'Текстовые анимации';
 
   @override
   String get loading => 'Загрузка';
