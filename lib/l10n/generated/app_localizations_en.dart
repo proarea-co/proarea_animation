@@ -56,10 +56,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get userList => 'User List';
 
   @override
+  String get liquidSwipe => 'Liquid Swipe';
+
+  @override
   String get shatteringPage => 'Shattering Page';
 
   @override
-  String get liquidSwipe => 'Liquid Swipe';
+  String get textAnimations => 'Text Animations';
 
   @override
   String get loading => 'Loading';
@@ -81,6 +84,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get textActivity => 'Text Activity';
+
+  @override
+  String get next => 'Next';
 
   @override
   String get proArea => 'ProArea';

@@ -17,8 +17,9 @@
     "flutterDev": "Flutter Dev",
     "posts": "Posts",
     "userList": "User List",
-    "shatteringPage": "Shattering Page",
     "liquidSwipe": "Liquid Swipe",
+    "shatteringPage": "Shattering Page",
+    "textAnimations": "Text Animations",
     "loading": "Loading",
     "yourPosts": "Your posts",
     "edit": "Edit",
@@ -26,6 +27,7 @@
     "welcomeBack": "Welcome back",
     "shatter": "Shatter",
     "textActivity": "Text Activity",
+    "next": "Next",
     "proArea": "ProArea",
     "signOut": "Sign Out"
 }

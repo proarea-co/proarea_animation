@@ -41,6 +41,11 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const ShatterPage());
     },
+    AnimatedTextRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: WrappedRoute(child: const AnimatedTextPage()));
+    },
     CylinderLogoRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const CylinderLogoPage());
@@ -68,6 +73,8 @@ class _$AppRouter extends RootStackRouter {
               path: 'liquidSwipe', parent: HomeRoute.name),
           RouteConfig(ShatterRoute.name,
               path: 'shatter', parent: HomeRoute.name),
+          RouteConfig(AnimatedTextRoute.name,
+              path: 'animatedText', parent: HomeRoute.name),
           RouteConfig(CylinderLogoRoute.name,
               path: 'cylinderLogo', parent: HomeRoute.name),
           RouteConfig(SignOutRoute.name,
@@ -123,6 +130,15 @@ class ShatterRoute extends PageRouteInfo<void> {
   const ShatterRoute() : super(ShatterRoute.name, path: 'shatter');
 
   static const String name = 'ShatterRoute';
+}
+
+/// generated route for
+/// [AnimatedTextPage]
+class AnimatedTextRoute extends PageRouteInfo<void> {
+  const AnimatedTextRoute()
+      : super(AnimatedTextRoute.name, path: 'animatedText');
+
+  static const String name = 'AnimatedTextRoute';
 }
 
 /// generated route for

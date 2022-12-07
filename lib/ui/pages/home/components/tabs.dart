@@ -29,6 +29,11 @@ class HomeTabs {
         const ShatterRoute(),
       ),
       TabItem(
+        (context) => context.strings.textAnimations,
+        Icons.smart_toy_outlined,
+        const AnimatedTextRoute(),
+      ),
+      TabItem(
         (context) => context.strings.textActivity,
         Icons.local_activity,
         const CylinderLogoRoute(),
