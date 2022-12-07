@@ -267,6 +267,12 @@ abstract class AppLocalizations {
   /// **'ProArea'**
   String get proArea;
 
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
   /// No description provided for @signOut.
   ///
   /// In en, this message translates to:

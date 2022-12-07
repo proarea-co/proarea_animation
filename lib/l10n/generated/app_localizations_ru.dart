@@ -50,16 +50,16 @@ class AppLocalizationsRu extends AppLocalizations {
   String get flutterDev => 'Flutter Dev';
 
   @override
-  String get posts => 'Posts';
+  String get posts => 'Посты';
 
   @override
-  String get userList => 'User List';
+  String get userList => 'Список пользователей';
 
   @override
-  String get liquidSwipe => 'Liquid Swipe';
+  String get liquidSwipe => 'Свайп liquid-эффект';
 
   @override
-  String get shatteringPage => 'Разрушительная страница';
+  String get shatteringPage => 'Страница краш-эффект';
 
   @override
   String get textAnimations => 'Text Animations';
@@ -90,6 +90,9 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get proArea => 'ProArea';
+
+  @override
+  String get settings => 'Настройки';
 
   @override
   String get signOut => 'Выйти';
