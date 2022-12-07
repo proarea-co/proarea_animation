@@ -4,6 +4,7 @@ import 'package:liquid_swipe/liquid_swipe.dart';
 import '../../../mock/liquid_swipe_mock.dart';
 import '../../../models/liquid_swipe/liquid_swipe_model.dart';
 import '../../../themes/theme_app.dart';
+import '../../views/buttons/app_back_button.dart';
 
 class LiquidSwipePage extends StatelessWidget {
   const LiquidSwipePage({super.key});
@@ -19,6 +20,11 @@ class LiquidSwipePage extends StatelessWidget {
             slideIconWidget: const Icon(Icons.arrow_back_ios),
             waveType: WaveType.liquidReveal,
             ignoreUserGestureWhileAnimating: true,
+          ),
+          const Positioned(
+            left: 8,
+            top: 4,
+            child: AppBackButton(),
           ),
         ],
       ),
