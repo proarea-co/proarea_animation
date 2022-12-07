@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../l10n/localization_helper.dart';
 import '../base_store_service.dart';
 
 @preResolve
@@ -37,5 +40,18 @@ class LocaleStoreService extends BaseStoreService<String> {
     return makeErrorParsedCall(() async {
       await storage.setString(storeKey, object);
     });
+  }
+
+  Future<void> saveLocale(Locale locale) async {
+    return await save(locale.languageCode);
+  }
+
+  Future<Locale> getLocale() async {
+  
+    final codeLocale = await get();
+
+    if (codeLocale == null) return defaultLocale;
+
+    return Locale(codeLocale);
   }
 }

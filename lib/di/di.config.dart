@@ -54,7 +54,7 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.factory<_i13.UsersService>(() => _i13.UsersServiceMock(),
       registerFor: {_mock});
   gh.factory<_i14.AppControllerCubit>(() => _i14.AppControllerCubit(
-      get<_i6.LocaleService>(), get<_i11.ThemeService>()));
+      get<_i7.LocaleStoreService>(), get<_i11.ThemeService>()));
   gh.lazySingleton<_i15.Dio>(() => dioModule.client(get<_i12.TokenService>()));
   gh.factory<_i16.PostsCubit>(() => _i16.PostsCubit(get<_i8.PostsService>()));
   gh.factory<_i17.UsersCubit>(() => _i17.UsersCubit(get<_i13.UsersService>()));
