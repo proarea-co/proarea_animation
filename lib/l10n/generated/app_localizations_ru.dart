@@ -98,5 +98,14 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings => 'Настройки';
 
   @override
+  String get aboutApp => 'О приложении';
+
+  @override
+  String get aboutAppHead => 'Ознакомительное приложение от команды специалистов ProArea';
+
+  @override
+  String get aboutAppDescription => 'В приложении вы можете найти список наиболее часто используемых визуальных эффектов.\n\nКоманда дизайнеров создала неповторимый, великолепный интерфейс, а наши программисты в приложении реализовали дизайн-решения';
+
+  @override
   String get signOut => 'Выйти';
 }

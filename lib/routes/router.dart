@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/pages/about_app/about_app_page.dart';
 import '../ui/pages/animated_text/animated_text_page.dart';
 import '../ui/pages/cylinder_logo/cylinder_logo_page.dart';
 import '../ui/pages/home/home_page.dart';
@@ -60,6 +61,10 @@ part 'router.gr.dart';
           page: SignOutPage,
         ),
       ],
+    ),
+    AutoRoute(
+      path: 'aboutApp',
+      page: AboutAppPage,
     ),
   ],
 )

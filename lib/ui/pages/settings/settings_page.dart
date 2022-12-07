@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
+import '../../../l10n/localization_helper.dart';
+import '../../../routes/router.dart';
 import '../../views/base_builders/app_consumer.dart';
+import '../../views/buttons/app_button.dart';
 import 'components/language_card.dart';
 import 'components/theme_card.dart';
 
@@ -31,9 +34,20 @@ class SettingsPage extends StatelessWidget with AutoRouteWrapper {
             _buildDivider(),
             const ThemeCard(),
             const SizedBox(height: 8),
+            _buildAboutAppButton(context)
           ],
         );
       },
+    );
+  }
+
+  Widget _buildAboutAppButton(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: AppButton(
+        text: context.strings.aboutApp,
+        onPressed: () => context.router.push(const AboutAppRoute()),
+      ),
     );
   }
 
