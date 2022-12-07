@@ -6,6 +6,7 @@ import '../ui/pages/cylinder_logo/cylinder_logo_page.dart';
 import '../ui/pages/home/home_page.dart';
 import '../ui/pages/liquid_swipe/liquid_swipe_page.dart';
 import '../ui/pages/posts/posts_page.dart';
+import '../ui/pages/settings/settings_page.dart';
 import '../ui/pages/shatter/shatter_page.dart';
 import '../ui/pages/sign_out/sign_out_page.dart';
 import '../ui/pages/splash/splash_page.dart';
@@ -49,6 +50,10 @@ part 'router.gr.dart';
         AutoRoute(
           path: 'cylinderLogo',
           page: CylinderLogoPage,
+        ),
+        AutoRoute(
+          path: 'settings',
+          page: SettingsPage,
         ),
         AutoRoute(
           path: 'signOut',

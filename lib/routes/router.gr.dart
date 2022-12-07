@@ -50,9 +50,15 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const CylinderLogoPage());
     },
+    SettingsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: WrappedRoute(child: const SettingsPage()));
+    },
     SignOutRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const SignOutPage());
+          routeData: routeData,
+          child: WrappedRoute(child: const SignOutPage()));
     }
   };
 
@@ -77,6 +83,8 @@ class _$AppRouter extends RootStackRouter {
               path: 'animatedText', parent: HomeRoute.name),
           RouteConfig(CylinderLogoRoute.name,
               path: 'cylinderLogo', parent: HomeRoute.name),
+          RouteConfig(SettingsRoute.name,
+              path: 'settings', parent: HomeRoute.name),
           RouteConfig(SignOutRoute.name,
               path: 'signOut', parent: HomeRoute.name)
         ])
@@ -148,6 +156,14 @@ class CylinderLogoRoute extends PageRouteInfo<void> {
       : super(CylinderLogoRoute.name, path: 'cylinderLogo');
 
   static const String name = 'CylinderLogoRoute';
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute() : super(SettingsRoute.name, path: 'settings');
+
+  static const String name = 'SettingsRoute';
 }
 
 /// generated route for
