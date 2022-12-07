@@ -6,6 +6,7 @@
     "enButton": "En",
     "serverErrorMessage": "Server error occurred",
     "errorInternetConnection": "Internet Connection Error",
+    "language": "Language",
     "enLanguage": "English",
     "ruLanguage": "Русский",
     "oops": "Ooops...",

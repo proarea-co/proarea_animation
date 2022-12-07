@@ -23,6 +23,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get errorInternetConnection => 'Ошибка соединения';
 
   @override
+  String get language => 'Язык';
+
+  @override
   String get enLanguage => 'English';
 
   @override

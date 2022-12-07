@@ -23,6 +23,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorInternetConnection => 'Internet Connection Error';
 
   @override
+  String get language => 'Language';
+
+  @override
   String get enLanguage => 'English';
 
   @override

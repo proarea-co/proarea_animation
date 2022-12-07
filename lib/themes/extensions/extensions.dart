@@ -53,9 +53,9 @@ class AppMenuItemStyles extends ThemeExtension<AppMenuItemStyles> {
         end: Alignment.topRight,
         stops: [0.05, 0.08, 0.1, 0.15, 0.2, 0.3, 0.55, 0.8],
       ),
-      selectedColor: Color(0xFF373737),
-      unSelectedColor: Color(0xFF212121),
-      backgroundColor: Color(0xFF212121),
+      selectedColor: Color(0xFF717171),
+      unSelectedColor: Color(0xFFA0A0A0),
+      backgroundColor: Color(0xFFA0A0A0),
     );
   }
 
