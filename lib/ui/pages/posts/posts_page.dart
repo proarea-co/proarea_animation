@@ -36,25 +36,27 @@ class _PostsPageState extends State<PostsPage> {
   void _onRemoveTap(int index, Post post) {
     _animatedListKey.currentState?.removeItem(
       index,
-      (context, animation) => FadeTransition(
-        opacity: CurvedAnimation(
-          parent: animation,
-          curve: Curves.fastOutSlowIn,
-        ),
-        child: SizeTransition(
-          sizeFactor: CurvedAnimation(
+      (context, animation) {
+        return FadeTransition(
+          opacity: CurvedAnimation(
             parent: animation,
             curve: Curves.fastOutSlowIn,
           ),
-          axisAlignment: 0.0,
-          child: PostItemView(
-            index: index,
-            post: post,
-            animationControllerValue: 0,
-            onRemoveTap: () {},
+          child: SizeTransition(
+            sizeFactor: CurvedAnimation(
+              parent: animation,
+              curve: Curves.fastOutSlowIn,
+            ),
+            axisAlignment: 0.0,
+            child: PostItemView(
+              index: index,
+              post: post,
+              animationControllerValue: 0,
+              onRemoveTap: () {},
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
     _cubit.removePost(post);
   }
@@ -115,10 +117,9 @@ class _PostsPageState extends State<PostsPage> {
   }
 
   Widget _buildIcon() {
-    return const InkWell(
-      // TODO add Drawer Click
-      // onTap: widget.onToggle?.call,
-      child: Padding(
+    return InkWell(
+      onTap: context.router.pop,
+      child: const Padding(
         padding: EdgeInsets.only(left: 16),
         child: SizedBox(
           height: 50,

@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage>
   }
 
   Future<bool> _onWillPop() async {
-    if (_fullScreen) _toggleAnimation();
+    _toggleAnimation();
 
     return !_fullScreen;
   }
@@ -96,7 +96,6 @@ class _HomePageState extends State<HomePage>
                 builder: (_, __) => _buildContent(state, child),
               ),
             );
-
           },
         );
       },
