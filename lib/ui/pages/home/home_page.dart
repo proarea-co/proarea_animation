@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,6 +34,8 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+
+  final _menuItemGroup = AutoSizeGroup();
 
   bool get _fullScreen => _animationController.value == 0;
   HomeCubit get _cubit => context.read<HomeCubit>();
@@ -180,6 +183,7 @@ class _HomePageState extends State<HomePage>
       final current = tabsRouter.activeIndex == index;
       return AppMenuItem(
         selected: current,
+        group: _menuItemGroup,
         routeItem: tab,
         onTap: () async {
           tabsRouter.setActiveIndex(index);
