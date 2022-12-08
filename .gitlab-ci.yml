@@ -39,7 +39,7 @@ flutter_build:
     - flutter build apk
   artifacts:
     paths:
-      - "build/app/outputs/flutter-apk/app-release.apk"
+      - "build/app/outputs/apk/release/pro_an_*.apk"
     expire_in: 1 day
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
