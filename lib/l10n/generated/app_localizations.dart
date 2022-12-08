@@ -129,6 +129,12 @@ abstract class AppLocalizations {
   /// **'Internet Connection Error'**
   String get errorInternetConnection;
 
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
   /// No description provided for @enLanguage.
   ///
   /// In en, this message translates to:
@@ -267,11 +273,59 @@ abstract class AppLocalizations {
   /// **'ProArea'**
   String get proArea;
 
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @aboutApp.
+  ///
+  /// In en, this message translates to:
+  /// **'About the app'**
+  String get aboutApp;
+
+  /// No description provided for @aboutAppHead.
+  ///
+  /// In en, this message translates to:
+  /// **'Introductory application from the ProArea team of specialists'**
+  String get aboutAppHead;
+
+  /// No description provided for @aboutAppDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'In the app, you can find a list of the most commonly used visual effects.\n\nThe design team created a unique, great interface, and our programmers implemented design solutions in the application.'**
+  String get aboutAppDescription;
+
   /// No description provided for @signOut.
   ///
   /// In en, this message translates to:
   /// **'Sign Out'**
   String get signOut;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'App version: {value} '**
+  String version(String value);
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @usernameSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Username saved'**
+  String get usernameSaved;
+
+  /// No description provided for @username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

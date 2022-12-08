@@ -10,7 +10,7 @@ final locator = GetIt.instance;
   preferRelativeImports: true,
   asExtension: false,
 )
-GetIt configureDependencies(Environment environment) {
+Future<GetIt> configureDependencies(Environment environment) async{
   return $initGetIt(locator, environment: environment.name);
 }
 

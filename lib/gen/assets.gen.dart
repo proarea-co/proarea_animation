@@ -9,6 +9,30 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/launcher_icon.png
+  AssetGenImage get launcherIcon =>
+      const AssetGenImage('assets/images/launcher_icon.png');
+
+  /// File path: assets/images/launcher_icon_ios.png
+  AssetGenImage get launcherIconIos =>
+      const AssetGenImage('assets/images/launcher_icon_ios.png');
+
+  /// File path: assets/images/proarea_animations_logo.png
+  AssetGenImage get proareaAnimationsLogo =>
+      const AssetGenImage('assets/images/proarea_animations_logo.png');
+
+  /// File path: assets/images/splash_icon.png
+  AssetGenImage get splashIcon =>
+      const AssetGenImage('assets/images/splash_icon.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values =>
+      [launcherIcon, launcherIconIos, proareaAnimationsLogo, splashIcon];
+}
+
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
@@ -25,6 +49,7 @@ class $AssetsLottieGen {
 class Assets {
   Assets._();
 
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
 }
 

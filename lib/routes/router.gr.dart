@@ -25,6 +25,10 @@ class _$AppRouter extends RootStackRouter {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: WrappedRoute(child: const HomePage()));
     },
+    AboutAppRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const AboutAppPage());
+    },
     PostsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: WrappedRoute(child: const PostsPage()));
@@ -49,6 +53,10 @@ class _$AppRouter extends RootStackRouter {
     CylinderLogoRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
           routeData: routeData, child: const CylinderLogoPage());
+    },
+    SettingsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+          routeData: routeData, child: const SettingsPage());
     },
     SignOutRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
@@ -77,9 +85,12 @@ class _$AppRouter extends RootStackRouter {
               path: 'animatedText', parent: HomeRoute.name),
           RouteConfig(CylinderLogoRoute.name,
               path: 'cylinderLogo', parent: HomeRoute.name),
+          RouteConfig(SettingsRoute.name,
+              path: 'settings', parent: HomeRoute.name),
           RouteConfig(SignOutRoute.name,
               path: 'signOut', parent: HomeRoute.name)
-        ])
+        ]),
+        RouteConfig(AboutAppRoute.name, path: 'aboutApp')
       ];
 }
 
@@ -98,6 +109,14 @@ class HomeRoute extends PageRouteInfo<void> {
       : super(HomeRoute.name, path: 'home', initialChildren: children);
 
   static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [AboutAppPage]
+class AboutAppRoute extends PageRouteInfo<void> {
+  const AboutAppRoute() : super(AboutAppRoute.name, path: 'aboutApp');
+
+  static const String name = 'AboutAppRoute';
 }
 
 /// generated route for
@@ -148,6 +167,14 @@ class CylinderLogoRoute extends PageRouteInfo<void> {
       : super(CylinderLogoRoute.name, path: 'cylinderLogo');
 
   static const String name = 'CylinderLogoRoute';
+}
+
+/// generated route for
+/// [SettingsPage]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute() : super(SettingsRoute.name, path: 'settings');
+
+  static const String name = 'SettingsRoute';
 }
 
 /// generated route for

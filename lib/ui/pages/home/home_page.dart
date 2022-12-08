@@ -1,13 +1,15 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../api/dio/dio_constants.dart';
 import '../../../bloc/home/home_cubit.dart';
+import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
-import '../../../l10n/localization_helper.dart';
+import '../../../gen/assets.gen.dart';
 import '../../../models/tab_item/tab_item.dart';
-import '../../../themes/extensions/extensions.dart';
+import '../../../themes/extensions/app_menu_item_styles.dart';
 import '../../../themes/theme_app.dart';
 import '../../views/base_builders/app_builder.dart';
 import 'components/app_menu_item.dart';
@@ -19,8 +21,11 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<HomeCubit>(
-      create: (_) => locator(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SettingsCubit>(create: (_) => locator()..init()),
+        BlocProvider<HomeCubit>(create: (_) => locator())
+      ],
       child: this,
     );
   }
@@ -33,6 +38,8 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _animation;
+
+  final _menuItemGroup = AutoSizeGroup();
 
   bool get _fullScreen => _animationController.value == 0;
   HomeCubit get _cubit => context.read<HomeCubit>();
@@ -132,25 +139,33 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _buildHeading() {
-    return Row(
-      children: [
-        SizedBox(
-          height: 48,
-          width: 48,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(48),
-            child: Image.network(
-              ApiConstants.photosUrl,
-              fit: BoxFit.cover,
+    return AppBuilder<SettingsCubit, SettingsState>(
+      withoutScaffold: true,
+      withErrorBuilder: false,
+      builder: (state) {
+        return Row(
+          children: [
+            SizedBox(
+              height: 48,
+              width: 48,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(48),
+                child: Image.asset(
+                  Assets.images.proareaAnimationsLogo.path,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
-        ),
-        const SizedBox(width: 16),
-        Text(
-          context.strings.flutterDev,
-          style: Theme.of(context).textTheme.headline6,
-        ),
-      ],
+            const SizedBox(width: 16),
+            Expanded(
+              child: Text(
+                state.settings.userName,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -180,6 +195,7 @@ class _HomePageState extends State<HomePage>
       final current = tabsRouter.activeIndex == index;
       return AppMenuItem(
         selected: current,
+        group: _menuItemGroup,
         routeItem: tab,
         onTap: () async {
           tabsRouter.setActiveIndex(index);

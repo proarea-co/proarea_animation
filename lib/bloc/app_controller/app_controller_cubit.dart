@@ -3,14 +3,14 @@ import 'package:injectable/injectable.dart';
 
 import '../../base/bloc/base_cubit.dart';
 import '../../l10n/localization_helper.dart';
-import '../../services/locale/locale_service.dart';
+import '../../services/store/locale/locale_store_service.dart';
 import '../../services/theme/theme_service.dart';
 import '../../themes/theme_app.dart';
 part 'app_controller_state.dart';
 
 @injectable
 class AppControllerCubit extends BaseCubit<AppControllerState> {
-  final LocaleService localeService;
+  final LocaleStoreService localeService;
   final ThemeService themeService;
 
   AppControllerCubit(

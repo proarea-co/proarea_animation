@@ -28,4 +28,5 @@ class LightStyleConstants {
   static const sortingLavender = Color(0xFFBB6BD9);
   static const sortingLime = Color(0xFFAAD236);
   static const sortingTangerine = Color(0xFFFF9E2D);
+  static const transparent = Color(0x00FFFFFF);
 }

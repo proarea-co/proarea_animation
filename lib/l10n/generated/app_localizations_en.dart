@@ -23,6 +23,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorInternetConnection => 'Internet Connection Error';
 
   @override
+  String get language => 'Language';
+
+  @override
   String get enLanguage => 'English';
 
   @override
@@ -92,5 +95,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String get proArea => 'ProArea';
 
   @override
+  String get settings => 'Settings';
+
+  @override
+  String get aboutApp => 'About the app';
+
+  @override
+  String get aboutAppHead => 'Introductory application from the ProArea team of specialists';
+
+  @override
+  String get aboutAppDescription => 'In the app, you can find a list of the most commonly used visual effects.\n\nThe design team created a unique, great interface, and our programmers implemented design solutions in the application.';
+
+  @override
   String get signOut => 'Sign Out';
+
+  @override
+  String version(String value) {
+    return 'App version: $value ';
+  }
+
+  @override
+  String get save => 'Save';
+
+  @override
+  String get usernameSaved => 'Username saved';
+
+  @override
+  String get username => 'Username';
 }

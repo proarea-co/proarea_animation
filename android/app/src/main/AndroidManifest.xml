@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.proarea.animations">
    <application
-        android:label="proarea_animations"
+        android:label="ProArea Animation"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

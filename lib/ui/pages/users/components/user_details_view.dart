@@ -71,7 +71,9 @@ class _UserDetailsViewState extends State<UserDetailsView> {
         padding: const EdgeInsets.only(left: 64, right: 16),
         child: Text(
           question,
-          style: context.textTheme.subtitle1,
+          style: context.textTheme.subtitle1?.copyWith(
+            color: context.colorScheme.onPrimary,
+          ),
         ),
       ),
     );

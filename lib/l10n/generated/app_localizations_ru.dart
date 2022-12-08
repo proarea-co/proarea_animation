@@ -23,6 +23,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get errorInternetConnection => 'Ошибка соединения';
 
   @override
+  String get language => 'Язык';
+
+  @override
   String get enLanguage => 'English';
 
   @override
@@ -50,19 +53,19 @@ class AppLocalizationsRu extends AppLocalizations {
   String get flutterDev => 'Flutter Dev';
 
   @override
-  String get posts => 'Posts';
+  String get posts => 'Посты';
 
   @override
-  String get userList => 'User List';
+  String get userList => 'Список пользователей';
 
   @override
-  String get liquidSwipe => 'Liquid Swipe';
+  String get liquidSwipe => 'Свайп liquid-эффект';
 
   @override
-  String get shatteringPage => 'Разрушительная страница';
+  String get shatteringPage => 'Страница краш-эффект';
 
   @override
-  String get textAnimations => 'Text Animations';
+  String get textAnimations => 'Текстовые анимации';
 
   @override
   String get loading => 'Загрузка';
@@ -92,5 +95,31 @@ class AppLocalizationsRu extends AppLocalizations {
   String get proArea => 'ProArea';
 
   @override
+  String get settings => 'Настройки';
+
+  @override
+  String get aboutApp => 'О приложении';
+
+  @override
+  String get aboutAppHead => 'Ознакомительное приложение от команды специалистов ProArea';
+
+  @override
+  String get aboutAppDescription => 'В приложении вы можете найти список наиболее часто используемых визуальных эффектов.\n\nКоманда дизайнеров создала неповторимый, великолепный интерфейс, а наши программисты в приложении реализовали дизайн-решения';
+
+  @override
   String get signOut => 'Выйти';
+
+  @override
+  String version(String value) {
+    return 'Версия приложения: $value ';
+  }
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get usernameSaved => 'Имя пользователя сохранено';
+
+  @override
+  String get username => 'Имя пользователя';
 }

@@ -2,6 +2,7 @@
     "@@locale": "ru",
     "weatherRandomPoint": "Погода в случайной точке",
     "weatherRandomCity": "Погода в случайном городе",
+    "language": "Язык",
     "ruButton": "Русский",
     "enButton": "Английский",
     "serverErrorMessage": "Ошибка сервера",
@@ -12,15 +13,35 @@
     "theme": "Тема",
     "light": "Светлая",
     "dark": "Темная",
+    "flutterDev": "Flutter Dev",
+    "posts": "Посты",
+    "userList": "Список пользователей",
+    "liquidSwipe": "Свайп liquid-эффект",
     "loading": "Загрузка",
     "yourPosts": "Ваши посты",
     "edit": "Изменить",
     "remove": "Удалить",
-    "shatteringPage": "Разрушительная страница",
+    "shatteringPage": "Страница краш-эффект",
+    "textAnimations": "Текстовые анимации",
     "welcomeBack": "С возвращением",
     "shatter": "Разбить",
     "textActivity": "Текстовая активность",
     "next": "Следующий",
     "proArea": "ProArea",
-    "signOut": "Выйти"
+    "settings": "Настройки",
+    "aboutApp": "О приложении",
+    "aboutAppHead": "Ознакомительное приложение от команды специалистов ProArea",
+    "aboutAppDescription": "В приложении вы можете найти список наиболее часто используемых визуальных эффектов.\n\nКоманда дизайнеров создала неповторимый, великолепный интерфейс, а наши программисты в приложении реализовали дизайн-решения",
+    "signOut": "Выйти",
+    "version": "Версия приложения: {value} ",
+    "@version": {
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
+    "save": "Сохранить",
+    "usernameSaved": "Имя пользователя сохранено",
+    "username": "Имя пользователя"
 }

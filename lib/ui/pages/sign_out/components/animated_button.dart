@@ -11,6 +11,8 @@ class AnimatedButton extends StatelessWidget {
   final Animation<BorderRadius?> borderRadius;
   final Animation<Color?> color;
   final Animation<AlignmentGeometry> alignment;
+  final Color begin;
+  final Color end;
 
   static double _getX(int radius) {
     final mod = radius % 90;
@@ -43,6 +45,8 @@ class AnimatedButton extends StatelessWidget {
   AnimatedButton({
     super.key,
     required this.controller,
+    required this.begin,
+    required this.end,
   })  : opacity = Tween<double>(
           begin: 0.5,
           end: 1.0,
@@ -93,8 +97,8 @@ class AnimatedButton extends StatelessWidget {
           ),
         ),
         color = ColorTween(
-          begin: Colors.indigo[100],
-          end: Colors.orange[400],
+          begin: begin,
+          end: end,
         ).animate(
           CurvedAnimation(
             parent: controller,
@@ -155,7 +159,10 @@ class AnimatedButton extends StatelessWidget {
             borderRadius: borderRadius.value,
           ),
           child: Center(
-            child: Text(context.strings.signOut),
+            child: Text(
+              context.strings.signOut,
+              style: context.textTheme.button,
+            ),
           ),
         ),
       ),
