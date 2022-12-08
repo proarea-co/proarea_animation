@@ -1,18 +1,46 @@
 # image: fischerscode/flutter:3.3.2
 
 stages:
+  - analyze
+  - test
   - build
 
 before_script:
   - flutter clean
   - flutter pub get
 
+flutter_analyze:
+  tags:
+    - animations
+  stage: analyze
+  script:
+    - flutter analyze
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+flutter_test:
+  tags:
+    - animations
+  stage: test
+  script:
+    - echo 'Flutter Test'
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
 flutter_build:
   tags:
     - animations
   stage: build
   script:
-    - flutter analyze
+    - flutter build apk
+  artifacts:
+    paths:
+      - "build/app/outputs/flutter-apk/app-release.apk"
+    expire_in: 1 day
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_BRANCH == "dev"'
