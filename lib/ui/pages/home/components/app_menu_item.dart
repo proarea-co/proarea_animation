@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/tab_item/tab_item.dart';
-import '../../../../themes/extensions/extensions.dart';
+import '../../../../themes/extensions/app_menu_item_styles.dart';
 import '../../../../themes/theme_app.dart';
 
 class AppMenuItem extends StatelessWidget {

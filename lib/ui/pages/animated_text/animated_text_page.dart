@@ -42,7 +42,8 @@ class AnimatedTextPage extends StatelessWidget with AutoRouteWrapper {
           floatingActionButton: FloatingActionButton(
             onPressed: context.read<AnimatedTextCubit>().next,
             tooltip: context.strings.next,
-            backgroundColor: Colors.purple,
+            backgroundColor: context.colorScheme.tertiary,
+            foregroundColor: context.colorScheme.onPrimary,
             child: const Icon(
               Icons.play_circle_filled,
               size: 50.0,

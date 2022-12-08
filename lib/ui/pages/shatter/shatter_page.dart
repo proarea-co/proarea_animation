@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../l10n/localization_helper.dart';
+import '../../../themes/theme_app.dart';
 import 'components/shatter_view.dart';
 
 class ShatterPage extends StatelessWidget {
@@ -11,12 +12,12 @@ class ShatterPage extends StatelessWidget {
     return ShatterView(
       child: Container(
         constraints: const BoxConstraints.expand(),
-        color: Colors.white,
+        color: context.colorScheme.onPrimary,
         child: Center(
           child: Text(
             '${context.strings.welcomeBack}!',
-            style: Theme.of(context).textTheme.headline4?.copyWith(
-                  color: Colors.black,
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                  fontSize: 28,
                 ),
           ),
         ),

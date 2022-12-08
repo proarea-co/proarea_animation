@@ -20,6 +20,7 @@ class ArrowIconsView extends StatelessWidget {
         children: [
           IconButton(
             icon: const Icon(Icons.arrow_upward),
+            color: context.colorScheme.onPrimary,
             onPressed: () {
               switchUser(false);
             },
@@ -27,10 +28,10 @@ class ArrowIconsView extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: context.colorScheme.onBackground,
+              color: context.colorScheme.onPrimary,
             ),
             child: IconButton(
-              color: context.colorScheme.primary,
+              color: context.colorScheme.onTertiary,
               icon: const Icon(Icons.arrow_downward),
               onPressed: () {
                 switchUser(true);

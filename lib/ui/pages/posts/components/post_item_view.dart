@@ -103,7 +103,7 @@ class _ListItemState extends State<PostItemView>
             color: context.colorScheme.error,
             boxShadow: [
               BoxShadow(
-                color: context.colorScheme.tertiary,
+                color: context.colorScheme.tertiaryContainer,
                 blurRadius: 2,
                 spreadRadius: 2,
                 offset: const Offset(1, 1),
@@ -141,7 +141,7 @@ class _ListItemState extends State<PostItemView>
             color: context.colorScheme.background,
             boxShadow: [
               BoxShadow(
-                color: context.colorScheme.tertiary,
+                color: context.colorScheme.tertiaryContainer,
                 blurRadius: 2,
                 spreadRadius: 2,
                 offset: const Offset(1, 1),
@@ -170,7 +170,7 @@ class _ListItemState extends State<PostItemView>
           children: [
             Icon(
               Icons.edit_outlined,
-              color: context.colorScheme.surface,
+              color: context.colorScheme.onPrimary,
             ),
             const SizedBox(height: 4),
             Text(
@@ -192,7 +192,7 @@ class _ListItemState extends State<PostItemView>
           children: [
             Icon(
               Icons.delete_outline,
-              color: context.colorScheme.surface,
+              color: context.colorScheme.onPrimary,
             ),
             const SizedBox(height: 4),
             Text(

@@ -7,6 +7,7 @@ final _darkThemeData = ThemeData(
     onPrimary: DarkStyleConstants.white,
     tertiary: DarkStyleConstants.blue,
     onTertiary: DarkStyleConstants.purple,
+    tertiaryContainer: LightStyleConstants.charcoalTint1,
     onBackground: DarkStyleConstants.transparent,
     secondary: DarkStyleConstants.charcoalTint3,
     onSecondary: DarkStyleConstants.charcoalTint2,
@@ -14,6 +15,10 @@ final _darkThemeData = ThemeData(
   primarySwatch: Colors.red,
   extensions: [
     AppMenuItemStyles.dark(),
+    SignOutAnimationStyles(
+      begin: Colors.indigo[100] ?? Colors.white,
+      end: Colors.orange[400] ?? Colors.black,
+    ),
   ],
   textTheme: const TextTheme(
     headlineLarge: TextStyle(
@@ -31,5 +36,6 @@ final _darkThemeData = ThemeData(
       fontSize: 14,
       fontWeight: FontWeight.w500,
     ),
+    button: TextStyle(color: Colors.white, fontSize: 14),
   ),
 );

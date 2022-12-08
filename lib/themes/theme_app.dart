@@ -4,7 +4,8 @@ import '../gen/fonts.gen.dart';
 import '../l10n/localization_helper.dart';
 import 'constants/dark_style_constants.dart';
 import 'constants/light_style_constants.dart';
-import 'extensions/extensions.dart';
+import 'extensions/app_menu_item_styles.dart';
+import 'extensions/sign_out_animation_styles.dart';
 
 part 'dark/dark_theme_data.dart';
 part 'light/light_theme_data.dart';

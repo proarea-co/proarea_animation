@@ -20,10 +20,7 @@ class PostsPage extends StatefulWidget with AutoRouteWrapper {
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<PostsCubit>(
       create: (_) => locator()..getPosts(),
-      child: Theme(
-        data: ThemeType.light.themeData,
-        child: this,
-      ),
+      child: this,
     );
   }
 }
@@ -87,7 +84,7 @@ class _PostsPageState extends State<PostsPage> {
         boxShadow: [
           BoxShadow(
             blurRadius: 2,
-            color: context.colorScheme.tertiary,
+            color: context.colorScheme.tertiaryContainer,
             offset: const Offset(0, 1),
           ),
         ],

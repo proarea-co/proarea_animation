@@ -22,8 +22,8 @@ class AddressItemView extends StatelessWidget {
           Expanded(
             child: Text(
               text,
-              style: const TextStyle(
-                fontSize: 24,
+              style: context.textTheme.subtitle1?.copyWith(
+                color: context.colorScheme.onPrimary,
               ),
             ),
           )
