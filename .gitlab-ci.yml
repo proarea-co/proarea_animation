@@ -22,7 +22,7 @@ flutter_analyze:
 
 flutter_test:
   tags:
-    - animations
+    - proarea-animations
   stage: Test
   script:
     - echo 'Flutter Test'
@@ -33,7 +33,7 @@ flutter_test:
 
 flutter_build:
   tags:
-    - animations
+    - proarea-animations
   stage: Build
   script:
     - flutter build apk
