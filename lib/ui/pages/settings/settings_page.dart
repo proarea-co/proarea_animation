@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
+import '../../../l10n/localization_helper.dart';
+import '../../../themes/theme_app.dart';
 import '../../views/base_builders/app_consumer.dart';
 import 'components/language_card.dart';
 import 'components/theme_card.dart';
@@ -14,7 +16,7 @@ class SettingsPage extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget wrappedRoute(BuildContext context) {
     return BlocProvider<SettingsCubit>(
-      create: (_) => locator(),
+      create: (_) => locator()..init(),
       child: this,
     );
   }
@@ -31,6 +33,9 @@ class SettingsPage extends StatelessWidget with AutoRouteWrapper {
             _buildDivider(),
             const ThemeCard(),
             const SizedBox(height: 8),
+            const Spacer(),
+            _buildVersion(state),
+            const SizedBox(height: 8),
           ],
         );
       },
@@ -42,5 +47,17 @@ class SettingsPage extends StatelessWidget with AutoRouteWrapper {
       height: 36,
       color: Colors.white54,
     );
+  }
+
+  Widget _buildVersion(SettingsState state) {
+    return Builder(builder: (context) {
+      return Text(
+        context.strings.version(state.settings.appVersion),
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: context.colorScheme.secondary,
+        ),
+      );
+    });
   }
 }

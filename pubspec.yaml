@@ -33,6 +33,7 @@ dependencies:
   liquid_swipe: ^3.0.0
   animated_text_kit: ^4.2.2
   auto_size_text: ^3.0.0
+  package_info_plus: ^3.0.2
   
 
 dev_dependencies:

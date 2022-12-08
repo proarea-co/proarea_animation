@@ -98,5 +98,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
+  String version(String value) {
+    return 'App version: $value ';
+  }
+
+  @override
   String get signOut => 'Sign Out';
 }

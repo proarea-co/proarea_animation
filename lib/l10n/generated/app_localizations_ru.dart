@@ -98,5 +98,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings => 'Настройки';
 
   @override
+  String version(String value) {
+    return 'Версия приложения: $value ';
+  }
+
+  @override
   String get signOut => 'Выйти';
 }

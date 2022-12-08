@@ -29,5 +29,13 @@
     "next": "Следующий",
     "proArea": "ProArea",
     "settings": "Настройки",
+    "version": "Версия приложения: {value} ",
+    "@version": {
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
     "signOut": "Выйти"
 }
