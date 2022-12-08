@@ -11,7 +11,7 @@ before_script:
 
 flutter_analyze:
   tags:
-    - animations
+    - proarea-animations
   stage: Analyze
   script:
     - flutter analyze
