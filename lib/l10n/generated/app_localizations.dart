@@ -279,17 +279,35 @@ abstract class AppLocalizations {
   /// **'Settings'**
   String get settings;
 
-  /// No description provided for @version.
+  /// No description provided for @aboutApp.
   ///
   /// In en, this message translates to:
-  /// **'App version: {value} '**
-  String version(String value);
+  /// **'About the app'**
+  String get aboutApp;
+
+  /// No description provided for @aboutAppHead.
+  ///
+  /// In en, this message translates to:
+  /// **'Introductory application from the ProArea team of specialists'**
+  String get aboutAppHead;
+
+  /// No description provided for @aboutAppDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'In the app, you can find a list of the most commonly used visual effects.\n\nThe design team created a unique, great interface, and our programmers implemented design solutions in the application.'**
+  String get aboutAppDescription;
 
   /// No description provided for @signOut.
   ///
   /// In en, this message translates to:
   /// **'Sign Out'**
   String get signOut;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'App version: {value} '**
+  String version(String value);
 
   /// No description provided for @save.
   ///

@@ -31,6 +31,10 @@
     "next": "Next",
     "proArea": "ProArea",
     "settings": "Settings",
+    "aboutApp": "About the app",
+    "aboutAppHead": "Introductory application from the ProArea team of specialists",
+    "aboutAppDescription": "In the app, you can find a list of the most commonly used visual effects.\n\nThe design team created a unique, great interface, and our programmers implemented design solutions in the application.",
+    "signOut": "Sign Out",
     "version": "App version: {value} ",
     "@version": {
         "placeholders": {
@@ -39,7 +43,6 @@
             }
         }
     },
-    "signOut": "Sign Out",
     "save": "Save",
     "usernameSaved": "Username saved",
     "username": "Username"

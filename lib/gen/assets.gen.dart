@@ -9,6 +9,17 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  /// File path: assets/images/proarea_animations_logo.png
+  AssetGenImage get proareaAnimationsLogo =>
+      const AssetGenImage('assets/images/proarea_animations_logo.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [proareaAnimationsLogo];
+}
+
 class $AssetsLottieGen {
   const $AssetsLottieGen();
 
@@ -25,6 +36,7 @@ class $AssetsLottieGen {
 class Assets {
   Assets._();
 
+  static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
 }
 

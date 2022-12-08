@@ -56,3 +56,4 @@ flutter:
         - asset: fonts/billy.ttf
   assets:
     - assets/lottie/
+    - assets/images/

@@ -98,12 +98,21 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings => 'Настройки';
 
   @override
-  String version(String value) {
-    return 'Версия приложения: $value ';
-  }
+  String get aboutApp => 'О приложении';
+
+  @override
+  String get aboutAppHead => 'Ознакомительное приложение от команды специалистов ProArea';
+
+  @override
+  String get aboutAppDescription => 'В приложении вы можете найти список наиболее часто используемых визуальных эффектов.\n\nКоманда дизайнеров создала неповторимый, великолепный интерфейс, а наши программисты в приложении реализовали дизайн-решения';
 
   @override
   String get signOut => 'Выйти';
+
+  @override
+  String version(String value) {
+    return 'Версия приложения: $value ';
+  }
 
   @override
   String get save => 'Сохранить';

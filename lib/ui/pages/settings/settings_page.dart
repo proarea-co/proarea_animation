@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../l10n/localization_helper.dart';
-import '../../../themes/theme_app.dart';
+import '../../../routes/router.dart';
 import '../../views/base_builders/app_consumer.dart';
+import '../../views/buttons/app_button.dart';
+import '../../../themes/theme_app.dart';
 import '../../views/snack_bar/show_snack_bar.dart';
 import 'components/language_card.dart';
 import 'components/theme_card.dart';
@@ -29,12 +32,24 @@ class SettingsPage extends StatelessWidget {
             const ThemeCard(),
             const SizedBox(height: 8),
             const UsernameCard(),
+            const SizedBox(height: 8),
+            _buildAboutAppButton(context),
             const Spacer(),
             _buildVersion(state),
             const SizedBox(height: 8),
           ],
         );
       },
+    );
+  }
+
+  Widget _buildAboutAppButton(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: AppButton(
+        text: context.strings.aboutApp,
+        onPressed: () => context.router.push(const AboutAppRoute()),
+      ),
     );
   }
 
