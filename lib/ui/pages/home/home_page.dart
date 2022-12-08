@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../api/dio/dio_constants.dart';
 import '../../../bloc/home/home_cubit.dart';
+import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
-import '../../../l10n/localization_helper.dart';
 import '../../../models/tab_item/tab_item.dart';
 import '../../../themes/extensions/extensions.dart';
 import '../../../themes/theme_app.dart';
@@ -20,8 +20,11 @@ class HomePage extends StatefulWidget with AutoRouteWrapper {
 
   @override
   Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<HomeCubit>(
-      create: (_) => locator(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<SettingsCubit>(create: (_) => locator()..init()),
+        BlocProvider<HomeCubit>(create: (_) => locator())
+      ],
       child: this,
     );
   }
@@ -135,25 +138,33 @@ class _HomePageState extends State<HomePage>
   }
 
   Widget _buildHeading() {
-    return Row(
-      children: [
-        SizedBox(
-          height: 48,
-          width: 48,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(48),
-            child: Image.network(
-              ApiConstants.photosUrl,
-              fit: BoxFit.cover,
+    return AppBuilder<SettingsCubit, SettingsState>(
+      withoutScaffold: true,
+      withErrorBuilder: false,
+      builder: (state) {
+        return Row(
+          children: [
+            SizedBox(
+              height: 48,
+              width: 48,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(48),
+                child: Image.network(
+                  ApiConstants.photosUrl,
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
-        ),
-        const SizedBox(width: 16),
-        Text(
-          context.strings.flutterDev,
-          style: Theme.of(context).textTheme.headline6,
-        ),
-      ],
+            const SizedBox(width: 16),
+            Expanded(
+              child: Text(
+                state.settings.userName,
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 

@@ -41,11 +41,12 @@ class ThemeCard extends StatelessWidget {
         final currentTheme = controlState.themeType;
         return GestureDetector(
           onTap: () async {
+            final cubit = context.read<AppControllerCubit>();
             final themeType = await _showThemeDialog(context, currentTheme);
 
             if (themeType == null) return;
 
-            await context.read<AppControllerCubit>().changeTheme(themeType);
+            await cubit.changeTheme(themeType);
           },
           child: ListTile(
             leading: const Icon(Icons.style_outlined),

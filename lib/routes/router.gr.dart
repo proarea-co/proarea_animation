@@ -52,8 +52,7 @@ class _$AppRouter extends RootStackRouter {
     },
     SettingsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: WrappedRoute(child: const SettingsPage()));
+          routeData: routeData, child: const SettingsPage());
     },
     SignOutRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
