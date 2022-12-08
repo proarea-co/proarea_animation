@@ -9,7 +9,7 @@ before_script:
 
 flutter_build:
   tags:
-    - ProArea-Animations
+    - animations
   stage: build
   script:
     - flutter analyze
