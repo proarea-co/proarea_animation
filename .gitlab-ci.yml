@@ -1,9 +1,9 @@
 # image: fischerscode/flutter:3.3.2
 
 stages:
-  - analyze
-  - test
-  - build
+  - Analyze
+  - Test
+  - Build
 
 before_script:
   - flutter clean
@@ -12,7 +12,7 @@ before_script:
 flutter_analyze:
   tags:
     - animations
-  stage: analyze
+  stage: Analyze
   script:
     - flutter analyze
   rules:
@@ -23,7 +23,7 @@ flutter_analyze:
 flutter_test:
   tags:
     - animations
-  stage: test
+  stage: Test
   script:
     - echo 'Flutter Test'
   rules:
@@ -34,7 +34,7 @@ flutter_test:
 flutter_build:
   tags:
     - animations
-  stage: build
+  stage: Build
   script:
     - flutter build apk
   artifacts:
