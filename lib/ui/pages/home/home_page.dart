@@ -7,6 +7,7 @@ import '../../../api/dio/dio_constants.dart';
 import '../../../bloc/home/home_cubit.dart';
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
+import '../../../gen/assets.gen.dart';
 import '../../../models/tab_item/tab_item.dart';
 import '../../../themes/extensions/app_menu_item_styles.dart';
 import '../../../themes/theme_app.dart';
@@ -149,8 +150,8 @@ class _HomePageState extends State<HomePage>
               width: 48,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(48),
-                child: Image.network(
-                  ApiConstants.photosUrl,
+                child: Image.asset(
+                  Assets.images.proareaAnimationsLogo.path,
                   fit: BoxFit.cover,
                 ),
               ),
