@@ -1,30 +1,27 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/settings/settings_cubit.dart';
-import '../../../di/di.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../routes/router.dart';
 import '../../views/base_builders/app_consumer.dart';
 import '../../views/buttons/app_button.dart';
+import '../../../themes/theme_app.dart';
+import '../../views/snack_bar/show_snack_bar.dart';
 import 'components/language_card.dart';
 import 'components/theme_card.dart';
+import 'components/username_card.dart';
 
-class SettingsPage extends StatelessWidget with AutoRouteWrapper {
+class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return BlocProvider<SettingsCubit>(
-      create: (_) => locator(),
-      child: this,
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
     return AppConsumer<SettingsCubit, SettingsState>(
+      listenDefault: (context, state) {
+        if (state is! SettingsStateUsernameSaved) return;
+        AppSnackBar.of(context).showSuccess(context.strings.usernameSaved);
+      },
       builder: (state) {
         return Column(
           children: [
@@ -34,7 +31,12 @@ class SettingsPage extends StatelessWidget with AutoRouteWrapper {
             _buildDivider(),
             const ThemeCard(),
             const SizedBox(height: 8),
-            _buildAboutAppButton(context)
+            const UsernameCard(),
+            const SizedBox(height: 8),
+            _buildAboutAppButton(context),
+            const Spacer(),
+            _buildVersion(state),
+            const SizedBox(height: 8),
           ],
         );
       },
@@ -56,5 +58,17 @@ class SettingsPage extends StatelessWidget with AutoRouteWrapper {
       height: 36,
       color: Colors.white54,
     );
+  }
+
+  Widget _buildVersion(SettingsState state) {
+    return Builder(builder: (context) {
+      return Text(
+        context.strings.version(state.settings.appVersion),
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: context.colorScheme.secondary,
+        ),
+      );
+    });
   }
 }

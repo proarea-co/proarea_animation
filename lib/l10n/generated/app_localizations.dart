@@ -302,6 +302,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign Out'**
   String get signOut;
+
+  /// No description provided for @version.
+  ///
+  /// In en, this message translates to:
+  /// **'App version: {value} '**
+  String version(String value);
+
+  /// No description provided for @save.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get save;
+
+  /// No description provided for @usernameSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Username saved'**
+  String get usernameSaved;
+
+  /// No description provided for @username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

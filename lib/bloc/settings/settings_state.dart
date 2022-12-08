@@ -29,3 +29,19 @@ class SettingsState extends BaseState {
     );
   }
 }
+
+class SettingsStateUsernameSaved extends SettingsState{
+  const SettingsStateUsernameSaved({
+    super.status,
+    super.message,
+    super.settings,
+  });
+
+  static SettingsStateUsernameSaved copyFromState(SettingsState state) {
+    return SettingsStateUsernameSaved(
+      status: state.status,
+      message: state.message,
+      settings: state.settings,
+    );
+  }
+}
