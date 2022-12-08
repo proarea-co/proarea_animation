@@ -41,11 +41,12 @@ class LanguageCard extends StatelessWidget {
         final currentLocale = controlState.locale;
         return GestureDetector(
           onTap: () async {
+            final cubit = context.read<AppControllerCubit>();
             final locale = await _showLanguageDialog(context, currentLocale);
 
             if (locale == null) return;
 
-            await context.read<AppControllerCubit>().changeLanguage(locale);
+            await cubit.changeLanguage(locale);
           },
           child: ListTile(
             leading: const Icon(Icons.language_rounded),

@@ -104,4 +104,13 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get signOut => 'Выйти';
+
+  @override
+  String get save => 'Сохранить';
+
+  @override
+  String get usernameSaved => 'Имя пользователя сохранено';
+
+  @override
+  String get username => 'Имя пользователя';
 }

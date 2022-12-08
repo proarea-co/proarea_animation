@@ -34,7 +34,7 @@ class AppSnackBar {
     return SnackBar(
       elevation: 0,
       margin: const EdgeInsets.fromLTRB(28, 0, 28, 4),
-      backgroundColor: context.colorScheme.secondaryContainer,
+      backgroundColor: Colors.transparent,
       behavior: SnackBarBehavior.floating,
       content: content,
     );
