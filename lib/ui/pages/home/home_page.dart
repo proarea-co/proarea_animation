@@ -3,7 +3,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../api/dio/dio_constants.dart';
 import '../../../bloc/home/home_cubit.dart';
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
