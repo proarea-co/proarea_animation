@@ -46,6 +46,8 @@ dev_dependencies:
   retrofit_generator: ^4.0.3+2
   json_serializable: ^6.3.2
   flutter_gen_runner: ^5.1.0+1
+  flutter_native_splash: ^2.2.11
+  flutter_launcher_icons: ^0.10.0
   change_app_package_name: ^1.1.0
 
 flutter:

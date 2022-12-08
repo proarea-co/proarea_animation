@@ -63,12 +63,12 @@
                 "instanceLimit": 1,
                 "reevaluateOnRerun": false
             },
-            "args": [ 
-                "pub", 
+            "args": [
+                "pub",
                 "run",
-                "flutter_launcher_icons:main", 
-                "-f", 
-                "icons_launcher.yaml", 
+                "flutter_launcher_icons:main",
+                "-f",
+                "launcher_icon.yaml"
             ],
             "presentation": {
                 "echo": true,
@@ -170,7 +170,7 @@
         {
             "label": "Generate Splash",
             "type": "shell",
-            "command": "flutter pub run flutter_native_splash:create --path=native_splash.yaml",
+            "command": "flutter pub run flutter_native_splash:create --path=splash_icon.yaml",
             "group": "build",
             "options": {
                 "cwd": "${cwd}"
@@ -179,7 +179,8 @@
                 "instanceLimit": 1,
                 "reevaluateOnRerun": false
             },
-            "args": [],
+            "args": [
+            ],
             "presentation": {
                 "echo": true,
                 "focus": true,
@@ -192,7 +193,7 @@
         {
             "label": "Remove Splash",
             "type": "shell",
-            "command": "flutter pub run flutter_native_splash:remove --path=native_splash.yaml",
+            "command": "flutter pub run flutter_native_splash:remove --path=splash_icon.yaml",
             "group": "build",
             "options": {
                 "cwd": "${cwd}"
