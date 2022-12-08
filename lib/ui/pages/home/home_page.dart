@@ -8,7 +8,7 @@ import '../../../bloc/home/home_cubit.dart';
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
 import '../../../models/tab_item/tab_item.dart';
-import '../../../themes/extensions/extensions.dart';
+import '../../../themes/extensions/app_menu_item_styles.dart';
 import '../../../themes/theme_app.dart';
 import '../../views/base_builders/app_builder.dart';
 import 'components/app_menu_item.dart';

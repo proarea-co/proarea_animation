@@ -6,14 +6,19 @@ final _lightThemeData = ThemeData(
     primary: LightStyleConstants.charcoal,
     onPrimary: LightStyleConstants.white,
     error: LightStyleConstants.error,
-    tertiary: LightStyleConstants.charcoalTint3,
+    tertiary: LightStyleConstants.purple,
     onTertiary: LightStyleConstants.blue,
+    tertiaryContainer: LightStyleConstants.charcoalTint3,
     onBackground: LightStyleConstants.transparent,
     secondary: LightStyleConstants.charcoalTint3,
     onSecondary: LightStyleConstants.charcoalTint2,
   ),
   extensions: [
     AppMenuItemStyles.light(),
+    SignOutAnimationStyles(
+      begin: Colors.indigo[100] ?? Colors.white,
+      end: Colors.orange[400] ?? Colors.black,
+    ),
   ],
   textTheme: const TextTheme(
     headlineLarge: TextStyle(
@@ -31,5 +36,6 @@ final _lightThemeData = ThemeData(
       fontSize: 14,
       fontWeight: FontWeight.w500,
     ),
+    button: TextStyle(color: Colors.white, fontSize: 14),
   ),
 );

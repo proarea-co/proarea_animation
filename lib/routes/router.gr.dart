@@ -60,8 +60,7 @@ class _$AppRouter extends RootStackRouter {
     },
     SignOutRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: WrappedRoute(child: const SignOutPage()));
+          routeData: routeData, child: const SignOutPage());
     }
   };
 

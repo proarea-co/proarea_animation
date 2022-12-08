@@ -1,23 +1,15 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../l10n/localization_helper.dart';
+import '../../../themes/extensions/sign_out_animation_styles.dart';
 import '../../../themes/theme_app.dart';
 import 'components/animated_button.dart';
 
-class SignOutPage extends StatefulWidget with AutoRouteWrapper {
+class SignOutPage extends StatefulWidget {
   const SignOutPage({super.key});
 
   @override
   State<SignOutPage> createState() => _SignOutPageState();
-
-  @override
-  Widget wrappedRoute(BuildContext context) {
-    return Theme(
-      data: ThemeType.light.themeData,
-      child: this,
-    );
-  }
 }
 
 class _SignOutPageState extends State<SignOutPage>
@@ -50,16 +42,20 @@ class _SignOutPageState extends State<SignOutPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: context.colorScheme.background,
         title: Text(
           context.strings.signOut,
-          style: context.textTheme.bodyText1,
+          style: context.textTheme.subtitle1,
         ),
       ),
       body: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: _playAnimation,
-        child: AnimatedButton(controller: _controller.view),
+        child: AnimatedButton(
+          controller: _controller.view,
+          begin: context.extension<SignOutAnimationStyles>()?.begin ?? Colors.white,
+          end: context.extension<SignOutAnimationStyles>()?.end ?? Colors.black,
+        ),
       ),
     );
   }

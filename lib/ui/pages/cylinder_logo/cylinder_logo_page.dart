@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
+import '../../../themes/theme_app.dart';
 import 'components/linear_text.dart';
 
 class CylinderLogoPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _CylinderLogoPageState extends State<CylinderLogoPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: context.colorScheme.surface,
       body: SizedBox.expand(
         child: Stack(
           alignment: Alignment.center,
