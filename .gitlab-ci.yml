@@ -36,6 +36,7 @@ flutter_build:
     - proarea-animations
   stage: Build
   script:
+    - flutter doctor -v
     - flutter build apk --release
   artifacts:
     paths:
