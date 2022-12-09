@@ -15,8 +15,6 @@ flutter_analyze:
   stage: Analyze
   script:
     - flutter analyze
-    - flutter config --android-sdk
-    - flutter build apk
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_BRANCH == "dev"'
