@@ -1,21 +1,25 @@
 
 stages:
+  - Build
   - Analyze
   - Test
-  - Build
 
 .android_docker_image:
   image: fischerscode/flutter:3.3.2
   tags:
     - proarea-animations
+  before_script:
+    - flutter clean
+    - flutter pub get
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
 
 .android_key_store:
   extends: .android_docker_image
   before_script:
-    # this will fetch the base64 encoded key store from our CI variables, decode it and place it underneath the path specified in build.gradle
     - echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > android/key.jks
-    - flutter clean
-    - flutter pub get
   only:
     - master
 
@@ -23,9 +27,6 @@ stages:
   extends: .android_key_store
   before_script:
     - cd android/
-    # because the Docker container runs as root currently, we won't do any user-install. Otherwise, it will fail with
-    # $ gem install --user-install bundler
-    # ERROR:  Use --install-dir or --user-install but not both
     - gem install bundler
     - bundle install
 
@@ -34,20 +35,12 @@ flutter_analyze:
   stage: Analyze
   script:
     - flutter analyze
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_COMMIT_BRANCH == "dev"'
-    - if: '$CI_COMMIT_BRANCH == "main"'
 
 flutter_test:
   extends: .android_docker_image
   stage: Test
   script:
     - echo 'Flutter Test'
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_COMMIT_BRANCH == "dev"'
-    - if: '$CI_COMMIT_BRANCH == "main"'
 
 flutter_build:
   extends: .android_docker_image
@@ -58,7 +51,3 @@ flutter_build:
     paths:
       - "build/app/outputs/apk/release/pro_an_*.apk"
     expire_in: 1 day
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-    - if: '$CI_COMMIT_BRANCH == "dev"'
-    - if: '$CI_COMMIT_BRANCH == "main"'
