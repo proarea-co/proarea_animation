@@ -43,7 +43,7 @@ flutter_test:
     - echo 'Flutter Test'
 
 flutter_build:
-  extends: .android_docker_image
+  extends: .setup_fastlane_android
   stage: Build
   script:
     - flutter build apk
