@@ -20,15 +20,6 @@ stages:
   extends: .android_docker_image
   before_script:
     - echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > android/key.jks
-  only:
-    - master
-
-.setup_fastlane_android:
-  extends: .android_key_store
-  before_script:
-    - cd android/
-    - gem install bundler
-    - bundle install
 
 flutter_analyze:
   extends: .android_docker_image
@@ -43,7 +34,7 @@ flutter_test:
     - echo 'Flutter Test'
 
 flutter_build:
-  extends: .setup_fastlane_android
+  extends: .android_key_store
   stage: Build
   script:
     - flutter build apk
