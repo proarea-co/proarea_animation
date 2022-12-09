@@ -1,17 +1,36 @@
-image: fischerscode/flutter:3.3.2
 
 stages:
   - Analyze
   - Test
   - Build
 
-before_script:
-  - flutter clean
-  - flutter pub get
-
-flutter_analyze:
+.android_docker_image:
+  image: fischerscode/flutter:3.3.2
   tags:
     - proarea-animations
+
+.android_key_store:
+  extends: .android_docker_image
+  before_script:
+    # this will fetch the base64 encoded key store from our CI variables, decode it and place it underneath the path specified in build.gradle
+    - echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > android/key.jks
+    - flutter clean
+    - flutter pub get
+  only:
+    - master
+
+.setup_fastlane_android:
+  extends: .android_key_store
+  before_script:
+    - cd android/
+    # because the Docker container runs as root currently, we won't do any user-install. Otherwise, it will fail with
+    # $ gem install --user-install bundler
+    # ERROR:  Use --install-dir or --user-install but not both
+    - gem install bundler
+    - bundle install
+
+flutter_analyze:
+  extends: .android_docker_image
   stage: Analyze
   script:
     - flutter analyze
@@ -21,8 +40,7 @@ flutter_analyze:
     - if: '$CI_COMMIT_BRANCH == "main"'
 
 flutter_test:
-  tags:
-    - proarea-animations
+  extends: .android_docker_image
   stage: Test
   script:
     - echo 'Flutter Test'
@@ -32,8 +50,7 @@ flutter_test:
     - if: '$CI_COMMIT_BRANCH == "main"'
 
 flutter_build:
-  tags:
-    - proarea-animations
+  extends: .android_docker_image
   stage: Build
   script:
     - flutter build apk
