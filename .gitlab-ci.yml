@@ -1,68 +1,47 @@
+image: fischerscode/flutter:3.3.2
+
 stages:
-  - package
-  - test
-  - test_deployment
-  - productive_deployment
-  - notification
+  - Analyze
+  - Test
+  - Build
 
-variables:
-  LC_ALL: "en_US.UTF-8"
-  LANG: "en_US.UTF-8"
+before_script:
+  - flutter clean
+  - flutter pub get
 
-.android_docker_image:
-  image: cirrusci/flutter:latest
+flutter_analyze:
   tags:
     - proarea-animations
+  stage: Analyze
+  script:
+    - flutter analyze
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
 
-.android_key_store:
-  extends: .android_docker_image
-  before_script:
-    # this will fetch the base64 encoded key store from our CI variables, decode it and place it underneath the path specified in build.gradle
-    - echo "$PLAY_STORE_UPLOAD_KEY" | base64 --decode > android/key.jks
-  only:
-    - master
+flutter_test:
+  tags:
+    - proarea-animations
+  stage: Test
+  script:
+    - echo 'Flutter Test'
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
 
-.setup_fastlane_android:
-  extends: .android_key_store
-  before_script:
-    - cd android/
-    # because the Docker container runs as root currently, we won't do any user-install. Otherwise, it will fail with
-    # $ gem install --user-install bundler
-    # ERROR:  Use --install-dir or --user-install but not both
-    - gem install bundler
-    - bundle install
-
-build_android:
-  stage: package
-  extends: .android_key_store
-  script: flutter build apk --release --build-number=$CI_PIPELINE_ID
+flutter_build:
+  tags:
+    - proarea-animations
+  stage: Build
+  script:
+    - flutter build apk
   artifacts:
     paths:
-      - build/app/outputs/apk/release/app-release.apk
+      - "build/app/outputs/apk/release/pro_an_*.apk"
     expire_in: 1 day
-
-android_play_store_internal_and_alpha_deployment:
-  stage: test_deployment
-  extends: .setup_fastlane_android
-  dependencies:
-    - build_android
-  script:
-    - bundle exec fastlane upload_to_play_store_internal
-    - bundle exec fastlane promote_internal_to_alpha
-
-android_play_store_productive_deployment:
-  stage: productive_deployment
-  extends: .setup_fastlane_android
-  dependencies:
-    - android_play_store_internal_and_alpha_deployment
-  script: bundle exec fastlane promote_alpha_to_production
-  when: manual
-  allow_failure: false
-
-tweet_about_android_updates:
-  stage: notification
-  extends: .setup_fastlane_android
-  dependencies:
-    - android_play_store_productive_deployment
-  script: bundle exec fastlane notify_twitter_followers
-  when: on_success
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
