@@ -10,7 +10,7 @@ variables:
   LANG: "en_US.UTF-8"
 
 .android_docker_image:
-  image: xetics/flutter:lasters
+  image: xetics/flutter:latest
   tags:
     - proarea-animations
 
