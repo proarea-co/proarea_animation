@@ -1,4 +1,4 @@
-image: cirrusci/flutter:3.3.2
+image: matspfeiffer/flutter:latest
 
 stages:
   - Analyze
@@ -8,8 +8,6 @@ stages:
 before_script:
   - flutter clean
   - flutter pub get
-  - pub global activate dart_code_metrics
-  - export PATH="$PATH:$HOME/.pub-cache/bin"
 
 
 flutter_analyze:
