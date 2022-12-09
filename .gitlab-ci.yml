@@ -13,7 +13,10 @@ flutter_analyze:
   tags:
     - proarea-animations
   stage: Analyze
+  services:
+    - docker:dind
   script:
+    - flutter build apk
     - flutter analyze
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
