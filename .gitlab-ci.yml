@@ -8,6 +8,7 @@ stages:
 before_script:
   - flutter clean
   - flutter pub get
+  - export ANDROID_SDK_ROOT="/sdk"
 
 flutter_analyze:
   tags:
