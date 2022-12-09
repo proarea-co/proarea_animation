@@ -8,7 +8,9 @@ stages:
 before_script:
   - flutter clean
   - flutter pub get
-  - export ANDROID_SDK_ROOT="/sdk"
+  - pub global activate dart_code_metrics
+  - export PATH="$PATH:$HOME/.pub-cache/bin"
+
 
 flutter_analyze:
   tags:
