@@ -1,4 +1,4 @@
-image: fischerscode/flutter:3.3.2
+image: cirrusci/flutter:3.3.2
 
 stages:
   - Analyze
