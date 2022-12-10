@@ -1,14 +1,16 @@
 
 stages:
-  - Build
   - Analyze
   - Test
+  - Build
 
 .android_docker_image:
-  image: cirrusci/flutter:3.3.2
+  image: cirrusci/flutter:latest
   tags:
     - proarea-animations
   before_script:
+    - pub global activate dart_code_metrics
+    - export PATH="$PATH:$HOME/.pub-cache/bin"
     - flutter clean
     - flutter pub get
   rules:
@@ -21,6 +23,12 @@ flutter_analyze:
   stage: Analyze
   script:
     - flutter analyze
+
+code_quality:
+  extends: .android_docker_image
+  stage: Analyze
+  script:
+    - metrics lib -r codeclimate
 
 flutter_test:
   extends: .android_docker_image
