@@ -26,7 +26,7 @@ Code quality:
   extends: .android_docker_image
   stage: Analyze
   script:
-    - metrics lib -r codeclimate
+    - metrics lib -r codeclimate  > gl-code-quality-report.json
 
 Unit tests:
   extends: .android_docker_image
