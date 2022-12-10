@@ -16,17 +16,17 @@ stages:
     - if: '$CI_COMMIT_BRANCH == "dev"'
     - if: '$CI_COMMIT_BRANCH == "main"'
 
+Code format:
+  extends: .android_docker_image
+  stage: Analyze
+  script:
+    - flutter format .
+
 Flutter analyze:
   extends: .android_docker_image
   stage: Analyze
   script:
     - flutter analyze
-
-Code quality:
-  extends: .android_docker_image
-  stage: Analyze
-  script:
-    - metrics lib -r codeclimate  > gl-code-quality-report.json
 
 Unit tests:
   extends: .android_docker_image
