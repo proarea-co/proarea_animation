@@ -1,7 +1,7 @@
 
 stages:
   - Analyze
-  - Test
+  # - Test
   - Build
 
 .android_docker_image:
@@ -16,11 +16,11 @@ stages:
     - if: '$CI_COMMIT_BRANCH == "dev"'
     - if: '$CI_COMMIT_BRANCH == "main"'
 
-Code format:
-  extends: .android_docker_image
-  stage: Analyze
-  script:
-    - flutter format .
+# Code format:
+#   extends: .android_docker_image
+#   stage: Analyze
+#   script:
+#     - flutter format .
 
 Flutter analyze:
   extends: .android_docker_image
@@ -28,23 +28,23 @@ Flutter analyze:
   script:
     - flutter analyze
 
-Unit tests:
-  extends: .android_docker_image
-  stage: Test
-  script:
-    - echo 'Unit tests - Successfully'
+# Unit tests:
+#   extends: .android_docker_image
+#   stage: Test
+#   script:
+#     - echo 'Unit tests - Successfully'
 
-Widget tests:
-  extends: .android_docker_image
-  stage: Test
-  script:
-    - echo 'Widget tests - Successfully'
+# Widget tests:
+#   extends: .android_docker_image
+#   stage: Test
+#   script:
+#     - echo 'Widget tests - Successfully'
 
-Integration tests:
-  extends: .android_docker_image
-  stage: Test
-  script:
-    - echo 'Integration tests - Successfully'
+# Integration tests:
+#   extends: .android_docker_image
+#   stage: Test
+#   script:
+#     - echo 'Integration tests - Successfully'
 
 Build Android apk:
   extends: .android_docker_image
@@ -56,8 +56,8 @@ Build Android apk:
       - "build/app/outputs/apk/release/pro_an_*.apk"
     expire_in: 1 day
 
-Build iOS ipa:
-  extends: .android_docker_image
-  stage: Build
-  script:
-    - echo 'iOS ipa - Successfully build'
+# Build iOS ipa:
+#   extends: .android_docker_image
+#   stage: Build
+#   script:
+#     - echo 'iOS ipa - Successfully build'
