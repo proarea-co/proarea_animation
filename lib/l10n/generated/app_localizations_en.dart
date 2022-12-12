@@ -122,4 +122,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get username => 'Username';
+
+  @override
+  String get guest => 'Guest';
 }

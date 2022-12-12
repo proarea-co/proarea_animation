@@ -7,6 +7,7 @@ import '../../../bloc/home/home_cubit.dart';
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../di/di.dart';
 import '../../../gen/assets.gen.dart';
+import '../../../l10n/localization_helper.dart';
 import '../../../models/tab_item/tab_item.dart';
 import '../../../themes/extensions/app_menu_item_styles.dart';
 import '../../../themes/theme_app.dart';
@@ -142,6 +143,8 @@ class _HomePageState extends State<HomePage>
       withoutScaffold: true,
       withErrorBuilder: false,
       builder: (state) {
+        var username = state.settings.userName;
+        if (username.isEmpty) username = context.strings.guest;
         return Row(
           children: [
             SizedBox(
@@ -158,7 +161,7 @@ class _HomePageState extends State<HomePage>
             const SizedBox(width: 16),
             Expanded(
               child: Text(
-                state.settings.userName,
+                username,
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
