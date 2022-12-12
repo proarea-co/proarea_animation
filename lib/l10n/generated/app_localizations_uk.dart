@@ -5,10 +5,10 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get serverErrorMessage => 'Ошибка сервера';
+  String get serverErrorMessage => 'Помилка сервера';
 
   @override
-  String get errorInternetConnection => 'Ошибка соединения';
+  String get errorInternetConnection => 'Помилка з\'єднання';
 
   @override
   String get language => 'Мова';
@@ -20,91 +20,91 @@ class AppLocalizationsUk extends AppLocalizations {
   String get oops => 'Упс...';
 
   @override
-  String get somethingWentWrong => 'Что-то пошло не так, попробуйте обновить экран';
+  String get somethingWentWrong => 'Щось пішло не так, спробуйте оновити екран';
 
   @override
-  String get ok => 'Хорошо';
+  String get ok => 'Так';
 
   @override
   String get theme => 'Тема';
 
   @override
-  String get light => 'Светлая';
+  String get light => 'Світла';
 
   @override
-  String get dark => 'Темная';
+  String get dark => 'Темна';
 
   @override
   String get flutterDev => 'Flutter Dev';
 
   @override
-  String get posts => 'Посты';
+  String get posts => 'Пости';
 
   @override
-  String get userList => 'Список пользователей';
+  String get userList => 'Перелік користувачів';
 
   @override
   String get liquidSwipe => 'Свайп liquid-эффект';
 
   @override
-  String get shatteringPage => 'Страница краш-эффект';
+  String get shatteringPage => 'Сторінка краш-ефект';
 
   @override
-  String get textAnimations => 'Текстовые анимации';
+  String get textAnimations => 'Текстові анімації';
 
   @override
-  String get loading => 'Загрузка';
+  String get loading => 'Завантаження';
 
   @override
-  String get yourPosts => 'Ваши посты';
+  String get yourPosts => 'Ваші пости';
 
   @override
-  String get edit => 'Изменить';
+  String get edit => 'Змінити';
 
   @override
-  String get remove => 'Удалить';
+  String get remove => 'Видалити';
 
   @override
-  String get welcomeBack => 'С возвращением';
+  String get welcomeBack => 'З поверненням';
 
   @override
-  String get shatter => 'Разбить';
+  String get shatter => 'Розбити';
 
   @override
-  String get textActivity => 'Текстовая активность';
+  String get textActivity => 'Текстова активність';
 
   @override
-  String get next => 'Следующий';
+  String get next => 'Далі';
 
   @override
   String get proArea => 'ProArea';
 
   @override
-  String get settings => 'Настройки';
+  String get settings => 'Налаштування';
 
   @override
-  String get aboutApp => 'О приложении';
+  String get aboutApp => 'Про додаток';
 
   @override
-  String get aboutAppHead => 'Ознакомительное приложение от команды специалистов ProArea';
+  String get aboutAppHead => 'Ознайомчий додаток від команди спеціалістів ProArea';
 
   @override
-  String get aboutAppDescription => 'В приложении вы можете найти список наиболее часто используемых визуальных эффектов.\n\nКоманда дизайнеров создала неповторимый, великолепный интерфейс, а наши программисты в приложении реализовали дизайн-решения';
+  String get aboutAppDescription => 'У додатку ви можете знайти список найпоширеніших візуальних ефектів.\n\nКоманда дизайнерів створила неповторний, чудовий інтерфейс, а наші програмісти у додатку реалізували дизайн-рішення';
 
   @override
-  String get signOut => 'Выйти';
+  String get signOut => 'Вийти';
 
   @override
   String version(String value) {
-    return 'Версия приложения: $value ';
+    return 'Версія додатку: $value ';
   }
 
   @override
-  String get save => 'Сохранить';
+  String get save => 'Зберегти';
 
   @override
-  String get usernameSaved => 'Имя пользователя сохранено';
+  String get usernameSaved => 'Ім\'я користувача збережене';
 
   @override
-  String get username => 'Имя пользователя';
+  String get username => 'Ім\'я користувача';
 }
