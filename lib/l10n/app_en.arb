@@ -1,14 +1,9 @@
 {
     "@@locale": "en",
-    "weatherRandomPoint": "Weather Random Point",
-    "weatherRandomCity": "Weather Random City",
-    "ruButton": "Ru",
-    "enButton": "En",
     "serverErrorMessage": "Server error occurred",
     "errorInternetConnection": "Internet Connection Error",
     "language": "Language",
-    "enLanguage": "English",
-    "ruLanguage": "Русский",
+    "languageName": "English",
     "oops": "Ooops...",
     "somethingWentWrong": "Something went wrong. Try again later or update the screen",
     "ok": "OK",
@@ -45,5 +40,6 @@
     },
     "save": "Save",
     "usernameSaved": "Username saved",
-    "username": "Username"
+    "username": "Username",
+    "guest": "Guest"
 }

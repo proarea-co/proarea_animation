@@ -1,10 +1,7 @@
 {
     "@@locale": "ru",
-    "weatherRandomPoint": "Погода в случайной точке",
-    "weatherRandomCity": "Погода в случайном городе",
     "language": "Язык",
-    "ruButton": "Русский",
-    "enButton": "Английский",
+    "languageName": "Русский",
     "serverErrorMessage": "Ошибка сервера",
     "errorInternetConnection": "Ошибка соединения",
     "oops": "Упс...",
@@ -43,5 +40,6 @@
     },
     "save": "Сохранить",
     "usernameSaved": "Имя пользователя сохранено",
-    "username": "Имя пользователя"
+    "username": "Имя пользователя",
+    "guest": "Гость"
 }

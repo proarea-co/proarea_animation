@@ -1,0 +1,45 @@
+{
+    "@@locale": "uk",
+    "language": "Мова",
+    "languageName": "Українська",
+    "serverErrorMessage": "Помилка сервера",
+    "errorInternetConnection": "Помилка з'єднання",
+    "oops": "Упс...",
+    "somethingWentWrong": "Щось пішло не так, спробуйте оновити екран",
+    "ok": "Так",
+    "theme": "Тема",
+    "light": "Світла",
+    "dark": "Темна",
+    "flutterDev": "Flutter Dev",
+    "posts": "Пости",
+    "userList": "Перелік користувачів",
+    "liquidSwipe": "Свайп liquid-эффект",
+    "loading": "Завантаження",
+    "yourPosts": "Ваші пости",
+    "edit": "Змінити",
+    "remove": "Видалити",
+    "shatteringPage": "Сторінка краш-ефект",
+    "textAnimations": "Текстові анімації",
+    "welcomeBack": "З поверненням",
+    "shatter": "Розбити",
+    "textActivity": "Текстова активність",
+    "next": "Далі",
+    "proArea": "ProArea",
+    "settings": "Налаштування",
+    "aboutApp": "Про додаток",
+    "aboutAppHead": "Ознайомчий додаток від команди спеціалістів ProArea",
+    "aboutAppDescription": "У додатку ви можете знайти список найпоширеніших візуальних ефектів.\n\nКоманда дизайнерів створила неповторний, чудовий інтерфейс, а наші програмісти у додатку реалізували дизайн-рішення",
+    "signOut": "Вийти",
+    "version": "Версія додатку: {value} ",
+    "@version": {
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
+    "save": "Зберегти",
+    "usernameSaved": "Ім'я користувача збережене",
+    "username": "Ім'я користувача",
+    "guest": "Гість"
+}
