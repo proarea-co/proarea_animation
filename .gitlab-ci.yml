@@ -21,7 +21,8 @@ stages:
 .job_setting_to_no_dev:
   extends: .job_setting_head
   rules:
-    - if: '$CI_COMMIT_BRANCH == "dev"'
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  when: always
 
 Flutter analyze:
   extends: .job_setting_to_no_dev
