@@ -1,7 +1,5 @@
 {
     "@@locale": "uk",
-    "weatherRandomPoint": "Погода в случайной точке",
-    "weatherRandomCity": "Погода в случайном городе",
     "language": "Мова",
     "languageName": "Українська",
     "serverErrorMessage": "Ошибка сервера",

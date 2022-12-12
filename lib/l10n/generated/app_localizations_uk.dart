@@ -5,12 +5,6 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get weatherRandomPoint => 'Погода в случайной точке';
-
-  @override
-  String get weatherRandomCity => 'Погода в случайном городе';
-
-  @override
   String get serverErrorMessage => 'Ошибка сервера';
 
   @override

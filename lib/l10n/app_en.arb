@@ -1,7 +1,5 @@
 {
     "@@locale": "en",
-    "weatherRandomPoint": "Weather Random Point",
-    "weatherRandomCity": "Weather Random City",
     "serverErrorMessage": "Server error occurred",
     "errorInternetConnection": "Internet Connection Error",
     "language": "Language",

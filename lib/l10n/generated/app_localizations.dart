@@ -95,18 +95,6 @@ abstract class AppLocalizations {
     Locale('uk')
   ];
 
-  /// No description provided for @weatherRandomPoint.
-  ///
-  /// In en, this message translates to:
-  /// **'Weather Random Point'**
-  String get weatherRandomPoint;
-
-  /// No description provided for @weatherRandomCity.
-  ///
-  /// In en, this message translates to:
-  /// **'Weather Random City'**
-  String get weatherRandomCity;
-
   /// No description provided for @serverErrorMessage.
   ///
   /// In en, this message translates to:

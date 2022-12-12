@@ -1,7 +1,5 @@
 {
     "@@locale": "ru",
-    "weatherRandomPoint": "Погода в случайной точке",
-    "weatherRandomCity": "Погода в случайном городе",
     "language": "Язык",
     "languageName": "Русский",
     "serverErrorMessage": "Ошибка сервера",
