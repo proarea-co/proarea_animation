@@ -1,8 +1,8 @@
 import 'app_localizations.dart';
 
-/// The translations for Russian (`ru`).
-class AppLocalizationsRu extends AppLocalizations {
-  AppLocalizationsRu([String locale = 'ru']) : super(locale);
+/// The translations for Ukrainian (`uk`).
+class AppLocalizationsUk extends AppLocalizations {
+  AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
   String get weatherRandomPoint => 'Погода в случайной точке';
@@ -17,10 +17,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get errorInternetConnection => 'Ошибка соединения';
 
   @override
-  String get language => 'Язык';
+  String get language => 'Мова';
 
   @override
-  String get languageName => 'Русский';
+  String get languageName => 'Українська';
 
   @override
   String get oops => 'Упс...';

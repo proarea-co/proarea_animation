@@ -1,9 +1,9 @@
 {
-    "@@locale": "ru",
+    "@@locale": "uk",
     "weatherRandomPoint": "Погода в случайной точке",
     "weatherRandomCity": "Погода в случайном городе",
-    "language": "Язык",
-    "languageName": "Русский",
+    "language": "Мова",
+    "languageName": "Українська",
     "serverErrorMessage": "Ошибка сервера",
     "errorInternetConnection": "Ошибка соединения",
     "oops": "Упс...",
