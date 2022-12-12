@@ -107,4 +107,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get username => 'Ім\'я користувача';
+
+  @override
+  String get guest => 'Гість';
 }

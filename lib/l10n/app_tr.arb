@@ -1,0 +1,45 @@
+{
+    "@@locale": "tr",
+    "serverErrorMessage": "Sunucu hatası oluştu",
+    "errorInternetConnection": "İnternet Bağlantı Hatası",
+    "language": "Dil",
+    "languageName": "Türk",
+    "oops": "Hata...",
+    "somethingWentWrong": "Bir şeyler yanlış gitti. Daha sonra tekrar deneyin veya ekranı güncelleyin",
+    "ok": "TAMAM",
+    "theme": "Tema",
+    "light": "Işık",
+    "dark": "Karanlık",
+    "flutterDev": "Flutter Dev",
+    "posts": "Gönderiler",
+    "userList": "Kullanıcı listesi",
+    "liquidSwipe": "Sıvı Kaydırma",
+    "shatteringPage": "Paramparça Sayfa",
+    "textAnimations": "Metin Animasyonları",
+    "loading": "Yükleniyor",
+    "yourPosts": "Sizin gönderileriniz",
+    "edit": "Düzenlemek",
+    "remove": "Kaldırmak",
+    "welcomeBack": "Tekrar hoşgeldiniz",
+    "shatter": "Kırmak",
+    "textActivity": "Metin Etkinliği",
+    "next": "Sonraki",
+    "proArea": "ProArea",
+    "settings": "Ayarlar",
+    "aboutApp": "Uygulama hakkında",
+    "aboutAppHead": "ProArea uzman ekibinden tanıtım uygulaması",
+    "aboutAppDescription": "Uygulamada en sık kullanılan görsel efektlerin bir listesini bulabilirsiniz.\n\nTasarım ekibi benzersiz, harika bir arayüz oluşturdu ve programcılarımız uygulamada tasarım çözümleri uyguladı.",
+    "signOut": "Oturumu Kapat",
+    "version": "Uygulama sürümü: {value} ",
+    "@version": {
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
+    "save": "Kaydetmek",
+    "usernameSaved": "Kullanıcı adı kaydedildi",
+    "username": "Username",
+    "guest": "Misafir"
+}
