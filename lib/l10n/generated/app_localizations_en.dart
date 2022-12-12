@@ -5,18 +5,6 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get weatherRandomPoint => 'Weather Random Point';
-
-  @override
-  String get weatherRandomCity => 'Weather Random City';
-
-  @override
-  String get ruButton => 'Ru';
-
-  @override
-  String get enButton => 'En';
-
-  @override
   String get serverErrorMessage => 'Server error occurred';
 
   @override
@@ -26,10 +14,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get language => 'Language';
 
   @override
-  String get enLanguage => 'English';
-
-  @override
-  String get ruLanguage => 'Русский';
+  String get languageName => 'English';
 
   @override
   String get oops => 'Ooops...';

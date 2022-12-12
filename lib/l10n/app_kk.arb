@@ -1,0 +1,45 @@
+{
+    "@@locale": "kk",
+    "serverErrorMessage": "Сервер қатесі орын алды",
+    "errorInternetConnection": "Интернетке байланыс қатлегі",
+    "language": "Тіл",
+    "languageName": "Қазақ",
+    "oops": "Упс...",
+    "somethingWentWrong": "Бірдеңе дұрыс болмады. Әрекетті кейінірек қайталаңыз немесе экранды жаңартыңыз",
+    "ok": "Жарайды",
+    "theme": "Тақырып",
+    "light": "Жарық",
+    "dark": "Қараңғы",
+    "flutterDev": "Flutter Dev",
+    "posts": "Посттар",
+    "userList": "Пайдаланушы тізімі",
+    "liquidSwipe": "Сұйықтықпен сырғыту",
+    "shatteringPage": "Бұзылатын бет",
+    "textAnimations": "Мәтіндік анимациялар",
+    "loading": "Жүктелуде",
+    "yourPosts": "Сіздің посттарыңыз",
+    "edit": "Өңдеу",
+    "remove": "Жою",
+    "welcomeBack": "Қайта келуінмен",
+    "shatter": "Сынық",
+    "textActivity": "Мәтіндік әрекет",
+    "next": "Келесі",
+    "proArea": "ProArea",
+    "settings": "Параметрлер",
+    "aboutApp": "Қолданба туралы",
+    "aboutAppHead": "ProArea мамандар тобының кіріспе өтінімі",
+    "aboutAppDescription": "Қолданбада сіз жиі қолданылатын визуалды эффектілердің тізімін таба аласыз.\n\nДизайн тобы бірегей, тамаша интерфейс жасады, ал біздің бағдарламашылар қолданбада дизайн шешімдерін енгізді.",
+    "signOut": "Шығу",
+    "version": "Қолданба нұсқасы: {value} ",
+    "@version": {
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
+    "save": "Сақтау",
+    "usernameSaved": "Пайдаланушы аты сақталды",
+    "username": "Пайдаланушы аты",
+    "guest": "Қонақ"
+}

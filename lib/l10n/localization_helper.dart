@@ -11,11 +11,6 @@ Locale helpLocale = window.locale;
 const defaultLocale = Locale('en');
 final defaultLocalize = AppLocalizationsEn(defaultLocale.languageCode);
 
-final _localizations = {
-  const Locale('en'): getLocaleLocalizations().enLanguage,
-  const Locale('ru'): getLocaleLocalizations().ruLanguage,
-};
-
 AppLocalizations _getLocalizations(BuildContext context) {
   final localizations = AppLocalizations.of(context);
   if (localizations != null) return localizations;
@@ -38,8 +33,7 @@ AppLocalizations getLocaleLocalizations([Locale? locale]) {
 }
 
 String getLocaleName(Locale locale) {
-  final langName = _localizations[locale];
-  return langName ?? getLocaleLocalizations().enLanguage;
+  return getLocaleLocalizations(locale).languageName;
 }
 
 extension ContextExt on BuildContext {
