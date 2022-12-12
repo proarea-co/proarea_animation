@@ -72,23 +72,30 @@ class AboutAppPage extends StatelessWidget {
     return Positioned(
       top: 4,
       left: 4,
+      right: 0,
       child: Builder(builder: (context) {
-        return Row(
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 64,
               child: AppBackButton(),
             ),
-            const SizedBox(width: 8),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
                 color: context.colorScheme.background.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text(
-                context.strings.aboutApp,
-                style: context.textTheme.headline3,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      context.strings.aboutApp,
+                      style: context.textTheme.headline3,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
