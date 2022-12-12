@@ -40,5 +40,6 @@
     },
     "save": "Save",
     "usernameSaved": "Username saved",
-    "username": "Username"
+    "username": "Username",
+    "guest": "Guest"
 }
