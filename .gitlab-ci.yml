@@ -1,53 +1,54 @@
 
 stages:
   - Analyze
-  # - Test
+  - Test
   - Build
 
-.android_docker_image:
+.job_setting_head:
   image: cirrusci/flutter:latest
   tags:
     - proarea-animations
   before_script:
     - flutter clean
     - flutter pub get
+
+.job_setting_to_dev:
+  extends: .job_setting_head
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_BRANCH == "dev"'
-    - if: '$CI_COMMIT_BRANCH == "main"'
 
-# Code format:
-#   extends: .android_docker_image
-#   stage: Analyze
-#   script:
-#     - flutter format .
+.job_setting_to_no_dev:
+  extends: .job_setting_head
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
 
 Flutter analyze:
-  extends: .android_docker_image
+  extends: .job_setting_to_no_dev
   stage: Analyze
   script:
     - flutter analyze
 
-# Unit tests:
-#   extends: .android_docker_image
-#   stage: Test
-#   script:
-#     - echo 'Unit tests - Successfully'
+Unit tests:
+  extends: .job_setting_to_dev
+  stage: Test
+  script:
+    - echo 'Unit tests - Successfully'
 
-# Widget tests:
-#   extends: .android_docker_image
-#   stage: Test
-#   script:
-#     - echo 'Widget tests - Successfully'
+Widget tests:
+  extends: .job_setting_to_dev
+  stage: Test
+  script:
+    - echo 'Widget tests - Successfully'
 
-# Integration tests:
-#   extends: .android_docker_image
-#   stage: Test
-#   script:
-#     - echo 'Integration tests - Successfully'
+Integration tests:
+  extends: .job_setting_to_dev
+  stage: Test
+  script:
+    - echo 'Integration tests - Successfully'
 
 Build Android apk:
-  extends: .android_docker_image
+  extends: .job_setting_to_dev
   stage: Build
   script:
     - flutter build apk
@@ -56,8 +57,8 @@ Build Android apk:
       - "build/app/outputs/apk/release/pro_an_*.apk"
     expire_in: 1 day
 
-# Build iOS ipa:
-#   extends: .android_docker_image
-#   stage: Build
-#   script:
-#     - echo 'iOS ipa - Successfully build'
+Build iOS ipa:
+  extends: .job_setting_to_dev
+  stage: Build
+  script:
+    - echo 'iOS ipa - Successfully build'
