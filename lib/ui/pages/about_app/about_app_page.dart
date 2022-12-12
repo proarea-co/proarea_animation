@@ -24,9 +24,6 @@ class AboutAppPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(context.strings.aboutApp),
-      // ),
       backgroundColor: context.colorScheme.background,
       body: SafeArea(
         child: OrientationBuilder(builder: (context, orientation) {
