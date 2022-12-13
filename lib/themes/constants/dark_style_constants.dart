@@ -29,5 +29,5 @@ class DarkStyleConstants {
   static const sortingLime = Color(0xFFAAD236);
   static const sortingTangerine = Color(0xFFFF9E2D);
   static const transparent = Color(0x00FFFFFF);
-  static const black = Color(0xFF0F0F0F);
+  static const background = Color(0xFF0F0F0F);
 }

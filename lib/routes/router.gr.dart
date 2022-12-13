@@ -26,8 +26,10 @@ class _$AppRouter extends RootStackRouter {
           routeData: routeData, child: WrappedRoute(child: const HomePage()));
     },
     AboutAppRoute.name: (routeData) {
+      final args = routeData.argsAs<AboutAppRouteArgs>();
       return MaterialPageX<dynamic>(
-          routeData: routeData, child: const AboutAppPage());
+          routeData: routeData,
+          child: AboutAppPage(key: args.key, appVersion: args.appVersion));
     },
     PostsRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
@@ -113,10 +115,26 @@ class HomeRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [AboutAppPage]
-class AboutAppRoute extends PageRouteInfo<void> {
-  const AboutAppRoute() : super(AboutAppRoute.name, path: 'aboutApp');
+class AboutAppRoute extends PageRouteInfo<AboutAppRouteArgs> {
+  AboutAppRoute({Key? key, required String appVersion})
+      : super(AboutAppRoute.name,
+            path: 'aboutApp',
+            args: AboutAppRouteArgs(key: key, appVersion: appVersion));
 
   static const String name = 'AboutAppRoute';
+}
+
+class AboutAppRouteArgs {
+  const AboutAppRouteArgs({this.key, required this.appVersion});
+
+  final Key? key;
+
+  final String appVersion;
+
+  @override
+  String toString() {
+    return 'AboutAppRouteArgs{key: $key, appVersion: $appVersion}';
+  }
 }
 
 /// generated route for

@@ -86,6 +86,9 @@ class AppLocalizationsKk extends AppLocalizations {
   String get aboutApp => 'Қолданба туралы';
 
   @override
+  String get aboutAppFullName => 'Қолданба ProArea Animations Showcase';
+
+  @override
   String get aboutAppHead => 'ProArea мамандар тобының кіріспе өтінімі';
 
   @override
@@ -107,6 +110,11 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get username => 'Пайдаланушы аты';
+
+  @override
+  String v(String value) {
+    return 'v${value}';
+  }
 
   @override
   String get guest => 'Қонақ';

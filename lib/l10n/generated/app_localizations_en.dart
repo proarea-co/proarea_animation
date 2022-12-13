@@ -86,6 +86,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get aboutApp => 'About the app';
 
   @override
+  String get aboutAppFullName => 'About the ProArea Animations Showcase';
+
+  @override
   String get aboutAppHead => 'Introductory application from the ProArea team of specialists';
 
   @override
@@ -96,7 +99,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String version(String value) {
-    return 'App version: $value ';
+    return 'App version: $value';
   }
 
   @override
@@ -107,6 +110,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get username => 'Username';
+
+  @override
+  String v(String value) {
+    return 'v${value}';
+  }
 
   @override
   String get guest => 'Guest';

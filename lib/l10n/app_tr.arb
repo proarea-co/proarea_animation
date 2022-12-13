@@ -28,6 +28,7 @@
     "settings": "Ayarlar",
     "aboutApp": "Uygulama hakkında",
     "aboutAppHead": "ProArea uzman ekibinden tanıtım uygulaması",
+    "aboutAppFullName": "Uygulama ProArea Animations Showcase",
     "aboutAppDescription": "Uygulamada en sık kullanılan görsel efektlerin bir listesini bulabilirsiniz.\n\nTasarım ekibi benzersiz, harika bir arayüz oluşturdu ve programcılarımız uygulamada tasarım çözümleri uyguladı.",
     "signOut": "Oturumu Kapat",
     "version": "Uygulama sürümü: {value} ",

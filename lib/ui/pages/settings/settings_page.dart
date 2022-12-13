@@ -5,7 +5,6 @@ import '../../../bloc/settings/settings_cubit.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../routes/router.dart';
 import '../../views/base_builders/app_consumer.dart';
-import '../../views/buttons/app_button.dart';
 import '../../../themes/theme_app.dart';
 import '../../views/snack_bar/show_snack_bar.dart';
 import 'components/language_card.dart';
@@ -52,10 +51,7 @@ class SettingsPage extends StatelessWidget {
           const Spacer(),
           _buildDivider(context),
           const SizedBox(height: 8),
-          _buildAboutAppButton(context),
-          const SizedBox(height: 2),
-          _buildVersion(state),
-          const SizedBox(height: 20),
+          _buildAboutAppButton(context, state),
         ],
       ),
     );
@@ -96,13 +92,29 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildAboutAppButton(BuildContext context) {
-    return InkWell(
-      onTap: () => context.router.push(const AboutAppRoute()),
-      child: Text(
-        context.strings.aboutApp,
-        style: context.textTheme.subtitle1?.copyWith(
-          fontSize: 16,
+  Widget _buildAboutAppButton(BuildContext context, SettingsState state) {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        context.router.push(
+          AboutAppRoute(appVersion: state.settings.appVersion),
+        );
+      },
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              context.strings.aboutApp,
+              style: context.textTheme.subtitle1?.copyWith(
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(height: 2),
+            _buildVersion(state),
+            const SizedBox(height: 20),
+          ],
         ),
       ),
     );

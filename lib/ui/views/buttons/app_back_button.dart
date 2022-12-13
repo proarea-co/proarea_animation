@@ -10,7 +10,7 @@ class AppBackButton extends StatelessWidget {
       padding: EdgeInsets.zero,
       onPressed: context.router.pop,
       alignment: Alignment.centerLeft,
-      icon: const Icon(Icons.arrow_back_ios_new_rounded),
+      icon: const Icon(Icons.arrow_back),
     );
   }
 }

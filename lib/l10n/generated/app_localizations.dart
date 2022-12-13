@@ -261,6 +261,12 @@ abstract class AppLocalizations {
   /// **'About the app'**
   String get aboutApp;
 
+  /// No description provided for @aboutAppFullName.
+  ///
+  /// In en, this message translates to:
+  /// **'About the ProArea Animations Showcase'**
+  String get aboutAppFullName;
+
   /// No description provided for @aboutAppHead.
   ///
   /// In en, this message translates to:
@@ -282,7 +288,7 @@ abstract class AppLocalizations {
   /// No description provided for @version.
   ///
   /// In en, this message translates to:
-  /// **'App version: {value} '**
+  /// **'App version: {value}'**
   String version(String value);
 
   /// No description provided for @save.
@@ -302,6 +308,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Username'**
   String get username;
+
+  /// No description provided for @v.
+  ///
+  /// In en, this message translates to:
+  /// **'v{value}'**
+  String v(String value);
 
   /// No description provided for @guest.
   ///

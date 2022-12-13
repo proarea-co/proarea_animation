@@ -52,6 +52,18 @@ class $AssetsSvgGen {
   /// File path: assets/svg/language_icon.svg
   String get languageIcon => 'assets/svg/language_icon.svg';
 
+  /// File path: assets/svg/logo_dark.svg
+  String get logoDark => 'assets/svg/logo_dark.svg';
+
+  /// File path: assets/svg/logo_light.svg
+  String get logoLight => 'assets/svg/logo_light.svg';
+
+  /// File path: assets/svg/pro_area_dark.svg
+  String get proAreaDark => 'assets/svg/pro_area_dark.svg';
+
+  /// File path: assets/svg/pro_area_light.svg
+  String get proAreaLight => 'assets/svg/pro_area_light.svg';
+
   /// File path: assets/svg/theme_icon.svg
   String get themeIcon => 'assets/svg/theme_icon.svg';
 
@@ -59,7 +71,15 @@ class $AssetsSvgGen {
   String get usernameIcon => 'assets/svg/username_icon.svg';
 
   /// List of all assets
-  List<String> get values => [languageIcon, themeIcon, usernameIcon];
+  List<String> get values => [
+        languageIcon,
+        logoDark,
+        logoLight,
+        proAreaDark,
+        proAreaLight,
+        themeIcon,
+        usernameIcon
+      ];
 }
 
 class Assets {

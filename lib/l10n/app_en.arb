@@ -27,10 +27,11 @@
     "proArea": "ProArea",
     "settings": "Settings",
     "aboutApp": "About the app",
+    "aboutAppFullName": "About the ProArea Animations Showcase",
     "aboutAppHead": "Introductory application from the ProArea team of specialists",
     "aboutAppDescription": "In the app, you can find a list of the most commonly used visual effects.\n\nThe design team created a unique, great interface, and our programmers implemented design solutions in the application.",
     "signOut": "Sign Out",
-    "version": "App version: {value} ",
+    "version": "App version: {value}",
     "@version": {
         "placeholders": {
             "value": {
@@ -41,5 +42,13 @@
     "save": "Save",
     "usernameSaved": "Username saved",
     "username": "Username",
+    "v": "v{value}",
+    "@v": {
+        "placeholders": {
+            "value": {
+                "type": "String"
+            }
+        }
+    },
     "guest": "Guest"
 }
