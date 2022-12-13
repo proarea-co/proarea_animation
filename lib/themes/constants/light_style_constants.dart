@@ -4,7 +4,7 @@ class LightStyleConstants {
   static const whiteShade = Color(0xFFFAFBFF);
   static const white = Color(0xFFFFFFFF);
   static const whiteO10 = Color(0x1AFFFFFF);
-  static const charcoal = Color(0xFF00849F);
+  static const charcoal = Color(0xFF121212);
   static const charcoalTint1 = Color(0xFF414141);
   static const charcoalTint2 = Color(0xFF717171);
   static const charcoalTint3 = Color(0xFFA0A0A0);
@@ -29,4 +29,5 @@ class LightStyleConstants {
   static const sortingLime = Color(0xFFAAD236);
   static const sortingTangerine = Color(0xFFFF9E2D);
   static const transparent = Color(0x00FFFFFF);
+  static const background = Color(0xFFF5F5F5);
 }
