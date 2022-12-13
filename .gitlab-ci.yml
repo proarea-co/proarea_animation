@@ -11,46 +11,64 @@ stages:
   before_script:
     - flutter clean
     - flutter pub get
+  allow_failure: true
 
-.job_setting_to_dev:
+.job_setting_rules_dev:
   extends: .job_setting_head
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
     - if: '$CI_COMMIT_BRANCH == "dev"'
 
-.job_setting_to_no_dev:
-  extends: .job_setting_head
+.job_setting_rules_merge:
+  extends: .job_setting_rules_dev
   rules:
+    - !reference [.job_setting_rules_dev, rules]
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-  when: always
+
+.needs_analyze:
+  needs:
+    - job: Flutter analyze
+      optional: true
+
+.needs_tests:
+  needs:
+    - job: Unit tests
+      optional: true
+    - job: Widget tests
+      optional: true
+    - job: Integration tests
+      optional: true
 
 Flutter analyze:
-  extends: .job_setting_to_no_dev
+  extends: .job_setting_rules_merge
   stage: Analyze
   script:
     - flutter analyze
 
 Unit tests:
-  extends: .job_setting_to_dev
+  extends: .job_setting_rules_dev
   stage: Test
+  needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Unit tests - Successfully'
 
 Widget tests:
-  extends: .job_setting_to_dev
+  extends: .job_setting_rules_dev
   stage: Test
+  needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Widget tests - Successfully'
 
 Integration tests:
-  extends: .job_setting_to_dev
+  extends: .job_setting_rules_dev
   stage: Test
+  needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Integration tests - Successfully'
 
 Build Android apk:
-  extends: .job_setting_to_dev
+  extends: .job_setting_rules_dev
   stage: Build
+  needs: !reference [.needs_tests, needs]
   script:
     - flutter build apk
   artifacts:
@@ -59,7 +77,8 @@ Build Android apk:
     expire_in: 1 day
 
 Build iOS ipa:
-  extends: .job_setting_to_dev
+  extends: .job_setting_rules_dev
   stage: Build
+  needs: !reference [.needs_tests, needs]
   script:
     - echo 'iOS ipa - Successfully build'
