@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../bloc/app_controller/app_controller_cubit.dart';
+import '../../../../gen/assets.gen.dart';
 import '../../../../l10n/localization_helper.dart';
 import '../../../../themes/theme_app.dart';
 import '../../../views/base_builders/app_builder.dart';
@@ -49,7 +51,10 @@ class ThemeCard extends StatelessWidget {
             await cubit.changeTheme(themeType);
           },
           child: ListTile(
-            leading: const Icon(Icons.style_outlined),
+            leading: SvgPicture.asset(
+              Assets.svg.themeIcon,
+              width: 20,
+            ),
             title: Text(context.strings.theme),
             subtitle: Text(currentTheme.getLocalizedName(context)),
           ),

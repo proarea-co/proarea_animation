@@ -18,45 +18,101 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppConsumer<SettingsCubit, SettingsState>(
+      withoutScaffold: true,
       listenDefault: (context, state) {
         if (state is! SettingsStateUsernameSaved) return;
         AppSnackBar.of(context).showSuccess(context.strings.usernameSaved);
       },
       builder: (state) {
-        return Column(
-          children: [
-            const SizedBox(height: 16),
-            const LanguageCard(),
-            const SizedBox(height: 8),
-            _buildDivider(),
-            const ThemeCard(),
-            const SizedBox(height: 8),
-            const UsernameCard(),
-            const SizedBox(height: 8),
-            _buildAboutAppButton(context),
-            const Spacer(),
-            _buildVersion(state),
-            const SizedBox(height: 8),
-          ],
+        return Scaffold(
+          backgroundColor: context.colorScheme.background,
+          appBar: AppBar(
+            elevation: 0,
+            leading: IconButton(
+              onPressed: context.router.pop,
+              icon: const Icon(Icons.arrow_back),
+            ),
+          ),
+          body: _buildBody(context, state),
         );
       },
     );
   }
 
-  Widget _buildAboutAppButton(BuildContext context) {
+  Widget _buildBody(BuildContext context, SettingsState state) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: AppButton(
-        text: context.strings.aboutApp,
-        onPressed: () => context.router.push(const AboutAppRoute()),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 8),
+          _buildTitle(context),
+          const SizedBox(height: 28),
+          _buildControls(context, state),
+          const Spacer(),
+          _buildDivider(context),
+          const SizedBox(height: 8),
+          _buildAboutAppButton(context),
+          const SizedBox(height: 2),
+          _buildVersion(state),
+          const SizedBox(height: 20),
+        ],
       ),
     );
   }
 
-  Widget _buildDivider() {
-    return const Divider(
-      height: 36,
-      color: Colors.white54,
+  Widget _buildTitle(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          context.strings.settings,
+          style: context.textTheme.subtitle1?.copyWith(fontSize: 24),
+        ),
+        const SizedBox(height: 8),
+        DecoratedBox(
+          decoration: BoxDecoration(
+            color: context.colorScheme.secondaryContainer,
+          ),
+          child: const SizedBox(
+            height: 1,
+            width: 60,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildControls(BuildContext context, SettingsState state) {
+    return Column(
+      children: const [
+        UsernameCard(),
+        SizedBox(height: 8),
+        LanguageCard(),
+        SizedBox(height: 8),
+        ThemeCard(),
+        SizedBox(height: 8),
+      ],
+    );
+  }
+
+  Widget _buildAboutAppButton(BuildContext context) {
+    return InkWell(
+      onTap: () => context.router.push(const AboutAppRoute()),
+      child: Text(
+        context.strings.aboutApp,
+        style: context.textTheme.subtitle1?.copyWith(
+          fontSize: 16,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDivider(BuildContext context) {
+    return Divider(
+      height: 1,
+      thickness: 1,
+      color: context.colorScheme.secondaryContainer,
     );
   }
 

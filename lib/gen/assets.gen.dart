@@ -46,11 +46,28 @@ class $AssetsLottieGen {
   List<String> get values => [error, scooter];
 }
 
+class $AssetsSvgGen {
+  const $AssetsSvgGen();
+
+  /// File path: assets/svg/language_icon.svg
+  String get languageIcon => 'assets/svg/language_icon.svg';
+
+  /// File path: assets/svg/theme_icon.svg
+  String get themeIcon => 'assets/svg/theme_icon.svg';
+
+  /// File path: assets/svg/username_icon.svg
+  String get usernameIcon => 'assets/svg/username_icon.svg';
+
+  /// List of all assets
+  List<String> get values => [languageIcon, themeIcon, usernameIcon];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsLottieGen lottie = $AssetsLottieGen();
+  static const $AssetsSvgGen svg = $AssetsSvgGen();
 }
 
 class AssetGenImage {
