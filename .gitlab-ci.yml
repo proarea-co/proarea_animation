@@ -11,7 +11,6 @@ stages:
   before_script:
     - flutter clean
     - flutter pub get
-  allow_failure: true
 
 .job_setting_rules_dev:
   extends: .job_setting_head
