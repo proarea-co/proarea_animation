@@ -8,9 +8,15 @@ final _darkThemeData = ThemeData(
     tertiary: DarkStyleConstants.blue,
     onTertiary: DarkStyleConstants.purple,
     tertiaryContainer: LightStyleConstants.charcoalTint1,
+    background: DarkStyleConstants.black,
     onBackground: DarkStyleConstants.transparent,
     secondary: DarkStyleConstants.charcoalTint3,
+    secondaryContainer: DarkStyleConstants.white,
     onSecondary: DarkStyleConstants.charcoalTint2,
+  ),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: DarkStyleConstants.black,
+    elevation: 0,
   ),
   primarySwatch: Colors.red,
   extensions: [

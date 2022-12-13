@@ -9,9 +9,18 @@ final _lightThemeData = ThemeData(
     tertiary: LightStyleConstants.purple,
     onTertiary: LightStyleConstants.blue,
     tertiaryContainer: LightStyleConstants.charcoalTint3,
+    background: LightStyleConstants.white,
     onBackground: LightStyleConstants.transparent,
     secondary: LightStyleConstants.charcoalTint3,
+    secondaryContainer: Colors.black,
     onSecondary: LightStyleConstants.charcoalTint2,
+  ),
+  appBarTheme: const AppBarTheme(
+    backgroundColor: LightStyleConstants.white,
+    elevation: 0,
+    iconTheme: IconThemeData(
+      color: Colors.black,
+    ),
   ),
   extensions: [
     AppMenuItemStyles.light(),

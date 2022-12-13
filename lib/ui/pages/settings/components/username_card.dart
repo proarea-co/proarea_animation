@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../bloc/settings/settings_cubit.dart';
+import '../../../../gen/assets.gen.dart';
 import '../../../../l10n/localization_helper.dart';
 import '../../../../themes/theme_app.dart';
 
@@ -27,7 +29,10 @@ class _UsernameCardState extends State<UsernameCard> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: const Icon(Icons.person),
+      leading: SvgPicture.asset(
+        Assets.svg.usernameIcon,
+        width: 20,
+      ),
       trailing: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: context.colorScheme.secondary,
