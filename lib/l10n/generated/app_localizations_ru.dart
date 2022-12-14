@@ -118,4 +118,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get guest => 'Гость';
+
+  @override
+  String get cancel => 'Отмена';
 }

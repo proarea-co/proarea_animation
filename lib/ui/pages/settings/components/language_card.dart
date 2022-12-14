@@ -54,6 +54,7 @@ class LanguageCard extends StatelessWidget {
             leading: SvgPicture.asset(
               Assets.svg.languageIcon,
               width: 20,
+              color: context.colorScheme.secondaryContainer,
             ),
             title: Text(context.strings.language),
             subtitle: Text(getLocaleName(currentLocale)),

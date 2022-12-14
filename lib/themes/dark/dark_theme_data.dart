@@ -2,9 +2,10 @@ part of '../theme_app.dart';
 
 final _darkThemeData = ThemeData(
   brightness: Brightness.dark,
+  useMaterial3: true,
   colorScheme: const ColorScheme.dark(
-    primary: DarkStyleConstants.charcoal,
-    onPrimary: DarkStyleConstants.white,
+    primary: DarkStyleConstants.white,
+    onPrimary: DarkStyleConstants.charcoal,
     tertiary: DarkStyleConstants.blue,
     onTertiary: DarkStyleConstants.purple,
     tertiaryContainer: LightStyleConstants.charcoalTint1,
@@ -13,6 +14,8 @@ final _darkThemeData = ThemeData(
     secondary: DarkStyleConstants.charcoalTint3,
     secondaryContainer: DarkStyleConstants.white,
     onSecondary: DarkStyleConstants.charcoalTint2,
+    surfaceVariant: DarkStyleConstants.charcoalTint3,
+    primaryContainer: DarkStyleConstants.white,
   ),
   appBarTheme: const AppBarTheme(
     backgroundColor: DarkStyleConstants.background,

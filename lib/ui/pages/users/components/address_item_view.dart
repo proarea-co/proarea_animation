@@ -23,7 +23,7 @@ class AddressItemView extends StatelessWidget {
             child: Text(
               text,
               style: context.textTheme.subtitle1?.copyWith(
-                color: context.colorScheme.onPrimary,
+                color: context.colorScheme.primaryContainer,
               ),
             ),
           )

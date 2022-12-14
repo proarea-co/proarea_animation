@@ -118,4 +118,7 @@ class AppLocalizationsKk extends AppLocalizations {
 
   @override
   String get guest => 'Қонақ';
+
+  @override
+  String get cancel => 'бас тарту';
 }

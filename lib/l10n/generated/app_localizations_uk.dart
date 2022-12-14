@@ -118,4 +118,7 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get guest => 'Гість';
+
+  @override
+  String get cancel => 'Скасувати';
 }

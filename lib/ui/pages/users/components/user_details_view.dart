@@ -38,21 +38,55 @@ class _UserDetailsViewState extends State<UserDetailsView> {
 
   @override
   Widget build(BuildContext context) {
+    return OrientationBuilder(builder: ((context, orientation) {
+      if (orientation == Orientation.landscape) {
+        return Row(
+          children: [
+            Expanded(
+                child: SingleChildScrollView(
+              child: _buildPersonalInfo(),
+            )),
+            Expanded(
+                child: SingleChildScrollView(
+              child: _buildAddressInfo(),
+            )),
+          ],
+        );
+      }
+      return ListView(
+        physics: const NeverScrollableScrollPhysics(),
+        children: [
+          const SizedBox(height: 32),
+          _buildPersonalInfo(),
+          const SizedBox(height: 16),
+          _buildAddressInfo(),
+          const SizedBox(height: 64),
+        ],
+      );
+    }));
+  }
+
+  Widget _buildPersonalInfo() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 32),
         _buildPersonalInfoItem(0, widget.user.name),
         _buildPersonalInfoItem(1, widget.user.email),
         _buildPersonalInfoItem(2, widget.user.username),
         _buildPersonalInfoItem(3, widget.user.phone),
         _buildPersonalInfoItem(4, widget.user.company.name),
-        const Spacer(),
+      ],
+    );
+  }
+
+  Widget _buildAddressInfo() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
         _buildAddressInfoItem(5, widget.user.address.city),
         _buildAddressInfoItem(6, widget.user.address.street),
         _buildAddressInfoItem(7, widget.user.address.suite),
         _buildAddressInfoItem(8, widget.user.address.zipCode),
-        const SizedBox(height: 64),
       ],
     );
   }
@@ -72,7 +106,7 @@ class _UserDetailsViewState extends State<UserDetailsView> {
         child: Text(
           question,
           style: context.textTheme.subtitle1?.copyWith(
-            color: context.colorScheme.onPrimary,
+            color: context.colorScheme.primaryContainer,
           ),
         ),
       ),
