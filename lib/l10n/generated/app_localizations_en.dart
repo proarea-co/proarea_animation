@@ -83,7 +83,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settings => 'Settings';
 
   @override
-  String get aboutApp => 'About the app';
+  String get aboutApp => 'About app';
 
   @override
   String get aboutAppFullName => 'About the ProArea Animations Showcase';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../bloc/app_controller/app_controller_cubit.dart';
 import '../../../../gen/assets.gen.dart';
@@ -8,6 +7,7 @@ import '../../../../l10n/localization_helper.dart';
 import '../../../../themes/theme_app.dart';
 import '../../../views/base_builders/app_builder.dart';
 import '../../../views/bottom_sheet/app_bottom_sheet.dart';
+import 'settings_list_tile.dart';
 
 class ThemeCard extends StatelessWidget {
   const ThemeCard({super.key});
@@ -41,7 +41,10 @@ class ThemeCard extends StatelessWidget {
       withErrorBuilder: false,
       builder: (controlState) {
         final currentTheme = controlState.themeType;
-        return GestureDetector(
+        return SettingsListTile(
+          asset: Assets.svg.themeIcon,
+          title: context.strings.theme,
+          subtitle: currentTheme.getLocalizedName(context),
           onTap: () async {
             final cubit = context.read<AppControllerCubit>();
             final themeType = await _showThemeDialog(context, currentTheme);
@@ -50,15 +53,6 @@ class ThemeCard extends StatelessWidget {
 
             await cubit.changeTheme(themeType);
           },
-          child: ListTile(
-            leading: SvgPicture.asset(
-              Assets.svg.themeIcon,
-              width: 20,
-              color: context.colorScheme.secondaryContainer,
-            ),
-            title: Text(context.strings.theme),
-            subtitle: Text(currentTheme.getLocalizedName(context)),
-          ),
         );
       },
     );

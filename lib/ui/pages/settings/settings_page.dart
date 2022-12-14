@@ -6,6 +6,7 @@ import '../../../l10n/localization_helper.dart';
 import '../../../routes/router.dart';
 import '../../views/base_builders/app_consumer.dart';
 import '../../../themes/theme_app.dart';
+import '../../views/buttons/app_back_button.dart';
 import '../../views/snack_bar/show_snack_bar.dart';
 import 'components/language_card.dart';
 import 'components/theme_card.dart';
@@ -25,13 +26,6 @@ class SettingsPage extends StatelessWidget {
       builder: (state) {
         return Scaffold(
           backgroundColor: context.colorScheme.background,
-          appBar: AppBar(
-            elevation: 0,
-            leading: IconButton(
-              onPressed: context.router.pop,
-              icon: const Icon(Icons.arrow_back),
-            ),
-          ),
           body: _buildBody(context, state),
         );
       },
@@ -39,18 +33,32 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context, SettingsState state) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+    return SafeArea(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 8),
-          _buildTitle(context),
-          const SizedBox(height: 28),
-          Expanded(child: _buildControls(context, state)),
-          _buildDivider(context),
-          const SizedBox(height: 8),
-          _buildAboutAppButton(context, state),
+          const SizedBox(
+            height: 48,
+            width: 48,
+            child: Center(child: AppBackButton()),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 8),
+                  _buildTitle(context),
+                  const SizedBox(height: 28),
+                  Expanded(child: _buildControls(context, state)),
+                  _buildDivider(context),
+                  const SizedBox(height: 12),
+                  _buildAboutAppButton(context, state),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -82,11 +90,11 @@ class SettingsPage extends StatelessWidget {
     return ListView(
       children: [
         UsernameCard(username: state.settings.userName),
-        const SizedBox(height: 8),
+        const SizedBox(height: 24),
         const LanguageCard(),
-        const SizedBox(height: 8),
+        const SizedBox(height: 24),
         const ThemeCard(),
-        const SizedBox(height: 8),
+        const SizedBox(height: 24),
       ],
     );
   }
@@ -130,10 +138,10 @@ class SettingsPage extends StatelessWidget {
   Widget _buildVersion(SettingsState state) {
     return Builder(builder: (context) {
       return Text(
-        context.strings.version(state.settings.appVersion),
+        'v${state.settings.appVersion}',
         textAlign: TextAlign.center,
-        style: TextStyle(
-          color: context.colorScheme.secondary,
+        style: context.textTheme.bodyText2?.copyWith(
+          fontSize: 10,
         ),
       );
     });
