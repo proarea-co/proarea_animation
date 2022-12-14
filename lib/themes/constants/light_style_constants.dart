@@ -30,4 +30,6 @@ class LightStyleConstants {
   static const sortingTangerine = Color(0xFFFF9E2D);
   static const transparent = Color(0x00FFFFFF);
   static const background = Color(0xFFF5F5F5);
+  static const lightGrey = Color(0xFFCCCCCC);
+  static const grey = Color(0xFF989898);
 }

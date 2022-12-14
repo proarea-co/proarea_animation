@@ -170,7 +170,7 @@ class _ListItemState extends State<PostItemView>
           children: [
             Icon(
               Icons.edit_outlined,
-              color: context.colorScheme.onPrimary,
+              color: context.colorScheme.primaryContainer,
             ),
             const SizedBox(height: 4),
             Text(
@@ -192,7 +192,7 @@ class _ListItemState extends State<PostItemView>
           children: [
             Icon(
               Icons.delete_outline,
-              color: context.colorScheme.onPrimary,
+              color: context.colorScheme.primaryContainer,
             ),
             const SizedBox(height: 4),
             Text(

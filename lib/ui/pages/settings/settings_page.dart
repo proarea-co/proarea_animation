@@ -47,8 +47,7 @@ class SettingsPage extends StatelessWidget {
           const SizedBox(height: 8),
           _buildTitle(context),
           const SizedBox(height: 28),
-          _buildControls(context, state),
-          const Spacer(),
+          Expanded(child: _buildControls(context, state)),
           _buildDivider(context),
           const SizedBox(height: 8),
           _buildAboutAppButton(context, state),
@@ -80,14 +79,14 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _buildControls(BuildContext context, SettingsState state) {
-    return Column(
-      children: const [
-        UsernameCard(),
-        SizedBox(height: 8),
-        LanguageCard(),
-        SizedBox(height: 8),
-        ThemeCard(),
-        SizedBox(height: 8),
+    return ListView(
+      children: [
+        UsernameCard(username: state.settings.userName),
+        const SizedBox(height: 8),
+        const LanguageCard(),
+        const SizedBox(height: 8),
+        const ThemeCard(),
+        const SizedBox(height: 8),
       ],
     );
   }

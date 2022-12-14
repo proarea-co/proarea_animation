@@ -2,9 +2,10 @@ part of '../theme_app.dart';
 
 final _lightThemeData = ThemeData(
   brightness: Brightness.light,
+  useMaterial3: true,
   colorScheme: const ColorScheme.light(
-    primary: LightStyleConstants.white,
-    onPrimary: LightStyleConstants.charcoal,
+    primary: LightStyleConstants.charcoal,
+    onPrimary: LightStyleConstants.white,
     error: LightStyleConstants.error,
     tertiary: LightStyleConstants.purple,
     onTertiary: LightStyleConstants.blue,
@@ -14,6 +15,8 @@ final _lightThemeData = ThemeData(
     secondary: LightStyleConstants.charcoalTint3,
     secondaryContainer: Colors.black,
     onSecondary: LightStyleConstants.charcoalTint2,
+    surfaceVariant: LightStyleConstants.grey,
+    primaryContainer: LightStyleConstants.white,
   ),
   appBarTheme: const AppBarTheme(
     backgroundColor: LightStyleConstants.background,

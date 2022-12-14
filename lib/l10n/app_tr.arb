@@ -42,5 +42,6 @@
     "save": "Kaydetmek",
     "usernameSaved": "Kullanıcı adı kaydedildi",
     "username": "Username",
-    "guest": "Misafir"
+    "guest": "Misafir",
+    "cancel": "iptal"
 }

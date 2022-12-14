@@ -18,6 +18,7 @@ class ShatterPage extends StatelessWidget {
             '${context.strings.welcomeBack}!',
             style: Theme.of(context).textTheme.bodyText1?.copyWith(
                   fontSize: 28,
+                  color: context.colorScheme.primary,
                 ),
           ),
         ),

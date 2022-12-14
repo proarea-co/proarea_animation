@@ -118,4 +118,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get guest => 'Misafir';
+
+  @override
+  String get cancel => 'iptal';
 }

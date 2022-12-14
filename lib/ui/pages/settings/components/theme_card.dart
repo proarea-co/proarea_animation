@@ -54,6 +54,7 @@ class ThemeCard extends StatelessWidget {
             leading: SvgPicture.asset(
               Assets.svg.themeIcon,
               width: 20,
+              color: context.colorScheme.secondaryContainer,
             ),
             title: Text(context.strings.theme),
             subtitle: Text(currentTheme.getLocalizedName(context)),

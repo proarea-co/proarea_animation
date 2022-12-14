@@ -50,5 +50,6 @@
             }
         }
     },
-    "guest": "Guest"
+    "guest": "Guest",
+    "cancel": "Cancel"
 }

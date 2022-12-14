@@ -48,11 +48,11 @@ class _UsersPageState extends State<UsersPage> {
             child: SafeArea(
               child: Stack(
                 children: <Widget>[
+                  _buildLine(),
+                  _buildUserDetails(state),
                   ArrowIconsView(
                     switchUser: _cubit.switchUser,
                   ),
-                  _buildLine(),
-                  _buildUserDetails(state),
                 ],
               ),
             ),
@@ -67,7 +67,9 @@ class _UsersPageState extends State<UsersPage> {
     if (state.users.length - 1 < index) return const SizedBox.shrink();
     return Positioned.fill(
       left: 30,
+      right: 0,
       top: 36,
+      bottom: 0,
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 250),
         child: UserDetailsView(

@@ -34,18 +34,18 @@ class AboutAppPage extends StatelessWidget {
     final theme = context.read<AppControllerCubit>().state.themeType;
     final light = theme == ThemeType.light;
 
-    if (light) return context.colorScheme.primary;
+    if (light) return context.colorScheme.onPrimary;
 
-    return context.colorScheme.onPrimary;
+    return context.colorScheme.primary;
   }
 
   Color _getTextColor(BuildContext context) {
     final theme = context.read<AppControllerCubit>().state.themeType;
     final light = theme == ThemeType.light;
 
-    if (light) return context.colorScheme.onPrimary;
+    if (light) return context.colorScheme.primary;
 
-    return context.colorScheme.primary;
+    return context.colorScheme.onPrimary;
   }
 
   @override

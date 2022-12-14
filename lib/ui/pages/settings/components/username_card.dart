@@ -1,53 +1,45 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../../../bloc/settings/settings_cubit.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../../l10n/localization_helper.dart';
 import '../../../../themes/theme_app.dart';
+import '../../../views/dialogs/app_cupertino_dialog.dart';
 
-class UsernameCard extends StatefulWidget {
-  const UsernameCard({super.key});
+class UsernameCard extends StatelessWidget {
+  final String username;
 
-  @override
-  State<UsernameCard> createState() => _UsernameCardState();
-}
-
-class _UsernameCardState extends State<UsernameCard> {
-  late final TextEditingController _textEditingController;
-  SettingsCubit get _cubit => context.read();
-
-  @override
-  void initState() {
-    super.initState();
-    _textEditingController = TextEditingController(
-      text: _cubit.state.settings.userName,
-    );
-  }
+  const UsernameCard({
+    super.key,
+    this.username = '',
+  });
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: SvgPicture.asset(
-        Assets.svg.usernameIcon,
-        width: 20,
-      ),
-      trailing: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: context.colorScheme.secondary,
+    var username = this.username;
+    if (username.isEmpty) username = context.strings.guest;
+    return GestureDetector(
+      onTap: () {
+        showCupertinoDialog(
+          context: context,
+          builder: (dialogContext) {
+            return AppCupertinoDialog(
+              settingsCubit: context.read(),
+              username: this.username,
+            );
+          },
+        );
+      },
+      child: ListTile(
+        leading: SvgPicture.asset(
+          Assets.svg.usernameIcon,
+          width: 20,
+          color: context.colorScheme.secondaryContainer,
         ),
-        onPressed: () => _cubit.saveUsername(_textEditingController.text),
-        child: Text(
-          context.strings.save,
-          style: context.textTheme.headline1,
-        ),
-      ),
-      title: TextField(
-        controller: _textEditingController,
-        decoration: InputDecoration(
-          hintText: context.strings.username,
-        ),
+        title: Text(context.strings.username),
+        subtitle: Text(username),
       ),
     );
   }
