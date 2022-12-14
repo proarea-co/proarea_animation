@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 publish_to: 'none'
 
-version: 0.0.3+3
+version: 0.0.4+4
 
 environment:
   sdk: ">=2.17.0 <3.0.0"
@@ -35,6 +35,7 @@ dependencies:
   auto_size_text: ^3.0.0
   package_info_plus: ^3.0.2
   flutter_svg: ^1.1.6
+  sizer: ^2.0.15
   
 
 dev_dependencies:

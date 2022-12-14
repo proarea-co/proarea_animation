@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../l10n/localization_helper.dart';
@@ -70,7 +71,7 @@ class SettingsPage extends StatelessWidget {
       children: [
         Text(
           context.strings.settings,
-          style: context.textTheme.subtitle1?.copyWith(fontSize: 24),
+          style: context.textTheme.subtitle1?.copyWith(fontSize: 24.sp),
         ),
         const SizedBox(height: 8),
         DecoratedBox(
@@ -115,7 +116,7 @@ class SettingsPage extends StatelessWidget {
             Text(
               context.strings.aboutApp,
               style: context.textTheme.subtitle1?.copyWith(
-                fontSize: 16,
+                fontSize: 16.sp,
               ),
             ),
             const SizedBox(height: 2),
@@ -141,7 +142,7 @@ class SettingsPage extends StatelessWidget {
         'v${state.settings.appVersion}',
         textAlign: TextAlign.center,
         style: context.textTheme.bodyText2?.copyWith(
-          fontSize: 10,
+          fontSize: 10.sp,
         ),
       );
     });
