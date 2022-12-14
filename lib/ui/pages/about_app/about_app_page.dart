@@ -175,7 +175,7 @@ class AboutAppPage extends StatelessWidget {
 
   Widget _buildHeadText(BuildContext context, String text) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Text(
         text,
         textAlign: TextAlign.left,
@@ -190,7 +190,7 @@ class AboutAppPage extends StatelessWidget {
 
   Widget _buildText(BuildContext context, String text) {
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Text(
         text,
         textAlign: TextAlign.left,
