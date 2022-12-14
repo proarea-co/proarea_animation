@@ -140,6 +140,7 @@ class AboutAppPage extends StatelessWidget {
         textAlign: TextAlign.center,
         style: context.textTheme.bodyText1?.copyWith(
           color: _getTextColor(context),
+          fontWeight: FontWeight.w600,
           fontSize: 16,
         ),
       ),
@@ -177,10 +178,10 @@ class AboutAppPage extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Text(
         text,
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.left,
         style: context.textTheme.bodyText1?.copyWith(
           color: _getTextColor(context),
-          fontSize: 14,
+          fontSize: 11,
           fontWeight: FontWeight.w400,
         ),
       ),
@@ -195,7 +196,7 @@ class AboutAppPage extends StatelessWidget {
         textAlign: TextAlign.left,
         style: context.textTheme.bodyText1?.copyWith(
           color: _getTextColor(context),
-          fontSize: 14,
+          fontSize: 11,
           fontWeight: FontWeight.w400,
         ),
       ),
