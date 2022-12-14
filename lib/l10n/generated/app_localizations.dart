@@ -258,7 +258,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutApp.
   ///
   /// In en, this message translates to:
-  /// **'About the app'**
+  /// **'About app'**
   String get aboutApp;
 
   /// No description provided for @aboutAppFullName.
