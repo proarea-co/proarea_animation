@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../l10n/localization_helper.dart';
@@ -36,7 +37,7 @@ class _AppCupertinoDialogState extends State<AppCupertinoDialog> {
     return CupertinoAlertDialog(
       title: Text(
         context.strings.username,
-        style: context.textTheme.subtitle1?.copyWith(fontSize: 20),
+        style: context.textTheme.subtitle1?.copyWith(fontSize: 20.sp),
       ),
       content: Material(
         color: Colors.transparent,
@@ -55,7 +56,7 @@ class _AppCupertinoDialogState extends State<AppCupertinoDialog> {
             context.strings.cancel,
             style: context.textTheme.bodyText2?.copyWith(
               color: context.colorScheme.surfaceVariant,
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
           ),
         ),
@@ -67,7 +68,7 @@ class _AppCupertinoDialogState extends State<AppCupertinoDialog> {
           child: Text(
             context.strings.save,
             style: context.textTheme.bodyText2?.copyWith(
-              fontSize: 16,
+              fontSize: 16.sp,
             ),
           ),
         ),

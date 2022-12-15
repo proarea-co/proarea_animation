@@ -140,7 +140,7 @@ class _HomePageState extends State<HomePage>
 
   Widget _buildHeading() {
     return AppBuilder<SettingsCubit, SettingsState>(
-      withoutScaffold: true,
+      withScaffold: false,
       withErrorBuilder: false,
       builder: (state) {
         var username = state.settings.userName;

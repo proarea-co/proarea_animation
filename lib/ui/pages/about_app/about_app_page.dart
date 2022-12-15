@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../bloc/app_controller/app_controller_cubit.dart';
 import '../../../gen/assets.gen.dart';
@@ -20,13 +21,13 @@ class AboutAppPage extends StatelessWidget {
 
   BorderRadiusGeometry _borderRadius(bool portrait) {
     if (portrait) {
-      return const BorderRadius.vertical(
-        top: Radius.elliptical(32, 24),
+      return BorderRadius.vertical(
+        top: Radius.elliptical(32.sp, 24.sp),
       );
     }
 
-    return const BorderRadius.horizontal(
-      left: Radius.elliptical(24, 32),
+    return BorderRadius.horizontal(
+      left: Radius.elliptical(24.sp, 32.sp),
     );
   }
 
@@ -74,9 +75,9 @@ class AboutAppPage extends StatelessWidget {
   Widget _buildPortrait() {
     return Column(
       children: [
-        const SizedBox(height: 16),
+        SizedBox(height: 16.sp),
         _buildLogo(),
-        const SizedBox(height: 28),
+        SizedBox(height: 28.sp),
         Expanded(child: _buildContent(true)),
       ],
     );
@@ -85,9 +86,9 @@ class AboutAppPage extends StatelessWidget {
   Widget _buildLandscape() {
     return Row(
       children: [
-        const SizedBox(width: 16),
+        SizedBox(width: 16.sp),
         _buildLogo(),
-        const SizedBox(width: 28),
+        SizedBox(width: 28.sp),
         Expanded(child: _buildContent(false)),
       ],
     );
@@ -95,7 +96,7 @@ class AboutAppPage extends StatelessWidget {
 
   Widget _buildLogo() {
     return AppBuilder<AppControllerCubit, AppControllerState>(
-      withoutScaffold: true,
+      withScaffold: false,
       builder: (state) {
         final light = state.themeType == ThemeType.light;
         final asset = light ? Assets.svg.logoLight : Assets.svg.logoDark;
@@ -117,13 +118,13 @@ class AboutAppPage extends StatelessWidget {
               parent: BouncingScrollPhysics(),
             ),
             children: [
-              const SizedBox(height: 28),
+              SizedBox(height: 28.sp),
               _buildAboutApp(context),
-              const SizedBox(height: 8),
+              SizedBox(height: 8.sp),
               _buildVersion(context),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.sp),
               _buildSubHead(context),
-              const SizedBox(height: 20),
+              SizedBox(height: 20.sp),
               _buildText(context, context.strings.aboutAppDescription),
             ],
           ),
@@ -134,14 +135,14 @@ class AboutAppPage extends StatelessWidget {
 
   Widget _buildAboutApp(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.sp),
       child: Text(
         context.strings.aboutAppFullName,
         textAlign: TextAlign.center,
         style: context.textTheme.bodyText1?.copyWith(
           color: _getTextColor(context),
           fontWeight: FontWeight.w600,
-          fontSize: 16,
+          fontSize: 16.sp,
         ),
       ),
     );
@@ -160,11 +161,11 @@ class AboutAppPage extends StatelessWidget {
 
   Widget _buildSubHead(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.sp),
       child: Row(
         children: [
           SvgPicture.asset(Assets.svg.proAreaDark),
-          const SizedBox(width: 20),
+          SizedBox(width: 20.sp),
           Expanded(
             child: _buildHeadText(context, context.strings.aboutAppHead),
           ),
@@ -175,13 +176,13 @@ class AboutAppPage extends StatelessWidget {
 
   Widget _buildHeadText(BuildContext context, String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.sp),
       child: Text(
         text,
         textAlign: TextAlign.left,
         style: context.textTheme.bodyText1?.copyWith(
           color: _getTextColor(context),
-          fontSize: 11,
+          fontSize: 11.sp,
           fontWeight: FontWeight.w400,
         ),
       ),
@@ -190,13 +191,13 @@ class AboutAppPage extends StatelessWidget {
 
   Widget _buildText(BuildContext context, String text) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 16.sp),
       child: Text(
         text,
         textAlign: TextAlign.left,
         style: context.textTheme.bodyText1?.copyWith(
           color: _getTextColor(context),
-          fontSize: 11,
+          fontSize: 11.sp,
           fontWeight: FontWeight.w400,
         ),
       ),

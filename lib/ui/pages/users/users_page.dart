@@ -41,7 +41,7 @@ class _UsersPageState extends State<UsersPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppConsumer<UsersCubit, UsersState>(
-        withoutScaffold: true,
+        withScaffold: false,
         builder: (state) {
           return DecoratedBox(
             decoration: _boxDecoration,
