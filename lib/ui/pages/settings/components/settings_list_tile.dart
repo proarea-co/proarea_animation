@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../../themes/theme_app.dart';
 
@@ -26,14 +27,13 @@ class SettingsListTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(width: 2),
             SvgPicture.asset(
               asset,
-              width: 24,
-              height: 24,
+              width: 24.sp,
+              height: 24.sp,
               color: context.colorScheme.secondaryContainer,
             ),
-            const SizedBox(width: 14),
+            SizedBox(width: 12.sp),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
@@ -41,14 +41,17 @@ class SettingsListTile extends StatelessWidget {
                 Text(
                   title,
                   style: context.textTheme.subtitle1?.copyWith(
-                    fontSize: 16,
-                    height: 5/4,
+                    fontSize: 16.sp,
+                    height: 1.5,
                   ),
                 ),
-                const SizedBox(height: 2),
+                SizedBox(height: 2.sp),
                 Text(
                   subtitle,
-                  style: context.textTheme.bodyText2?.copyWith(fontSize: 10),
+                  style: context.textTheme.bodyText2?.copyWith(
+                    fontSize: 10.sp,
+                    height: 1.5,
+                  ),
                 ),
               ],
             ),

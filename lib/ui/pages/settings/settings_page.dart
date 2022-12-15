@@ -5,8 +5,8 @@ import 'package:sizer/sizer.dart';
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../routes/router.dart';
-import '../../views/base_builders/app_consumer.dart';
 import '../../../themes/theme_app.dart';
+import '../../views/base_builders/app_consumer.dart';
 import '../../views/buttons/app_back_button.dart';
 import '../../views/snack_bar/show_snack_bar.dart';
 import 'components/language_card.dart';
@@ -16,14 +16,25 @@ import 'components/username_card.dart';
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
+  void _listenToEvents(
+    BuildContext context,
+    SettingsState state,
+  ) {
+    final actionsMap = {
+      SettingsStateUsernameSaved: _onUsernameSaved,
+    };
+
+    actionsMap[state.status.runtimeType]?.call(context);
+  }
+
+  void _onUsernameSaved(BuildContext context) {
+    AppSnackBar.of(context).showSuccess(context.strings.usernameSaved);
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppConsumer<SettingsCubit, SettingsState>(
-      withoutScaffold: true,
-      listenDefault: (context, state) {
-        if (state is! SettingsStateUsernameSaved) return;
-        AppSnackBar.of(context).showSuccess(context.strings.usernameSaved);
-      },
+      listenDefault: _listenToEvents,
       builder: (state) {
         return Scaffold(
           backgroundColor: context.colorScheme.background,
@@ -38,23 +49,33 @@ class SettingsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(
-            height: 48,
-            width: 48,
-            child: Center(child: AppBackButton()),
+          SizedBox(
+            height: 48.sp,
+            width: 48.sp,
+            child: const Center(
+              child: AppBackButton(),
+            ),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(
+                horizontal: 16.sp,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 8),
+                  SizedBox(height: 8.sp),
                   _buildTitle(context),
-                  const SizedBox(height: 28),
-                  Expanded(child: _buildControls(context, state)),
+                  SizedBox(height: 28.sp),
+                  UsernameCard(username: state.settings.userName),
+                  SizedBox(height: 24.sp),
+                  const LanguageCard(),
+                  SizedBox(height: 24.sp),
+                  const ThemeCard(),
+                  SizedBox(height: 24.sp),
+                  const Spacer(),
                   _buildDivider(context),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12.sp),
                   _buildAboutAppButton(context, state),
                 ],
               ),
@@ -87,19 +108,6 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildControls(BuildContext context, SettingsState state) {
-    return ListView(
-      children: [
-        UsernameCard(username: state.settings.userName),
-        const SizedBox(height: 24),
-        const LanguageCard(),
-        const SizedBox(height: 24),
-        const ThemeCard(),
-        const SizedBox(height: 24),
-      ],
-    );
-  }
-
   Widget _buildAboutAppButton(BuildContext context, SettingsState state) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
@@ -119,9 +127,9 @@ class SettingsPage extends StatelessWidget {
                 fontSize: 16.sp,
               ),
             ),
-            const SizedBox(height: 2),
+            SizedBox(height: 2.sp),
             _buildVersion(state),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.sp),
           ],
         ),
       ),
@@ -137,14 +145,16 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _buildVersion(SettingsState state) {
-    return Builder(builder: (context) {
-      return Text(
-        'v${state.settings.appVersion}',
-        textAlign: TextAlign.center,
-        style: context.textTheme.bodyText2?.copyWith(
-          fontSize: 10.sp,
-        ),
-      );
-    });
+    return Builder(
+      builder: (context) {
+        return Text(
+          'v${state.settings.appVersion}',
+          textAlign: TextAlign.center,
+          style: context.textTheme.bodyText2?.copyWith(
+            fontSize: 10.sp,
+          ),
+        );
+      },
+    );
   }
 }

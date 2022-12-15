@@ -46,13 +46,13 @@ class LanguageCard extends StatelessWidget {
           title: context.strings.language,
           subtitle: getLocaleName(currentLocale),
           onTap: () async {
-          final cubit = context.read<AppControllerCubit>();
-          final locale = await _showLanguageDialog(context, currentLocale);
+            final cubit = context.read<AppControllerCubit>();
+            final locale = await _showLanguageDialog(context, currentLocale);
 
-          if (locale == null) return;
+            if (locale == null) return;
 
-          await cubit.changeLanguage(locale);
-        },
+            await cubit.changeLanguage(locale);
+          },
         );
       },
     );
