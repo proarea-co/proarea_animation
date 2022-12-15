@@ -37,7 +37,7 @@ class ThemeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBuilder<AppControllerCubit, AppControllerState>(
-      withoutScaffold: true,
+      withScaffold: false,
       withErrorBuilder: false,
       builder: (controlState) {
         final currentTheme = controlState.themeType;

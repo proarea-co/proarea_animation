@@ -34,6 +34,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppConsumer<SettingsCubit, SettingsState>(
+      withScaffold: false,
       listenDefault: _listenToEvents,
       builder: (state) {
         return Scaffold(
@@ -94,14 +95,14 @@ class SettingsPage extends StatelessWidget {
           context.strings.settings,
           style: context.textTheme.subtitle1?.copyWith(fontSize: 24.sp),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8.sp),
         DecoratedBox(
           decoration: BoxDecoration(
             color: context.colorScheme.secondaryContainer,
           ),
-          child: const SizedBox(
-            height: 1,
-            width: 60,
+          child: SizedBox(
+            height: 1.sp,
+            width: 60.sp,
           ),
         ),
       ],
@@ -138,8 +139,8 @@ class SettingsPage extends StatelessWidget {
 
   Widget _buildDivider(BuildContext context) {
     return Divider(
-      height: 1,
-      thickness: 1,
+      height: 1.sp,
+      thickness: 1.sp,
       color: context.colorScheme.secondaryContainer,
     );
   }

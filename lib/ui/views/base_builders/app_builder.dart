@@ -9,7 +9,7 @@ import '../loaders/app_loader.dart';
 @immutable
 class AppBuilder<C extends BaseCubit<S>, S extends BaseState>
     extends StatelessWidget {
-  final bool withoutScaffold;
+  final bool withScaffold;
   final bool withErrorBuilder;
   final Widget Function(S state) builder;
   final Widget Function(S state)? buildLoading;
@@ -20,7 +20,7 @@ class AppBuilder<C extends BaseCubit<S>, S extends BaseState>
   const AppBuilder({
     super.key,
     required this.builder,
-    this.withoutScaffold = false,
+    this.withScaffold = true,
     this.withErrorBuilder = true,
     this.buildLoading,
     this.buildRefresh,
@@ -32,7 +32,7 @@ class AppBuilder<C extends BaseCubit<S>, S extends BaseState>
   Widget build(BuildContext context) {
     return BlocBuilder<C, S>(
       builder: (context, state) {
-        if (withoutScaffold) return _buildContent(state);
+        if (!withScaffold) return _buildContent(state);
 
         return Scaffold(
           backgroundColor: context.colorScheme.background,

@@ -8,7 +8,7 @@ import 'app_listener.dart';
 @immutable
 class AppConsumer<C extends BaseCubit<S>, S extends BaseState>
     extends StatelessWidget {
-  final bool withoutScaffold;
+  final bool withScaffold;
   final Widget Function(S state) builder;
   final Widget Function(S state)? buildLoading;
   final Widget Function(S state)? buildRefresh;
@@ -21,7 +21,7 @@ class AppConsumer<C extends BaseCubit<S>, S extends BaseState>
   const AppConsumer({
     super.key,
     required this.builder,
-    this.withoutScaffold = false,
+    this.withScaffold = true,
     this.buildLoading,
     this.buildRefresh,
     this.buildError,
@@ -47,7 +47,7 @@ class AppConsumer<C extends BaseCubit<S>, S extends BaseState>
         return AppBuilder<C, S>(
           key: key,
           builder: builder,
-          withoutScaffold: withoutScaffold,
+          withScaffold: withScaffold,
           withErrorBuilder: false,
           buildLoading: buildLoading,
           buildRefresh: buildRefresh,

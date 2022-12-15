@@ -62,7 +62,7 @@ class _PostsPageState extends State<PostsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppConsumer<PostsCubit, PostsState>(
-        withoutScaffold: true,
+        withScaffold: false,
         builder: (state) {
           return SafeArea(
             child: Column(

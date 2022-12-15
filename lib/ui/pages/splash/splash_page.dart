@@ -27,7 +27,7 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppConsumer<SplashCubit, SplashState>(
-        withoutScaffold: true,
+        withScaffold: false,
         listenDefault: (context, state) {
           if (state is! SplashLoaded) return;
           context.router.replace(const HomeRoute());

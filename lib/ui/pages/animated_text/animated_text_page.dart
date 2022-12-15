@@ -27,7 +27,7 @@ class AnimatedTextPage extends StatelessWidget with AutoRouteWrapper {
   @override
   Widget build(BuildContext context) {
     return AppConsumer<AnimatedTextCubit, AnimatedTextState>(
-      withoutScaffold: true,
+      withScaffold: false,
       builder: (state) {
         final text = AnimatedTextsMock.animatedTexts()[state.index];
         return Scaffold(
