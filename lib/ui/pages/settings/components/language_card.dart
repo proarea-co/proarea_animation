@@ -69,9 +69,21 @@ class LanguageCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).pop(locale);
       },
-      child: ListTile(
-        textColor: textColor,
-        title: Text(getLocaleName(locale)),
+      child: Column(
+        children: [
+          ListTile(
+            leading: Text(
+              getLocaleFlag(locale),
+              style: context.textTheme.subtitle1,
+            ),
+            minLeadingWidth: 20,
+            title: Text(
+              getLocaleName(locale),
+              style: context.textTheme.bodyText1?.copyWith(color: textColor),
+            ),
+          ),
+          const Divider(height: 1),
+        ],
       ),
     );
   }

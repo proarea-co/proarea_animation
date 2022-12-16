@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-import '../../../themes/constants/light_style_constants.dart';
 import '../../../themes/theme_app.dart';
 
 class AppBottomSheet<T> {
@@ -18,7 +17,7 @@ class AppBottomSheet<T> {
       context: context,
       isScrollControlled: true,
       backgroundColor: context.colorScheme.onBackground,
-      barrierColor: LightStyleConstants.white.withOpacity(0),
+      // barrierColor: context.colorScheme.primary.withOpacity(0.3),
       builder: (_) => _buildShape(title, body),
     );
   }
@@ -30,7 +29,7 @@ class AppBottomSheet<T> {
         width: double.infinity,
         padding: const EdgeInsets.only(top: 28),
         decoration: BoxDecoration(
-          color: context.colorScheme.secondary,
+          color: context.colorScheme.onPrimaryContainer,
         ),
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),

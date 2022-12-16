@@ -1,5 +1,6 @@
 {
     "@@locale": "tr",
+    "flag": "🇹🇷",
     "serverErrorMessage": "Sunucu hatası oluştu",
     "errorInternetConnection": "İnternet Bağlantı Hatası",
     "language": "Dil",

@@ -99,6 +99,12 @@ abstract class AppLocalizations {
     Locale('uk')
   ];
 
+  /// No description provided for @flag.
+  ///
+  /// In en, this message translates to:
+  /// **'🇺🇸'**
+  String get flag;
+
   /// No description provided for @serverErrorMessage.
   ///
   /// In en, this message translates to:

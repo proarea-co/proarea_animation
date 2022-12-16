@@ -1,5 +1,6 @@
 {
     "@@locale": "en",
+    "flag": "🇺🇸",
     "serverErrorMessage": "Server error occurred",
     "errorInternetConnection": "Internet Connection Error",
     "language": "Language",

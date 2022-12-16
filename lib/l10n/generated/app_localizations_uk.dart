@@ -5,6 +5,9 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
+  String get flag => '🇺🇦';
+
+  @override
   String get serverErrorMessage => 'Помилка сервера';
 
   @override

@@ -5,6 +5,9 @@ class AppLocalizationsTr extends AppLocalizations {
   AppLocalizationsTr([String locale = 'tr']) : super(locale);
 
   @override
+  String get flag => '🇹🇷';
+
+  @override
   String get serverErrorMessage => 'Sunucu hatası oluştu';
 
   @override
