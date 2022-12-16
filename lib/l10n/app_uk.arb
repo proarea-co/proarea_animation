@@ -1,5 +1,6 @@
 {
     "@@locale": "uk",
+    "flag": "🇺🇦",
     "language": "Мова",
     "languageName": "Українська",
     "serverErrorMessage": "Помилка сервера",

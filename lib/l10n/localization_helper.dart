@@ -35,6 +35,9 @@ AppLocalizations getLocaleLocalizations([Locale? locale]) {
 String getLocaleName(Locale locale) {
   return getLocaleLocalizations(locale).languageName;
 }
+String getLocaleFlag(Locale locale){
+  return getLocaleLocalizations(locale).flag;
+}
 
 extension ContextExt on BuildContext {
   AppLocalizations get strings => _getLocalizations(this);

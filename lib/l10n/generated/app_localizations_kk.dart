@@ -5,6 +5,9 @@ class AppLocalizationsKk extends AppLocalizations {
   AppLocalizationsKk([String locale = 'kk']) : super(locale);
 
   @override
+  String get flag => '🇰🇿';
+
+  @override
   String get serverErrorMessage => 'Сервер қатесі орын алды';
 
   @override

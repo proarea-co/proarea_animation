@@ -16,8 +16,10 @@ final _darkThemeData = ThemeData(
     onSecondary: DarkStyleConstants.charcoalTint2,
     surfaceVariant: DarkStyleConstants.charcoalTint3,
     primaryContainer: DarkStyleConstants.white,
+    onPrimaryContainer: DarkStyleConstants.charcoalTint1,
   ),
   appBarTheme: const AppBarTheme(
+    systemOverlayStyle: SystemUiOverlayStyle.light,
     backgroundColor: DarkStyleConstants.background,
     elevation: 0,
   ),

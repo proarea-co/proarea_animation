@@ -5,6 +5,9 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
+  String get flag => '🏳️';
+
+  @override
   String get serverErrorMessage => 'Ошибка сервера';
 
   @override
@@ -83,10 +86,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get settings => 'Настройки';
 
   @override
-  String get aboutApp => 'О приложении ProArea Animations Showcase';
+  String get aboutApp => 'О приложении';
 
   @override
-  String get aboutAppFullName => 'About the ProArea Animations Showcase';
+  String get aboutAppFullName => 'О приложении ProArea Animations Showcase';
 
   @override
   String get aboutAppHead => 'Ознакомительное приложение от команды специалистов ProArea';
