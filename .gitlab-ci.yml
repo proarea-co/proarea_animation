@@ -145,12 +145,13 @@ Build Android apk Test:
   needs: !reference [.needs_analyze, needs]
   script:
     - flutter build apk
+    - !reference [.send_notification_build, script]
   artifacts:
     paths:
       - "build/app/outputs/apk/release/pro_an_*.apk"
     expire_in: 1 day
 
-Send notification Build:
+.send_notification_build:
   stage: Slack Notifications
   # extends: .job_setting_rules_dev
   extends: .job_setting_rules_merge
