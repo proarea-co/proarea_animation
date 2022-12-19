@@ -106,15 +106,15 @@ Widget tests:
     - echo 'Widget tests - Successfully'
 
 Integration tests:
-  # extends: .job_setting_rules_dev
-  extends: .job_setting_rules_merge
+  extends: .job_setting_rules_dev
   stage: Test
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Integration tests - Successfully'
 
 Build Android apk:
-  extends: .job_setting_rules_dev
+  # extends: .job_setting_rules_dev
+  extends: .job_setting_rules_merge
   stage: Build
   needs: !reference [.needs_tests, needs]
   script:
