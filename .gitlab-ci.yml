@@ -7,7 +7,7 @@ variables:
 
     Brunch: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
 
-    Author: $CI_COMMIT_AUTHOR
+    Author: $GITLAB_USER_NAME
 
     MR: $CI_MERGE_REQUEST_PROJECT_URL"}},
     {"type":"divider"}]}
