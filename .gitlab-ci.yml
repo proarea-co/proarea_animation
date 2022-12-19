@@ -4,7 +4,7 @@ variables:
   SLACK_CHANNEL_ACCESS_TOKEN: xoxe.xoxp-1-Mi0yLTQxODY4MTY2NzM3Ny0zMzI2MTMyNjUwNjg4LTQ1Mzk2Mzc1NzEyOTgtNDU0MjA5Nzc2NTc4MC02OGNhMzY3Y2IxOTMyMmI3MWI4YjhkMTYyOGQ3YWUyMmUzNDVjODdjYjE4MzFkN2U3ZTIzZGMxOTQ0ZmMxODc5
   SLACK_CHANNEL_ID: C03EXNXQKK5
 
-MESSAGE_ANALYZE: >-
+  MESSAGE_ANALYZE: >-
     {"blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
     "text":"*Analyze Complete*
