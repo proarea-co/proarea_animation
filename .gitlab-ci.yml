@@ -97,22 +97,15 @@ Send notification Analyze:
   stage: Slack Notifications
   extends: .job_setting_rules_merge
   needs: !reference [.needs_analyze, needs]
-  script:
+  script: 
     - echo "Send Slack Messages"
-    - 'curl -X POST -H '
-    'Content-type: application/json'
-    ' --data '
-    '{"text":"$CI_COMMIT_TITLE"}'
-    ' $WEB_HOOK_URL'
+    - "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"$CI_COMMIT_TITLE\"}' $WEB_HOOK_URL"
 
 Send notification Build:
   stage: Slack Notifications
   extends: .job_setting_rules_dev
   needs: !reference [.needs_build, needs]
-  script:
+  script: 
     - echo "Send Slack Messages"
-    - 'curl -X POST -H '
-    'Content-type: application/json'
-    ' --data '
-    '{"text":"Send notification Build!"}'
-    ' $WEB_HOOK_URL'
+    - "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"Hello, World!\"}' $WEB_HOOK_URL"
+
