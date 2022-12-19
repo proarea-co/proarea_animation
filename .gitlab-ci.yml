@@ -113,8 +113,7 @@ Integration tests:
     - echo 'Integration tests - Successfully'
 
 Build Android apk:
-  # extends: .job_setting_rules_dev
-  extends: .job_setting_rules_merge
+  extends: .job_setting_rules_dev
   stage: Build
   needs: !reference [.needs_tests, needs]
   script:
@@ -138,6 +137,18 @@ Send notification Analyze:
   script: 
     - echo "Send Slack Messages"
     - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_ANALYZE}" $WEB_HOOK_URL'
+
+
+Build Android apk Test:
+  extends: .job_setting_rules_merge
+  stage: Build
+  needs: !reference [.needs_analyze, needs]
+  script:
+    - flutter build apk
+  artifacts:
+    paths:
+      - "build/app/outputs/apk/release/pro_an_*.apk"
+    expire_in: 1 day
 
 Send notification Build:
   stage: Slack Notifications
