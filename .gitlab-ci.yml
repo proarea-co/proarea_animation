@@ -1,7 +1,10 @@
 ---
 variables:
   WEB_HOOK_URL: https://hooks.slack.com/services/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
-  MESSAGE_ANALYZE: >-
+  SLACK_CHANNEL_ACCESS_TOKEN: xoxe.xoxp-1-Mi0yLTQxODY4MTY2NzM3Ny0zMzI2MTMyNjUwNjg4LTQ1Mzk2Mzc1NzEyOTgtNDU0MjA5Nzc2NTc4MC02OGNhMzY3Y2IxOTMyMmI3MWI4YjhkMTYyOGQ3YWUyMmUzNDVjODdjYjE4MzFkN2U3ZTIzZGMxOTQ0ZmMxODc5
+  SLACK_CHANNEL_ID: C03EXNXQKK5
+
+MESSAGE_ANALYZE: >-
     {"blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
     "text":"*Analyze Complete*
@@ -16,6 +19,7 @@ variables:
 
     *MR:* ${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"}},
     {"type":"divider"}]}
+
   MESSAGE_BUILD: >-
     {"blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
@@ -102,7 +106,8 @@ Widget tests:
     - echo 'Widget tests - Successfully'
 
 Integration tests:
-  extends: .job_setting_rules_dev
+  # extends: .job_setting_rules_dev
+  extends: .job_setting_rules_merge
   stage: Test
   needs: !reference [.needs_analyze, needs]
   script:
@@ -136,9 +141,18 @@ Send notification Analyze:
 
 Send notification Build:
   stage: Slack Notifications
-  extends: .job_setting_rules_dev
+  # extends: .job_setting_rules_dev
+  extends: .job_setting_rules_merge
   needs: !reference [.needs_build, needs]
+  dependencies:
+    - Build Android apk
+    - Build iOS ipa
   script: 
     - echo "Send Slack Messages"
-    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_BUILD}" $WEB_HOOK_URL'
-
+    - |
+      curl \
+        -F token="${SLACK_CHANNEL_ACCESS_TOKEN}" \
+        -F channels="${SLACK_CHANNEL_ID}" \
+        -F initial_comment="${MESSAGE_BUILD}" \
+        -F "file=@$(find app/build/outputs/apk/release -name 'pro_an_*')" \
+        https://slack.com/api/files.upload
