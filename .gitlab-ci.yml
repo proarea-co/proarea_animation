@@ -2,26 +2,31 @@
 variables:
   WEB_HOOK_URL: https://hooks.slack.com/services/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
   MESSAGE_ANALYZE: >-
-    {"blocks":[{"type":"divider"},{"type":"section","text":{"type":"mrkdwn",
+    {"blocks":[{"type":"divider"},
+    {"type":"section","text":{"type":"mrkdwn",
     "text":"*Analyze Complete*
 
-    Brunch: $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
 
-    Author: $GITLAB_USER_NAME
+    *Commit:* $CI_COMMIT_TITLE
 
-    MR: $CI_MERGE_REQUEST_PROJECT_URL"}},
+    *Author:* $GITLAB_USER_NAME
+
+    *MR:* $CI_MERGE_REQUEST_PROJECT_URL"}},
     {"type":"divider"}]}
   MESSAGE_BUILD: >-
-    {"blocks":[{"type":"divider"},{"type":"section","text":{"type":"mrkdwn","text":"*Build
-    Complete* 
+    {"blocks":[{"type":"divider"},
+    {"type":"section","text":{"type":"mrkdwn",
+    "text":"*Build Complete*
 
-    Brunch: ${CI_COMMIT_BRANCH} 
+    *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
 
-    Author: ${CI_COMMIT_AUTHOR} 
+    *Commit:* $CI_COMMIT_TITLE
 
-    Last MRs:
+    *Author:* $GITLAB_USER_NAME
 
-    ${CI_OPEN_MERGE_REQUESTS}"}},{"type":"divider"}]}
+    *MR:* $CI_MERGE_REQUEST_PROJECT_URL"}},
+    {"type":"divider"}]}
 
 
 stages:
