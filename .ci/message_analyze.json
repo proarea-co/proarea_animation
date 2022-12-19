@@ -7,7 +7,7 @@
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
-				"text": "*Analyze Complete* \nBrunch: ${CI_COMMIT_BRANCH} \nAuthor: ${CI_COMMIT_AUTHOR} \nLast MRs:\n${CI_OPEN_MERGE_REQUESTS}"
+				"text": "*Analyze Complete* \nBrunch: $CI_COMMIT_BRANCH \nAuthor: $CI_COMMIT_AUTHOR \nLast MRs:\n$CI_OPEN_MERGE_REQUESTS"
 			}
 		},
 		{
