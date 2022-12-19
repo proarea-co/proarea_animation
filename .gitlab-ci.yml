@@ -1,24 +1,7 @@
 variables:
   WEB_HOOK_URL: https://hooks.slack.com/services/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
-  MESSAGE_ANALYZE: |
-{
-	"blocks": [
-		{
-			"type": "divider"
-		},
-		{
-			"type": "section",
-			"text": {
-				"type": "mrkdwn",
-				"text": "*Analyze Complete* \nBrunch: $CI_COMMIT_BRANCH \nAuthor: $CI_COMMIT_AUTHOR \nLast MRs:\n$CI_OPEN_MERGE_REQUESTS"
-			}
-		},
-		{
-			"type": "divider"
-		}
-	]
-}
-  MESSAGE_BUILD: "@.ci/message_build.json"
+  MESSAGE_ANALYZE: "{\"blocks\":[{\"type\":\"divider\"},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Analyze Complete* \nBrunch: $CI_COMMIT_BRANCH \nAuthor: $CI_COMMIT_AUTHOR \nLast MRs:\n$CI_OPEN_MERGE_REQUESTS\"}},{\"type\":\"divider\"}]}"
+  MESSAGE_BUILD: "{\"blocks\":[{\"type\":\"divider\"},{\"type\":\"section\",\"text\":{\"type\":\"mrkdwn\",\"text\":\"*Build Complete* \nBrunch: ${CI_COMMIT_BRANCH} \nAuthor: ${CI_COMMIT_AUTHOR} \nLast MRs:\n${CI_OPEN_MERGE_REQUESTS}\"}},{\"type\":\"divider\"}]}"
 
 stages:
   - Analyze
