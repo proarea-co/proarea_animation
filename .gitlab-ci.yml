@@ -99,7 +99,7 @@ Send notification Analyze:
   needs: !reference [.needs_analyze, needs]
   script: 
     - echo "Send Slack Messages"
-    - "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"$CI_COMMIT_TITLE\"}' $WEB_HOOK_URL"
+    - "curl -X POST -H 'Content-type: application/json' --data '{\"text\":\"${CI_COMMIT_TITLE}\"}' $WEB_HOOK_URL"
 
 Send notification Build:
   stage: Slack Notifications
