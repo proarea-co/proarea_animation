@@ -12,7 +12,7 @@ variables:
 
     *Author:* $GITLAB_USER_NAME
 
-    *Reviewer:* @Temirlan Almassov (edit *.gitlab-ci.yml* to change)
+    *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
 
     *MR:* $CI_MERGE_REQUEST_PROJECT_URL"}},
     {"type":"divider"}]}
@@ -27,7 +27,7 @@ variables:
 
     *Author:* $GITLAB_USER_NAME
 
-    *Reviewer:* @Temirlan Almassov (edit *.gitlab-ci.yml* to change)
+    *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
 
     *MR:* $CI_MERGE_REQUEST_PROJECT_URL"}},
     {"type":"divider"}]}
