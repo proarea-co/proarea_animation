@@ -9,7 +9,7 @@ variables:
 
     Author: $CI_COMMIT_AUTHOR
 
-    MR: $CI_MERGE_REQUEST_SOURCE_PROJECT_URL"}},
+    MR: $CI_MERGE_REQUEST_PROJECT_URL"}},
     {"type":"divider"}]}
   MESSAGE_BUILD: >-
     {"blocks":[{"type":"divider"},{"type":"section","text":{"type":"mrkdwn","text":"*Build
