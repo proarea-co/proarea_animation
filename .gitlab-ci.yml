@@ -1,5 +1,7 @@
 variables:
   WEB_HOOK_URL: https://hooks.slack.com/services/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
+  MESSAGE_ANALYZE: "@.ci/message_analyze.json"
+  MESSAGE_BUILD: "@.ci/message_build.json"
 
 stages:
   - Analyze
@@ -99,7 +101,7 @@ Send notification Analyze:
   needs: !reference [.needs_analyze, needs]
   script: 
     - echo "Send Slack Messages"
-    - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"${CI_COMMIT_TITLE}\"}" $WEB_HOOK_URL'
+    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_ANALYZE}" $WEB_HOOK_URL'
 
 Send notification Build:
   stage: Slack Notifications
@@ -107,5 +109,5 @@ Send notification Build:
   needs: !reference [.needs_build, needs]
   script: 
     - echo "Send Slack Messages"
-    - 'curl -X POST -H "Content-type: application/json" --data "{\"text\":\"Hello, World!\"}" $WEB_HOOK_URL'
+    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_BUILD}" $WEB_HOOK_URL'
 
