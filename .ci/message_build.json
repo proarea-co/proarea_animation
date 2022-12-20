@@ -1,0 +1,17 @@
+{
+	"blocks": [
+		{
+			"type": "divider"
+		},
+		{
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "*Build Complete* \nBrunch: ${CI_COMMIT_BRANCH} \nAuthor: ${CI_COMMIT_AUTHOR} \nLast MRs:\n${CI_OPEN_MERGE_REQUESTS}"
+			}
+		},
+		{
+			"type": "divider"
+		}
+	]
+}

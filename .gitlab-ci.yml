@@ -1,8 +1,51 @@
+---
+variables:
+  WEB_HOOK_URL: https://hooks.slack.com/services/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
+  SLACK_CHANNEL_ACCESS_TOKEN: xoxb-418681667377-4540198287650-mvwIUofo1axJCKPzDz8xKedH
+  SLACK_CHANNEL_ID: C03EXNXQKK5
+
+  MESSAGE_ANALYZE: >-
+    {"blocks":[{"type":"divider"},
+    {"type":"section","text":{"type":"mrkdwn",
+    "text":"*Analyze Complete*
+
+    *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
+
+    *Commit:* $CI_COMMIT_TITLE
+
+    *Author:* $GITLAB_USER_NAME
+
+    *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
+
+    *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
+
+    *MR:* ${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"}},
+    {"type":"divider"}]}
+
+  MESSAGE_BUILD: >-
+    {"blocks":[{"type":"divider"},
+    {"type":"section","text":{"type":"mrkdwn",
+    "text":"*Build Complete*
+
+    *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
+
+    *Commit:* $CI_COMMIT_TITLE
+
+    *Author:* $GITLAB_USER_NAME
+
+    *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
+
+    *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
+
+    *MR:* ${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"}},
+    {"type":"divider"}]}
+
 
 stages:
   - Analyze
   - Test
   - Build
+  - Slack Notifications
 
 .job_setting_head:
   image: cirrusci/flutter:latest
@@ -38,11 +81,19 @@ stages:
     - job: Integration tests
       optional: true
 
+.needs_build:
+  needs:
+    - job: Build Android apk
+      optional: true
+    - job: Build iOS ipa
+      optional: true
+
 Flutter analyze:
   extends: .job_setting_rules_merge
   stage: Analyze
   script:
     - flutter analyze
+    - echo 'analyze - Successfully'
 
 Unit tests:
   extends: .job_setting_rules_dev
@@ -82,3 +133,54 @@ Build iOS ipa:
   needs: !reference [.needs_tests, needs]
   script:
     - echo 'iOS ipa - Successfully build'
+
+Send notification Analyze:
+  stage: Slack Notifications
+  extends: .job_setting_rules_merge
+  needs: !reference [.needs_analyze, needs]
+  script: 
+    - echo "Send Slack Messages"
+    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_ANALYZE}" $WEB_HOOK_URL'
+
+
+# TODO: Code test code for send file to slack
+# Build Android apk Test:
+#   extends: .job_setting_rules_merge
+#   stage: Build
+#   needs: !reference [.needs_analyze, needs]
+#   script:
+#     - flutter build apk
+#     - !reference [.send_notification_build, script]
+#   artifacts:
+#     paths:
+#       - "build/app/outputs/apk/release/pro_an_*.apk"
+#     expire_in: 1 day
+
+Send Notification Build:
+  stage: Slack Notifications
+  extends: .job_setting_rules_dev
+  needs: !reference [.needs_build, needs]
+  dependencies:
+    - Build Android apk
+    - Build iOS ipa
+  script: 
+    - echo "Send Slack Messages"
+    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_BUILD}" $WEB_HOOK_URL'
+
+.send_notification_build:
+  stage: Slack Notifications
+  # extends: .job_setting_rules_dev
+  extends: .job_setting_rules_merge
+  needs: !reference [.needs_build, needs]
+  dependencies:
+    - Build Android apk
+    - Build iOS ipa
+  script: 
+    - echo "Send Slack Messages"
+    - |
+      curl \
+        -F token="${SLACK_CHANNEL_ACCESS_TOKEN}" \
+        -F channels="${SLACK_CHANNEL_ID}" \
+        -F initial_comment="${MESSAGE_BUILD}" \
+        -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
+        https://slack.com/api/files.upload
