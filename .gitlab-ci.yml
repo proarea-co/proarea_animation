@@ -129,8 +129,8 @@ stages:
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
       when: never
-    - if: '"${CI_COMMIT_BRANCH}" !~ /^feat\/PROAN-.*/' == 'true'
-    - if: '"${CI_COMMIT_BRANCH}" !~ /^fix\/PROAN-.*/'  == 'true'
+    - if: '"${CI_COMMIT_BRANCH}" !~ /^feat\/PROAN-.*/'
+    - if: '"${CI_COMMIT_BRANCH}" !~ /^fix\/PROAN-.*/'
     - when: never
 
 .bash_job_setting_rules_merge_request:
@@ -184,6 +184,10 @@ Info Wrong brunch:
   stage: Slack Info
   script:
     - echo ${MESSAGE_WRONG_BRANCH}
+    - echo  '"${CI_COMMIT_BRANCH}" !~ /^feat\/PROAN-.*/'
+    - echo  '"${CI_COMMIT_BRANCH}"'
+    - echo  '$CI_COMMIT_BRANCH !~ /^feat\/PROAN-.*/'
+    - echo  '$CI_COMMIT_BRANCH'
     - |
       curl \
         -H "Content-type: application/json" \
