@@ -48,7 +48,7 @@ stages:
   - Build
   - Slack Notifications
 
-.job_setting_head:
+.docker_docker_job_setting_head:
   image: cirrusci/flutter:latest
   tags:
     - proarea-animations
@@ -57,16 +57,33 @@ stages:
     - flutter pub get
   allow_failure: true
 
-.job_setting_rules_dev:
-  extends: .job_setting_head
+.shell_job_setting_head:
+  tags:
+    - proarea-animations
+  before_script:
+    - echo "Start Sell"
+  allow_failure: true
+
+.docker_job_setting_rules_dev:
+  extends: .docker_docker_job_setting_head
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev"'
 
-.job_setting_rules_merge:
-  extends: .job_setting_rules_dev
+.docker_job_setting_rules_merge:
+  extends: .docker_job_setting_rules_dev
   rules:
-    - !reference [.job_setting_rules_dev, rules]
+    - !reference [.docker_job_setting_rules_dev, rules]
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+.shell_job_setting_rules_merge_request:
+  extends: .shell_job_setting_head
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+.shell_job_setting_rules_dev:
+  extends: .shell_job_setting_head
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
 
 .needs_analyze:
   needs:
@@ -90,35 +107,35 @@ stages:
       optional: true
 
 Flutter analyze:
-  extends: .job_setting_rules_merge
+  extends: .docker_job_setting_rules_merge
   stage: Analyze
   script:
     - flutter analyze
     - echo 'analyze - Successfully'
 
 Unit tests:
-  extends: .job_setting_rules_dev
+  extends: .docker_job_setting_rules_dev
   stage: Test
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Unit tests - Successfully'
 
 Widget tests:
-  extends: .job_setting_rules_dev
+  extends: .docker_job_setting_rules_dev
   stage: Test
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Widget tests - Successfully'
 
 Integration tests:
-  extends: .job_setting_rules_dev
+  extends: .docker_job_setting_rules_dev
   stage: Test
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Integration tests - Successfully'
 
 Build Android apk:
-  extends: .job_setting_rules_dev
+  extends: .docker_job_setting_rules_dev
   stage: Build
   needs: !reference [.needs_tests, needs]
   script:
@@ -130,7 +147,7 @@ Build Android apk:
     expire_in: 1 day
 
 Build iOS ipa:
-  extends: .job_setting_rules_dev
+  extends: .docker_job_setting_rules_dev
   stage: Build
   needs: !reference [.needs_tests, needs]
   script:
@@ -138,7 +155,7 @@ Build iOS ipa:
 
 Send notification Analyze:
   stage: Slack Notifications
-  extends: .job_setting_rules_merge
+  extends: .shell_job_setting_rules_merge_request
   needs: !reference [.needs_analyze, needs]
   script: 
     - echo "Send Slack Messages"
@@ -146,21 +163,21 @@ Send notification Analyze:
 
 
 # TODO: Code test code for send file to slack
-# Build Android apk Test:
-#   extends: .job_setting_rules_merge
-#   stage: Build
-#   needs: !reference [.needs_analyze, needs]
-#   script:
-#     - flutter build apk
-#     - !reference [.send_notification_build, script]
-#   artifacts:
-#     paths:
-#       - "build/app/outputs/apk/release/pro_an_*.apk"
-#     expire_in: 1 day
+Build Android apk Test:
+  extends: .docker_job_setting_rules_merge
+  stage: Build
+  needs: !reference [.needs_analyze, needs]
+  script:
+    - flutter build apk
+    - !reference [.send_notification_build, script]
+  artifacts:
+    paths:
+      - "build/app/outputs/apk/release/pro_an_*.apk"
+    expire_in: 1 day
 
 Send Notification Build:
   stage: Slack Notifications
-  extends: .job_setting_rules_dev
+  extends: .shell_job_setting_rules_dev
   needs: !reference [.needs_build, needs]
   dependencies:
     - Build Android apk
@@ -171,8 +188,25 @@ Send Notification Build:
 
 .send_notification_build:
   stage: Slack Notifications
-  # extends: .job_setting_rules_dev
-  extends: .job_setting_rules_merge
+  # extends: .docker_job_setting_rules_dev
+  extends: .docker_job_setting_rules_merge
+  needs: !reference [.needs_build, needs]
+  dependencies:
+    - Build Android apk
+    - Build iOS ipa
+  script: 
+    - echo "Send Slack Messages"
+    - |
+      curl \
+        -F token="${USER_OAUTH_TOKEN}" \
+        -F channels="${SLACK_CHANNEL_ID}" \
+        -F initial_comment="${MESSAGE_BUILD}" \
+        -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
+        https://slack.com/api/files.upload
+
+Send_notification_build:
+  stage: Slack Notifications
+  extends: .shell_job_setting_rules_merge_request
   needs: !reference [.needs_build, needs]
   dependencies:
     - Build Android apk
