@@ -132,10 +132,10 @@ stages:
 .bash_job_setting_rules_incorrect_branch:
   extends: .bash_job_setting_head
   rules:
-    # - if: $CI_COMMIT_BRANCH == "dev"
-    #   when: never
-    - if: $CI_COMMIT_BRANCH !=~ /^feat/PROAN-\//'
-    - if: $CI_COMMIT_BRANCH !=~ /^fix/PROAN-\//'
+    - if: $CI_COMMIT_BRANCH == "dev"
+      when: never
+    # - if: $CI_COMMIT_BRANCH !=~ /^feat/PROAN-\//'
+    # - if: $CI_COMMIT_BRANCH !=~ /^fix/PROAN-\//'
 
 .bash_job_setting_rules_merge_request:
   extends: .bash_job_setting_head
