@@ -1,6 +1,6 @@
 ---
 variables:
-  WEB_HOOK_URL: https://hooks.slack.com/services/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
+  WEB_HOOK_URL: https://hooks.slack.com/services/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
   SLACK_CHANNEL_ACCESS_TOKEN: xoxb-418681667377-4540198287650-mvwIUofo1axJCKPzDz8xKedH
   SLACK_CHANNEL_ID: C03EXNXQKK5
 
