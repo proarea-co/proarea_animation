@@ -6,7 +6,7 @@ variables:
   SLACK_CHANNEL_ID: C03EXNXQKK5
   STAGE_INFO: Slack Info
   STAGE_ANALYZE: Analyze
-  STAGE_TEST: $STAGE_TEST
+  STAGE_TEST: Test
   STAGE_BUILD: Build
   STAGE_REPORT: Slack Report
 
