@@ -8,7 +8,7 @@ variables:
   MESSAGE_APPROVED_MR: >-
     {"blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
-    "text":"*MR Approved* :white_check_mark::white_check_mark::white_check_mark:
+    "text":"*MR Approved* :white_check_mark:
 
     *Brunch from:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
 
@@ -28,7 +28,7 @@ variables:
   MESSAGE_WRONG_BRANCH: >-
     {"blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
-    "text":"*Wrong Brunch* :x::x::x:
+    "text":"*Wrong Brunch* :x:
 
     *Brunch name:* $CI_COMMIT_BRANCH
 
@@ -40,7 +40,7 @@ variables:
 
     *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
 
-    *See branch:* ${CI_PROJECT_URL}/${CI_COMMIT_BRANCH}"}},
+    *See branch:* ${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}"}},
     {"type":"divider"}]}
 
   MESSAGE_ANALYZE: >-
@@ -76,7 +76,7 @@ variables:
 
     *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
 
-    *MR:* ${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"}},
+    *See branch:* ${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}"}},
     {"type":"divider"}]}
 
 
@@ -129,8 +129,8 @@ stages:
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
       when: never
-    - if: ("${CI_COMMIT_BRANCH}" !~ '/^feat\/PROAN-.*/')
-    - if: ("${CI_COMMIT_BRANCH}" !~ '/^fix\/PROAN-.*/')
+    - if: '"${CI_COMMIT_BRANCH}" !~ '/^feat\/PROAN-.*/''
+    - if: '"${CI_COMMIT_BRANCH}" !~ '/^fix\/PROAN-.*/''
     - when: never
 
 .bash_job_setting_rules_merge_request:
