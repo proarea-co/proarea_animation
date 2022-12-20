@@ -186,6 +186,7 @@ Info Wrong brunch:
     - echo ${MESSAGE_WRONG_BRANCH}
     - echo  '"${CI_COMMIT_BRANCH}" !~ /^feat\/PROAN-.*/'
     - echo  '"${CI_COMMIT_BRANCH}"'
+    - echo  "${CI_COMMIT_BRANCH}"
     - echo  '$CI_COMMIT_BRANCH !~ /^feat\/PROAN-.*/'
     - echo  '$CI_COMMIT_BRANCH'
     - |
