@@ -86,11 +86,11 @@ variables:
 
 
 stages:
-  - $STAGE_INFO
-  - $STAGE_ANALYZE
-  - $STAGE_TEST
-  - $STAGE_BUILD
-  - $STAGE_REPORT
+  - "${STAGE_INFO}"
+  - "${STAGE_ANALYZE}"
+  - "${STAGE_TEST}"
+  - "${STAGE_BUILD}"
+  - "${STAGE_REPORT}"
 
 ##* Docker Head Settings <------------------------------------------------------
 .docker_docker_job_setting_head:
@@ -172,20 +172,20 @@ stages:
 ##* Info stage Section <--------------------------------------------------------
 Info MR Approved:
   extends: .bash_job_setting_rules_merge_approved
-  stage: $STAGE_INFO
+  stage: "${STAGE_INFO}"
   script:
     - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_APPROVED_MR}" $WEB_HOOK_URL'
 
 Info Wrong brunch:
   extends: .bash_job_setting_rules_incorrect_branch
-  stage: $STAGE_INFO
+  stage: "${STAGE_INFO}"
   script:
     - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_WRONG_BRANCH}" $WEB_HOOK_URL'
 
 ##* Analyze stage Section <-----------------------------------------------------
 Flutter analyze:
   extends: .docker_job_setting_rules_merge
-  stage: $STAGE_ANALYZE
+  stage: "${STAGE_ANALYZE}"
   script:
     - flutter analyze
     - echo 'analyze - Successfully'
@@ -193,21 +193,21 @@ Flutter analyze:
 ##* Test stage Section <--------------------------------------------------------
 Unit tests:
   extends: .docker_job_setting_rules_dev
-  stage: $STAGE_TEST
+  stage: "${STAGE_TEST}"
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Unit tests - Successfully'
 
 Widget tests:
   extends: .docker_job_setting_rules_dev
-  stage: $STAGE_TEST
+  stage: "${STAGE_TEST}"
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Widget tests - Successfully'
 
 Integration tests:
   extends: .docker_job_setting_rules_dev
-  stage: $STAGE_TEST
+  stage: "${STAGE_TEST}"
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Integration tests - Successfully'
@@ -215,7 +215,7 @@ Integration tests:
 ##* Build stage Section <-------------------------------------------------------
 Build Android apk:
   extends: .docker_job_setting_rules_dev
-  stage: $STAGE_BUILD
+  stage: "${STAGE_BUILD}"
   needs: !reference [.needs_tests, needs]
   script:
     - flutter build apk
@@ -227,14 +227,14 @@ Build Android apk:
 
 Build iOS ipa:
   extends: .docker_job_setting_rules_dev
-  stage: $STAGE_BUILD
+  stage: "${STAGE_BUILD}"
   needs: !reference [.needs_tests, needs]
   script:
     - echo 'iOS ipa - Successfully build'
 
 ##* Notifications stage Section <-----------------------------------------------
 Send notification Analyze:
-  stage: $STAGE_REPORT
+  stage: "${STAGE_REPORT}"
   extends: .bash_job_setting_rules_merge_request
   needs: !reference [.needs_analyze, needs]
   script: 
@@ -245,7 +245,7 @@ Send notification Analyze:
 # TODO: Code test code for send file to slack
 Build Android apk Test:
   extends: .docker_job_setting_rules_merge
-  stage: $STAGE_BUILD
+  stage: "${STAGE_BUILD}"
   needs: !reference [.needs_analyze, needs]
   script:
     - flutter build apk
@@ -256,7 +256,7 @@ Build Android apk Test:
     expire_in: 1 day
 
 Send Notification Build:
-  stage: $STAGE_REPORT
+  stage: "${STAGE_REPORT}"
   extends: .bash_job_setting_rules_dev
   needs: !reference [.needs_build, needs]
   dependencies:
@@ -267,7 +267,7 @@ Send Notification Build:
     - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_BUILD}" $WEB_HOOK_URL'
 
 .send_notification_build:
-  stage: $STAGE_REPORT
+  stage: "${STAGE_REPORT}"
   # extends: .docker_job_setting_rules_dev
   extends: .docker_job_setting_rules_merge
   needs: !reference [.needs_build, needs]
@@ -285,7 +285,7 @@ Send Notification Build:
         https://slack.com/api/files.upload
 
 Send_notification_build:
-  stage: $STAGE_REPORT
+  stage: "${STAGE_REPORT}"
   extends: .bash_job_setting_rules_merge_request
   needs: !reference [.needs_build, needs]
   dependencies:
