@@ -17,6 +17,8 @@ variables:
 
     *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
 
+    *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
+
     *MR:* ${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"}},
     {"type":"divider"}]}
 
@@ -32,6 +34,8 @@ variables:
     *Author:* $GITLAB_USER_NAME
 
     *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
+
+    *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
 
     *MR:* ${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"}},
     {"type":"divider"}]}
@@ -139,17 +143,18 @@ Send notification Analyze:
     - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_ANALYZE}" $WEB_HOOK_URL'
 
 
-Build Android apk Test:
-  extends: .job_setting_rules_merge
-  stage: Build
-  needs: !reference [.needs_analyze, needs]
-  script:
-    - flutter build apk
-    - !reference [.send_notification_build, script]
-  artifacts:
-    paths:
-      - "build/app/outputs/apk/release/pro_an_*.apk"
-    expire_in: 1 day
+# TODO: Code test code for send file to slack
+# Build Android apk Test:
+#   extends: .job_setting_rules_merge
+#   stage: Build
+#   needs: !reference [.needs_analyze, needs]
+#   script:
+#     - flutter build apk
+#     - !reference [.send_notification_build, script]
+#   artifacts:
+#     paths:
+#       - "build/app/outputs/apk/release/pro_an_*.apk"
+#     expire_in: 1 day
 
 Send Notification Build:
   stage: Slack Notifications
