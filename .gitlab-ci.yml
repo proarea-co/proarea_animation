@@ -99,7 +99,7 @@ stages:
 
 ##* Bash Head Settings <--------------------------------------------------------
 .bash_job_setting_head:
-  image: docker:stable
+  image: ruby:3.0
   tags:
     - proarea-animations
   before_script:
