@@ -145,7 +145,9 @@ stages:
 ##* Needs Section <-------------------------------------------------------------
 .needs_info:
   needs:
-    - job: Slack Info
+    - job: Info MR Approved
+      optional: true
+    - job: Info Wrong brunch
       optional: true
 
 .needs_analyze:
@@ -181,7 +183,12 @@ Info Wrong brunch:
   stage: Slack Info
   script:
     - echo ${MESSAGE_WRONG_BRANCH}
-    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_WRONG_BRANCH}" $WEB_HOOK_URL'
+    - |
+      curl \
+        -H "Content-type: application/json" \
+        -X POST \
+        --data-urlencode "${MESSAGE_WRONG_BRANCH}" \
+        $WEB_HOOK_URL
 
 ##* Analyze stage Section <-----------------------------------------------------
 Flutter analyze:
