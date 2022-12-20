@@ -4,11 +4,54 @@ variables:
   BOT_USER_OAUTH_TOKEN: xoxb-418681667377-4540198287650-mvwIUofo1axJCKPzDz8xKedH
   USER_OAUTH_TOKEN: xoxp-418681667377-3326132650688-4544029088738-8e6181becd22914f7df3ada05689a7ac
   SLACK_CHANNEL_ID: C03EXNXQKK5
+  STAGE_INFO: Slack Info
+  STAGE_ANALYZE: Analyze
+  STAGE_TEST: $STAGE_TEST
+  STAGE_BUILD: Build
+  STAGE_REPORT: Slack Report
+
+  MESSAGE_APPROVED_MR: >-
+    {"blocks":[{"type":"divider"},
+    {"type":"section","text":{"type":"mrkdwn",
+    "text":"*MR Approved* :white_check_mark::white_check_mark::white_check_mark:
+
+    *Brunch from:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+
+    *Brunch to:* $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+
+    *Commit:* $CI_COMMIT_TITLE
+
+    *Author:* $GITLAB_USER_NAME
+
+    *Reviewer:* <@UR8TD9CCQ> (edit *.gitlab-ci.yml* to change)
+
+    *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
+
+    *See pipeline:* ${CI_PIPELINE_URL}"}},
+    {"type":"divider"}]}
+
+  MESSAGE_WRONG_BRANCH: >-
+    {"blocks":[{"type":"divider"},
+    {"type":"section","text":{"type":"mrkdwn",
+    "text":"*Wrong Brunch* :x::x::x:
+
+    *Brunch name:* $CI_COMMIT_BRANCH
+
+    *Commit:* $CI_COMMIT_TITLE
+
+    *Author:* $GITLAB_USER_NAME
+
+    *Reviewer:* <@UR8TD9CCQ> (edit *.gitlab-ci.yml* to change)
+
+    *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
+
+    *See branch:* ${CI_PROJECT_URL}/${CI_COMMIT_BRANCH}"}},
+    {"type":"divider"}]}
 
   MESSAGE_ANALYZE: >-
     {"blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
-    "text":"*Analyze Complete*
+    "text":"*Analyze Complete*:information_source:
 
     *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
 
@@ -26,7 +69,7 @@ variables:
   MESSAGE_BUILD: >-
     {"blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
-    "text":"*Build Complete*
+    "text":"*Build Complete* :confetti_ball::tada::fire:
 
     *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
 
@@ -43,11 +86,13 @@ variables:
 
 
 stages:
-  - Analyze
-  - Test
-  - Build
-  - Slack Notifications
+  - $STAGE_INFO
+  - $STAGE_ANALYZE
+  - $STAGE_TEST
+  - $STAGE_BUILD
+  - $STAGE_REPORT
 
+##* Docker Head Settings <------------------------------------------------------
 .docker_docker_job_setting_head:
   image: cirrusci/flutter:latest
   tags:
@@ -57,14 +102,16 @@ stages:
     - flutter pub get
   allow_failure: true
 
-.shell_job_setting_head:
-  image: ruby:3.0
+##* Bash Head Settings <--------------------------------------------------------
+.bash_job_setting_head:
+  image: busybox:latest
   tags:
     - proarea-animations
   before_script:
-    - echo "Start Sell"
+    - echo "Start Bash"
   allow_failure: true
 
+##* Docker Settings Section <---------------------------------------------------
 .docker_job_setting_rules_dev:
   extends: .docker_docker_job_setting_head
   rules:
@@ -76,16 +123,31 @@ stages:
     - !reference [.docker_job_setting_rules_dev, rules]
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
-.shell_job_setting_rules_merge_request:
-  extends: .shell_job_setting_head
+##* Bash Settings Section <-----------------------------------------------------
+.bash_job_setting_rules_merge_approved:
+  extends: .bash_job_setting_head
+  rules:
+  - if: $CI_MERGE_REQUEST_APPROVED
+
+.bash_job_setting_rules_incorrect_branch:
+  extends: .bash_job_setting_head
+  rules:
+    - if: $CI_COMMIT_BRANCH == "dev"
+      when: never
+    - if: $CI_COMMIT_BRANCH !=~ /^feat/PROAN-\/'
+    - if: $CI_COMMIT_BRANCH !=~ /^fix/PROAN-\/'
+
+.bash_job_setting_rules_merge_request:
+  extends: .bash_job_setting_head
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
 
-.shell_job_setting_rules_dev:
-  extends: .shell_job_setting_head
+.bash_job_setting_rules_dev:
+  extends: .bash_job_setting_head
   rules:
     - if: '$CI_COMMIT_BRANCH == "dev"'
 
+##* Needs Section <-------------------------------------------------------------
 .needs_analyze:
   needs:
     - job: Flutter analyze
@@ -107,37 +169,53 @@ stages:
     - job: Build iOS ipa
       optional: true
 
+##* Info stage Section <--------------------------------------------------------
+Info MR Approved:
+  extends: .bash_job_setting_rules_merge_approved
+  stage: $STAGE_INFO
+  script:
+    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_APPROVED_MR}" $WEB_HOOK_URL'
+
+Info Wrong brunch:
+  extends: .bash_job_setting_rules_incorrect_branch
+  stage: $STAGE_INFO
+  script:
+    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_WRONG_BRANCH}" $WEB_HOOK_URL'
+
+##* Analyze stage Section <-----------------------------------------------------
 Flutter analyze:
   extends: .docker_job_setting_rules_merge
-  stage: Analyze
+  stage: $STAGE_ANALYZE
   script:
     - flutter analyze
     - echo 'analyze - Successfully'
 
+##* Test stage Section <--------------------------------------------------------
 Unit tests:
   extends: .docker_job_setting_rules_dev
-  stage: Test
+  stage: $STAGE_TEST
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Unit tests - Successfully'
 
 Widget tests:
   extends: .docker_job_setting_rules_dev
-  stage: Test
+  stage: $STAGE_TEST
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Widget tests - Successfully'
 
 Integration tests:
   extends: .docker_job_setting_rules_dev
-  stage: Test
+  stage: $STAGE_TEST
   needs: !reference [.needs_analyze, needs]
   script:
     - echo 'Integration tests - Successfully'
 
+##* Build stage Section <-------------------------------------------------------
 Build Android apk:
   extends: .docker_job_setting_rules_dev
-  stage: Build
+  stage: $STAGE_BUILD
   needs: !reference [.needs_tests, needs]
   script:
     - flutter build apk
@@ -149,14 +227,15 @@ Build Android apk:
 
 Build iOS ipa:
   extends: .docker_job_setting_rules_dev
-  stage: Build
+  stage: $STAGE_BUILD
   needs: !reference [.needs_tests, needs]
   script:
     - echo 'iOS ipa - Successfully build'
 
+##* Notifications stage Section <-----------------------------------------------
 Send notification Analyze:
-  stage: Slack Notifications
-  extends: .shell_job_setting_rules_merge_request
+  stage: $STAGE_REPORT
+  extends: .bash_job_setting_rules_merge_request
   needs: !reference [.needs_analyze, needs]
   script: 
     - echo "Send Slack Messages"
@@ -166,7 +245,7 @@ Send notification Analyze:
 # TODO: Code test code for send file to slack
 Build Android apk Test:
   extends: .docker_job_setting_rules_merge
-  stage: Build
+  stage: $STAGE_BUILD
   needs: !reference [.needs_analyze, needs]
   script:
     - flutter build apk
@@ -177,8 +256,8 @@ Build Android apk Test:
     expire_in: 1 day
 
 Send Notification Build:
-  stage: Slack Notifications
-  extends: .shell_job_setting_rules_dev
+  stage: $STAGE_REPORT
+  extends: .bash_job_setting_rules_dev
   needs: !reference [.needs_build, needs]
   dependencies:
     - Build Android apk
@@ -188,7 +267,7 @@ Send Notification Build:
     - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_BUILD}" $WEB_HOOK_URL'
 
 .send_notification_build:
-  stage: Slack Notifications
+  stage: $STAGE_REPORT
   # extends: .docker_job_setting_rules_dev
   extends: .docker_job_setting_rules_merge
   needs: !reference [.needs_build, needs]
@@ -206,8 +285,8 @@ Send Notification Build:
         https://slack.com/api/files.upload
 
 Send_notification_build:
-  stage: Slack Notifications
-  extends: .shell_job_setting_rules_merge_request
+  stage: $STAGE_REPORT
+  extends: .bash_job_setting_rules_merge_request
   needs: !reference [.needs_build, needs]
   dependencies:
     - Build Android apk
