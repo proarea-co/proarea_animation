@@ -129,8 +129,8 @@ stages:
   rules:
     - if: $CI_COMMIT_BRANCH == "dev"
       when: never
-    - if: ${CI_COMMIT_BRANCH} !~ '/^feat\/PROAN-.*/'
-    - if: ${CI_COMMIT_BRANCH} !~ '/^fix\/PROAN-.*/'
+    - if: ("${CI_COMMIT_BRANCH}" !~ '/^feat\/PROAN-.*/')
+    - if: ("${CI_COMMIT_BRANCH}" !~ '/^fix\/PROAN-.*/')
     - when: never
 
 .bash_job_setting_rules_merge_request:
