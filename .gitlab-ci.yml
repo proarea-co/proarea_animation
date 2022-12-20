@@ -1,7 +1,8 @@
 ---
 variables:
   WEB_HOOK_URL: https://hooks.slack.com/services/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
-  SLACK_CHANNEL_ACCESS_TOKEN: xoxb-418681667377-4540198287650-mvwIUofo1axJCKPzDz8xKedH
+  BOT_USER_OAUTH_TOKEN: xoxb-418681667377-4540198287650-mvwIUofo1axJCKPzDz8xKedH
+  USER_OAUTH_TOKEN: xoxp-418681667377-3326132650688-4544029088738-8e6181becd22914f7df3ada05689a7ac
   SLACK_CHANNEL_ID: C03EXNXQKK5
 
   MESSAGE_ANALYZE: >-
@@ -180,7 +181,7 @@ Send Notification Build:
     - echo "Send Slack Messages"
     - |
       curl \
-        -F token="${SLACK_CHANNEL_ACCESS_TOKEN}" \
+        -F token="${USER_OAUTH_TOKEN}" \
         -F channels="${SLACK_CHANNEL_ID}" \
         -F initial_comment="${MESSAGE_BUILD}" \
         -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
