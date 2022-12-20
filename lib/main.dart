@@ -6,7 +6,7 @@ import 'di/di.dart';
 
 import 'bloc/app_controller/app_controller_cubit.dart';
 
-import 'root.dart';
+import 'root_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
