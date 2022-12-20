@@ -183,9 +183,9 @@ Info Wrong brunch:
   extends: .bash_job_setting_rules_incorrect_branch
   stage: Slack Info
   script:
-    - echo ("${CI_COMMIT_BRANCH}" =~ /^fix\/PROAN-.*/) == false
+    - echo "${CI_COMMIT_BRANCH}" =~ /^fix\/PROAN-.*/
     - echo ("${CI_COMMIT_BRANCH}" =~ /^fix\/PROAN-.*/)
-    - echo  ("${CI_COMMIT_BRANCH}" =~ /^feat\/PROAN-.*/) == false
+    - echo  "${CI_COMMIT_BRANCH}" =~ /^feat\/PROAN-.*/
     - echo  ("${CI_COMMIT_BRANCH}" =~ /^feat\/PROAN-.*/)
     - |
       curl \
