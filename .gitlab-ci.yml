@@ -185,6 +185,8 @@ Info Wrong brunch:
   script:
     - echo $CI_COMMIT_BRANCH !~ /^feat\/PROAN-.*/
     - echo $CI_COMMIT_BRANCH !~ /^fix\/PROAN-.*/
+    - echo '$CI_COMMIT_BRANCH !~ /^feat\/PROAN-.*/'
+    - echo '$CI_COMMIT_BRANCH !~ /^fix\/PROAN-.*/'
     - |
       curl \
         -H "Content-type: application/json" \
