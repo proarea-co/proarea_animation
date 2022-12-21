@@ -6,6 +6,8 @@ variables:
   SLACK_CHANNEL_ID: C03EXNXQKK5
   PATTERN_FEAT: "/^feat\/PROAN-.*/"
   PATTERN_FIX: "/^fix\/PROAN-.*/"
+  APPROVE_MR: "${CI_MERGE_REQUEST_APPROVED}"
+  APPROVE_MR_2: '$CI_MERGE_REQUEST_APPROVED == "true"'
 
   MESSAGE_APPROVED_MR: >-
     {"blocks":[{"type":"divider"},
@@ -95,10 +97,20 @@ stages:
   tags:
     - proarea-animations
   before_script:
-    - echo "${CI_MERGE_REQUEST_APPROVED}"
-    - echo $CI_MERGE_REQUEST_APPROVED
-    - echo '"${CI_MERGE_REQUEST_APPROVED}"'
-    - echo '$CI_MERGE_REQUEST_APPROVED'
+    - echo "$CI_MERGE_REQUEST_APPROVED"
+    - echo $CI_MERGE_REQUEST_EVENT_TYPE 
+    - echo "$CI_COMMIT_BRANCH"
+    - echo '$CI_MERGE_REQUEST_APPROVED == "true"'
+    - echo '"$CI_MERGE_REQUEST_APPROVED" == "true"'
+    - echo '$CI_COMMIT_BRANCH == "dev"'
+    - echo 23 == dev
+    - echo "${MESSAGE_BUILD}"
+    - echo "${APPROVE_MR}"
+    - echo "$APPROVE_MR"
+    - echo $APPROVE_MR
+    - echo "${APPROVE_MR_2}"
+    - echo "$APPROVE_MR_2"
+    - echo $APPROVE_MR_2
     - flutter clean
     - flutter pub get
   allow_failure: true
@@ -129,7 +141,8 @@ stages:
   extends: .bash_job_setting_head
   only:
     variables:
-      - "$CI_MERGE_REQUEST_APPROVED"
+      - '$CI_MERGE_REQUEST_APPROVED == "true"'
+      # - "$CI_MERGE_REQUEST_APPROVED"
 
 .bash_job_setting_rules_incorrect_branch:
   extends: .bash_job_setting_head
