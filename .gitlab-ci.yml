@@ -130,7 +130,7 @@ stages:
   extends: .bash_job_setting_head
   rules:
     # - if: "$CI_COMMIT_BRANCH =~ $PATTERN_FEAT"
-    - if: "$CI_COMMIT_BRANCH !~ $PATTERN_FIX"
+    - if: "$CI_COMMIT_BRANCH =~ $PATTERN_FIX"
     # - if: $CI_COMMIT_BRANCH == "dev"
     #   when: never
 
