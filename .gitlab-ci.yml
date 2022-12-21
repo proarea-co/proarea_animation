@@ -184,8 +184,8 @@ Info Wrong brunch:
   extends: .bash_job_setting_rules_incorrect_branch
   stage: Slack Info
   script:
-    - echo '$CI_COMMIT_BRANCH =~ $PATTERN_FEAT'
-    - echo '$CI_COMMIT_BRANCH =~ $PATTERN_FIX'
+    - echo "$CI_COMMIT_BRANCH =~ $PATTERN_FEAT"
+    - echo "$CI_COMMIT_BRANCH =~ $PATTERN_FIX"
     - |
       curl \
         -H "Content-type: application/json" \
