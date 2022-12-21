@@ -128,14 +128,11 @@ stages:
 
 .bash_job_setting_rules_incorrect_branch:
   extends: .bash_job_setting_head
-  rules:
-    - if: $CI_COMMIT_BRANCH =~ $PATTERN_FEAT
-      when: never
-    - if: $CI_COMMIT_BRANCH =~ $PATTERN_FIX
-      when: never
-    - if: $CI_COMMIT_BRANCH == "dev"
-      when: never
-    - when: on_success
+  except:
+    variables:
+      - $CI_COMMIT_BRANCH =~ $PATTERN_FEAT
+      - $CI_COMMIT_BRANCH =~ $PATTERN_FIX
+      - $CI_COMMIT_BRANCH == "dev"
 
 .bash_job_setting_rules_merge_request:
   extends: .bash_job_setting_head
