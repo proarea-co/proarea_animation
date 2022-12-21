@@ -18,7 +18,7 @@ variables:
 
     *Reviewer:* <@UR8TD9CCQ> (edit *.gitlab-ci.yml* to change)
 
-    *See pipeline:* ${CI_PIPELINE_URL}"}},
+    *See pipeline:* <${CI_PIPELINE_URL}|Pipeline Link>"}},
     {"type":"divider"}]}
 
   MESSAGE_WRONG_BRANCH: >-
@@ -36,7 +36,7 @@ variables:
 
     *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
 
-    *See branch:* ${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}"}},
+    *See branch:* <${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}|Branch Link>"}},
     {"type":"divider"}]}
 
   MESSAGE_ANALYZE: >-
@@ -54,7 +54,7 @@ variables:
 
     *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
 
-    *MR:* ${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}"}},
+    *MR:* <${CI_MERGE_REQUEST_PROJECT_URL}/-/merge_requests/${CI_MERGE_REQUEST_IID}|Merge Request Link>"}},
     {"type":"divider"}]}
 
   MESSAGE_BUILD: >-
@@ -70,7 +70,7 @@ variables:
 
     *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
 
-    *See branch:* ${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}"}},
+    *See branch:* <${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}|Branch Link>"}},
     {"type":"divider"}]}
 
 
