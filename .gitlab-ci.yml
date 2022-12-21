@@ -145,12 +145,12 @@ stages:
     - if: '$CI_COMMIT_BRANCH == "dev"'
 
 ##* Needs Section <-------------------------------------------------------------
-.needs_info:
-  needs:
-    - job: Info MR Approved
-      optional: true
-    - job: Info Wrong brunch
-      optional: true
+# .needs_info:
+#   needs:
+#     - job: Info MR Approved
+#       optional: true
+#     - job: Info Wrong brunch
+#       optional: true
 
 .needs_analyze:
   needs:
@@ -195,7 +195,7 @@ Info Wrong brunch:
 Flutter analyze:
   extends: .docker_job_setting_rules_merge
   stage: Analyze
-  needs: !reference [.needs_info, needs]
+  # needs: !reference [.needs_info, needs]
   script:
     - flutter analyze
     - echo 'analyze - Successfully'
