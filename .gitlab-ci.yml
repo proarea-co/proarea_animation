@@ -139,9 +139,10 @@ stages:
 ##* Bash Settings Section <-----------------------------------------------------
 .bash_job_setting_rules_merge_approved:
   extends: .bash_job_setting_head
-  only:
-    variables:
-      - '$CI_MERGE_REQUEST_APPROVED == "true"'
+  when: on_success
+  # only:
+  #   variables:
+  #     - '$CI_MERGE_REQUEST_APPROVED == "true"'
       # - "$CI_MERGE_REQUEST_APPROVED"
 
 .bash_job_setting_rules_incorrect_branch:
