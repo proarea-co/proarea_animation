@@ -296,19 +296,20 @@ Send Notification Build:
         -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
         https://slack.com/api/files.upload
 
-Send_notification_build:
-  stage: Slack Report
-  extends: .bash_job_setting_rules_merge_request
-  needs: !reference [.needs_build, needs]
-  dependencies:
-    - Build Android apk
-    - Build iOS ipa
-  script: 
-    - echo "Send Slack Messages"
-    - |
-      curl \
-        -F token="${USER_OAUTH_TOKEN}" \
-        -F channels="${SLACK_CHANNEL_ID}" \
-        -F initial_comment="${MESSAGE_BUILD}" \
-        -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
-        https://slack.com/api/files.upload
+# # TODO: Code test code for send file to slack
+# Send_notification_build:
+#   stage: Slack Report
+#   extends: .bash_job_setting_rules_merge_request
+#   needs: !reference [.needs_build, needs]
+#   dependencies:
+#     - Build Android apk
+#     - Build iOS ipa
+#   script: 
+#     - echo "Send Slack Messages"
+#     - |
+#       curl \
+#         -F token="${USER_OAUTH_TOKEN}" \
+#         -F channels="${SLACK_CHANNEL_ID}" \
+#         -F initial_comment="${MESSAGE_BUILD}" \
+#         -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
+#         https://slack.com/api/files.upload
