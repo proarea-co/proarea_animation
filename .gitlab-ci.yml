@@ -4,6 +4,8 @@ variables:
   BOT_USER_OAUTH_TOKEN: xoxb-418681667377-4540198287650-mvwIUofo1axJCKPzDz8xKedH
   USER_OAUTH_TOKEN: xoxp-418681667377-3326132650688-4544029088738-8e6181becd22914f7df3ada05689a7ac
   SLACK_CHANNEL_ID: C03EXNXQKK5
+  PATTERN_FEAT: '/^feat\/PROAN-.*/'
+  PATTERN_FIX: '/^fix\/PROAN-.*/'
 
   MESSAGE_APPROVED_MR: >-
     {"blocks":[{"type":"divider"},
@@ -127,8 +129,10 @@ stages:
 .bash_job_setting_rules_incorrect_branch:
   extends: .bash_job_setting_head
   rules:
-    - if: $CI_COMMIT_BRANCH != "dev" && ($CI_COMMIT_BRANCH !~ /^feat\/PROAN-.*$/||$CI_COMMIT_BRANCH !~ /^fix\/PROAN-.*$/)
-
+    - if: $CI_COMMIT_BRANCH == "dev"
+      when: never
+    - if: '$CI_COMMIT_BRANCH =~ $PATTERN_FEAT'
+    - if: '$CI_COMMIT_BRANCH =~ $PATTERN_FIX'
 
 .bash_job_setting_rules_merge_request:
   extends: .bash_job_setting_head
