@@ -132,7 +132,7 @@ stages:
     - if: $CI_COMMIT_BRANCH" =~ $PATTERN_FEAT
       when: never
     - if: $CI_COMMIT_BRANCH =~ $PATTERN_FIX
-      # when: always
+      when: always
     - if: '"$CI_COMMIT_BRANCH" == "dev"'
       when: never
 
