@@ -135,7 +135,6 @@ stages:
       when: never
     - if: '"$CI_COMMIT_BRANCH" == "dev"'
       when: never
-    - if: '"$CI_COMMIT_BRANCH" != ""'
 
 .bash_job_setting_rules_merge_request:
   extends: .bash_job_setting_head
