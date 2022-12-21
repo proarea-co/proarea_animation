@@ -135,6 +135,7 @@ stages:
       when: never
     - if: $CI_COMMIT_BRANCH == "dev"
       when: never
+    - when: always
 
 .bash_job_setting_rules_merge_request:
   extends: .bash_job_setting_head
@@ -147,12 +148,12 @@ stages:
     - if: '$CI_COMMIT_BRANCH == "dev"'
 
 ##* Needs Section <-------------------------------------------------------------
-# .needs_info:
-#   needs:
-#     - job: Info MR Approved
-#       optional: true
-#     - job: Info Wrong brunch
-#       optional: true
+.needs_info:
+  needs:
+    - job: Info MR Approved
+      optional: true
+    - job: Info Wrong brunch
+      optional: true
 
 .needs_analyze:
   needs:
@@ -199,7 +200,7 @@ Info Wrong brunch:
 Flutter analyze:
   extends: .docker_job_setting_rules_merge
   stage: Analyze
-  # needs: !reference [.needs_info, needs]
+  needs: !reference [.needs_info, needs]
   script:
     - flutter analyze
     - echo 'analyze - Successfully'
