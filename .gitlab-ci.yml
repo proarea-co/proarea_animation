@@ -129,9 +129,9 @@ stages:
 .bash_job_setting_rules_incorrect_branch:
   extends: .bash_job_setting_head
   rules:
-    - if: '$CI_COMMIT_BRANCH =~ $PATTERN_FEAT'
+    - if: $CI_COMMIT_BRANCH =~ "$PATTERN_FEAT"
       when: never
-    - if: '$CI_COMMIT_BRANCH =~ $PATTERN_FIX'
+    - if: $CI_COMMIT_BRANCH =~ "$PATTERN_FIX"
       when: never
     - if: $CI_COMMIT_BRANCH == "dev"
       when: never
