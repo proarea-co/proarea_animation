@@ -97,14 +97,13 @@ stages:
   tags:
     - proarea-animations
   before_script:
+    - printenv
     - echo "$CI_MERGE_REQUEST_APPROVED"
     - echo $CI_MERGE_REQUEST_EVENT_TYPE 
     - echo "$CI_COMMIT_BRANCH"
     - echo '$CI_MERGE_REQUEST_APPROVED == "true"'
     - echo '"$CI_MERGE_REQUEST_APPROVED" == "true"'
     - echo '$CI_COMMIT_BRANCH == "dev"'
-    - echo 23 == dev
-    - echo "${MESSAGE_BUILD}"
     - echo "${APPROVE_MR}"
     - echo "$APPROVE_MR"
     - echo $APPROVE_MR
