@@ -6,25 +6,17 @@ variables:
   SLACK_CHANNEL_ID: C03EXNXQKK5
   PATTERN_FEAT: "/^feat\/PROAN-.*/"
   PATTERN_FIX: "/^fix\/PROAN-.*/"
-  APPROVE_MR: "${CI_MERGE_REQUEST_APPROVED}"
-  APPROVE_MR_2: '$CI_MERGE_REQUEST_APPROVED == "true"'
 
   MESSAGE_APPROVED_MR: >-
     {"blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
     "text":"*MR Approved* :white_check_mark:
 
-    *Brunch from:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
-
-    *Brunch to:* $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
-
     *Commit:* $CI_COMMIT_TITLE
 
     *Author:* $GITLAB_USER_NAME
 
     *Reviewer:* <@UR8TD9CCQ> (edit *.gitlab-ci.yml* to change)
-
-    *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
 
     *See pipeline:* ${CI_PIPELINE_URL}"}},
     {"type":"divider"}]}
@@ -78,8 +70,6 @@ variables:
 
     *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
 
-    *Responsible users:* $CI_MERGE_REQUEST_ASSIGNEES
-
     *See branch:* ${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}"}},
     {"type":"divider"}]}
 
@@ -97,20 +87,7 @@ stages:
   tags:
     - proarea-animations
   before_script:
-    - printenv
-    - echo "$CI_MERGE_REQUEST_APPROVED"
-    - echo $CI_MERGE_REQUEST_EVENT_TYPE 
-    - echo "$CI_COMMIT_BRANCH"
-    - echo '$CI_MERGE_REQUEST_APPROVED == "true"'
-    - echo '"$CI_MERGE_REQUEST_APPROVED" == "true"'
-    - echo '$CI_COMMIT_BRANCH == "dev"'
-    - echo "${APPROVE_MR}"
-    - echo "$APPROVE_MR"
-    - echo $APPROVE_MR
-    - echo "${APPROVE_MR_2}"
-    - echo "$APPROVE_MR_2"
-    - echo $APPROVE_MR_2
-    - echo $CI_PIPELINE_SOURCE
+    # - printenv
     - flutter clean
     - flutter pub get
   allow_failure: true
@@ -141,7 +118,7 @@ stages:
   extends: .bash_job_setting_head
   only:
     variables:
-      - "$CI_MERGE_REQUEST_APPROVED"
+      - $CI_COMMIT_BRANCH == "dev"
 
 .bash_job_setting_rules_incorrect_branch:
   extends: .bash_job_setting_head
@@ -330,4 +307,3 @@ Send Notification Build:
 #         -F initial_comment="${MESSAGE_BUILD}" \
 #         -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
 #         https://slack.com/api/files.upload
-# CHeck approve
