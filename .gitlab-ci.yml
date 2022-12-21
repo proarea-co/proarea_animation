@@ -284,7 +284,7 @@ Send Notification Build:
     - echo "Send Slack Messages"
     - |
       curl \
-        -F token="${USER_OAUTH_TOKEN}" \
+        -F token="${BOT_USER_OAUTH_TOKEN}" \
         -F channels="${SLACK_CHANNEL_ID}" \
         -F initial_comment="${MESSAGE_BUILD}" \
         -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
@@ -302,7 +302,7 @@ Send Notification Build:
 #     - echo "Send Slack Messages"
 #     - |
 #       curl \
-#         -F token="${USER_OAUTH_TOKEN}" \
+#         -F token="${BOT_USER_OAUTH_TOKEN}" \
 #         -F channels="${SLACK_CHANNEL_ID}" \
 #         -F initial_comment="${MESSAGE_BUILD}" \
 #         -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
