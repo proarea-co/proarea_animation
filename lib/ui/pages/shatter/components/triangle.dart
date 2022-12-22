@@ -44,7 +44,13 @@ class Triangle {
   }
 
   Offset _average3(
-      Offset p1, Offset p2, Offset p3, double w1, double w2, double w3) {
+    Offset p1,
+    Offset p2,
+    Offset p3,
+    double w1,
+    double w2,
+    double w3,
+  ) {
     var center = Offset(
       (p1.dx + p2.dx + p3.dx) / 3.0,
       (p1.dy + p2.dy + p3.dy) / 3.0,
