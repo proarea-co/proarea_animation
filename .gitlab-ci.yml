@@ -58,9 +58,7 @@ variables:
     {"type":"divider"}]}
 
   MESSAGE_BUILD: >-
-    {"blocks":[{"type":"divider"},
-    {"type":"section","text":{"type":"mrkdwn",
-    "text":"*Build Complete* :confetti_ball::tada::fire:
+    *Build Complete* :confetti_ball::tada::fire:
 
     *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
 
@@ -70,8 +68,7 @@ variables:
 
     *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
 
-    *See branch:* <${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}|Branch Link>"}},
-    {"type":"divider"}]}
+    *See branch:* <${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}|Branch Link>
 
 
 stages:
