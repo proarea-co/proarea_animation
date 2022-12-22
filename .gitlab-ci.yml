@@ -248,7 +248,7 @@ Send notification Analyze:
     - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_ANALYZE}" $WEB_HOOK_URL'
 
 
-# # # TODO: Code test code for send file to slack
+# # TODO: Code test code for send file to slack
 # Build Android apk Test:
 #   extends: .docker_job_setting_rules_merge
 #   stage: Build
