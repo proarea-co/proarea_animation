@@ -9,9 +9,9 @@ class AnimatedShatter extends StatelessWidget {
 
   const AnimatedShatter({
     super.key,
+    required this.child,
     this.progress = 0,
     this.points = const [],
-    required this.child,
   });
 
   @override
@@ -22,15 +22,16 @@ class AnimatedShatter extends StatelessWidget {
     );
 
     return LayoutBuilder(builder: (context, constraints) {
-      var alignment = Alignment(-1 + center.dx * 2, -1 + center.dy * 2);
+      final alignment = Alignment(-1 + center.dx * 2, -1 + center.dy * 2);
+      final negativity = (alignment.x < 0 ? -1 : 1);
       return Transform.translate(
         offset: Offset(0, progress * constraints.maxHeight * 1.2),
         child: Transform(
           transform: Matrix4.identity()
             ..setEntry(3, 2, 0.01)
-            ..rotateZ((alignment.x < 0 ? -1 : 1) * 0.4 * progress)
-            ..rotateX((alignment.x < 0 ? -1 : 1) * 0.3 * progress)
-            ..rotateY((alignment.x < 0 ? -1 : 1) * 0.2 * progress),
+            ..rotateZ(negativity * 0.4 * progress)
+            ..rotateX(negativity * 0.3 * progress)
+            ..rotateY(negativity * 0.2 * progress),
           alignment: alignment,
           child: Transform.scale(
             scale: 1 - 0.7 * progress,
