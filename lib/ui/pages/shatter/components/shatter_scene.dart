@@ -88,9 +88,7 @@ class _ShatterSceneState extends State<ShatterScene> {
       curve: Curves.easeInSine,
       builder: (context, value, child) {
         return Stack(
-          children: _parts.map((part) {
-            return _buildPart(value, part);
-          }).toList(),
+          children: _parts.map((part) => _buildPart(value, part)).toList(),
         );
       },
     );

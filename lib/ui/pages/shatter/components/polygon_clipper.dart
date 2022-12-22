@@ -9,9 +9,7 @@ class PolygonClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     return Path()
       ..addPolygon(
-        points.map((relativeOffset) {
-          return _pointBySize(size, relativeOffset);
-        }).toList(),
+        points.map((relativeOffset) => _pointBySize(size, relativeOffset)).toList(),
         true,
       );
   }

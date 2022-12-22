@@ -22,8 +22,9 @@ class AppSnackBar {
     ];
   }
 
-  Color _messageTextColor([bool error = false]) =>
-      error ? context.colorScheme.error : context.colorScheme.secondary;
+  Color _messageTextColor([bool error = false]) {
+    return error ? context.colorScheme.error : context.colorScheme.secondary;
+  }
 
   void showError(String message) => _showAlertSnackBar(message, true);
 

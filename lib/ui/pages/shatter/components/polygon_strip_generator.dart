@@ -5,7 +5,7 @@ import 'triangle.dart';
 
 class PolygonStripGenerator {
   static List<List<Offset>> generate({int seed = 2, int complexity = 2}) {
-    var random = Random(2);
+    final random = Random(2);
 
     var triangles = [
       Triangle(const Offset(0, 0), const Offset(0, 1), const Offset(1, 0)),
