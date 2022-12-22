@@ -22,7 +22,7 @@ class SettingsPage extends StatelessWidget {
   ) {
     final actionsMap = {SettingsStateUsernameSaved: _onUsernameSaved};
 
-    actionsMap[state.status.runtimeType]?.call(context);
+    actionsMap[state.runtimeType]?.call(context);
   }
 
   void _onUsernameSaved(BuildContext context) {

@@ -24,11 +24,7 @@ class AppLoader extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
         child: Container(
           padding: EdgeInsets.all(size * 0.5),
-          decoration: withBackground
-              ? BoxDecoration(
-                  color: context.colorScheme.tertiaryContainer,
-                )
-              : null,
+          color: withBackground ? context.colorScheme.tertiaryContainer : null,
           child: AppLottieLoader(size: size),
         ),
       ),

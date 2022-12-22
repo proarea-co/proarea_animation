@@ -38,19 +38,17 @@ class AppAlertDialog extends StatelessWidget {
   }
 
   Widget _buildTitle(BuildContext context) {
-    final textTheme = context.textTheme;
     return Text(
       title,
-      style: textTheme.button,
+      style: context.textTheme.button,
       textAlign: TextAlign.center,
     );
   }
 
   Widget _buildDescription(BuildContext context) {
-    final textTheme = context.textTheme;
     return Text(
       info,
-      style: textTheme.bodyText2,
+      style: context.textTheme.bodyText2,
       textAlign: TextAlign.center,
     );
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../themes/constants/light_style_constants.dart';
 import '../../../themes/theme_app.dart';
 
 class AppSnackBar {
@@ -93,12 +92,12 @@ class AppSnackBar {
         borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
-            color: LightStyleConstants.charcoalTint1.withOpacity(.1),
+            color: context.colorScheme.tertiaryContainer.withOpacity(.1),
             blurRadius: 20,
             offset: const Offset(0, 4),
           ),
           BoxShadow(
-            color: LightStyleConstants.charcoalTint1.withOpacity(.08),
+            color: context.colorScheme.tertiaryContainer.withOpacity(.08),
             blurRadius: 5,
             offset: const Offset(0, 2),
           ),

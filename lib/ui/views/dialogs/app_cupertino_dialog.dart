@@ -44,9 +44,7 @@ class _AppCupertinoDialogState extends State<AppCupertinoDialog> {
         child: TextField(
           controller: _textEditingController,
           style: context.textTheme.bodyText2,
-          decoration: InputDecoration(
-            hintText: context.strings.username,
-          ),
+          decoration: InputDecoration(hintText: context.strings.username),
         ),
       ),
       actions: [
@@ -67,9 +65,7 @@ class _AppCupertinoDialogState extends State<AppCupertinoDialog> {
           },
           child: Text(
             context.strings.save,
-            style: context.textTheme.bodyText2?.copyWith(
-              fontSize: 16.sp,
-            ),
+            style: context.textTheme.bodyText2?.copyWith(fontSize: 16.sp),
           ),
         ),
       ],
