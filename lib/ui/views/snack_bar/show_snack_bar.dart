@@ -7,6 +7,24 @@ class AppSnackBar {
 
   AppSnackBar.of(this.context);
 
+  List<BoxShadow> _contentShadows() {
+    return [
+      BoxShadow(
+        color: context.colorScheme.tertiaryContainer.withOpacity(.1),
+        blurRadius: 20,
+        offset: const Offset(0, 4),
+      ),
+      BoxShadow(
+        color: context.colorScheme.tertiaryContainer.withOpacity(.08),
+        blurRadius: 5,
+        offset: const Offset(0, 2),
+      ),
+    ];
+  }
+
+  Color _messageTextColor([bool error = false]) =>
+      error ? context.colorScheme.error : context.colorScheme.secondary;
+
   void showError(String message) => _showAlertSnackBar(message, true);
 
   void showSuccess(String message) => _showAlertSnackBar(message, false);
@@ -42,9 +60,7 @@ class AppSnackBar {
   Widget _buildContentByAlerts(bool error, String message) {
     return Card(
       color: context.colorScheme.surface,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       elevation: 16,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
@@ -78,8 +94,7 @@ class AppSnackBar {
       message,
       style: context.textTheme.bodyText1?.copyWith(
         fontWeight: FontWeight.w500,
-        color:
-            error ? context.colorScheme.error : context.colorScheme.secondary,
+        color: _messageTextColor(error),
       ),
     );
   }
@@ -90,18 +105,7 @@ class AppSnackBar {
       decoration: BoxDecoration(
         color: context.colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
-        boxShadow: [
-          BoxShadow(
-            color: context.colorScheme.tertiaryContainer.withOpacity(.1),
-            blurRadius: 20,
-            offset: const Offset(0, 4),
-          ),
-          BoxShadow(
-            color: context.colorScheme.tertiaryContainer.withOpacity(.08),
-            blurRadius: 5,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        boxShadow: _contentShadows(),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),

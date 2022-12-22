@@ -48,27 +48,35 @@ class _AppCupertinoDialogState extends State<AppCupertinoDialog> {
         ),
       ),
       actions: [
-        TextButton(
-          onPressed: context.router.pop,
-          child: Text(
-            context.strings.cancel,
-            style: context.textTheme.bodyText2?.copyWith(
-              color: context.colorScheme.surfaceVariant,
-              fontSize: 16.sp,
-            ),
-          ),
-        ),
-        TextButton(
-          onPressed: () async {
-            await context.router.pop();
-            _cubit.saveUsername(_textEditingController.text);
-          },
-          child: Text(
-            context.strings.save,
-            style: context.textTheme.bodyText2?.copyWith(fontSize: 16.sp),
-          ),
-        ),
+        _buildCancelButton(),
+        _buildSaveButton(),
       ],
+    );
+  }
+
+  Widget _buildSaveButton() {
+    return TextButton(
+      onPressed: () async {
+        await context.router.pop();
+        _cubit.saveUsername(_textEditingController.text);
+      },
+      child: Text(
+        context.strings.save,
+        style: context.textTheme.bodyText2?.copyWith(fontSize: 16.sp),
+      ),
+    );
+  }
+
+  Widget _buildCancelButton() {
+    return TextButton(
+      onPressed: context.router.pop,
+      child: Text(
+        context.strings.cancel,
+        style: context.textTheme.bodyText2?.copyWith(
+          color: context.colorScheme.surfaceVariant,
+          fontSize: 16.sp,
+        ),
+      ),
     );
   }
 }
