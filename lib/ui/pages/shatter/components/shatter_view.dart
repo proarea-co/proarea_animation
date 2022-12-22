@@ -20,12 +20,11 @@ class ShatterView extends StatefulWidget {
 }
 
 class _ShatterViewState extends State<ShatterView> {
-  var _animationControlStatus = Control.stop;
-  var tween = MovieTween();
+  late var _animationControlStatus = Control.stop;
+  late var tween = MovieTween();
+
   void _start(Function shatterFn) async {
-    setState(
-      () => _animationControlStatus = Control.playFromStart,
-    );
+    setState(() => _animationControlStatus = Control.playFromStart);
     shatterFn();
   }
 
@@ -46,8 +45,9 @@ class _ShatterViewState extends State<ShatterView> {
                 ),
                 Positioned.fill(
                   child: ShatterScene(
-                    builder: (context, shatterFn) =>
-                        widget.widgetBuilder(() => _start(shatterFn)),
+                    builder: (context, shatterFn) {
+                      return widget.widgetBuilder(() => _start(shatterFn));
+                    },
                   ),
                 ),
               ],
@@ -55,9 +55,8 @@ class _ShatterViewState extends State<ShatterView> {
           );
         },
         animationStatusListener: (status) {
-          if (status == AnimationStatus.completed) {
-            widget.onComplete?.call();
-          }
+          if (status != AnimationStatus.completed) return;
+          widget.onComplete?.call();
         },
       ),
     );
