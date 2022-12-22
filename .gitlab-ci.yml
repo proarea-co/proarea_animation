@@ -1,6 +1,7 @@
 ---
 variables:
   WEB_HOOK_URL: https://hooks.slack.com/services/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
+  UPLOAD_URL: https://slack.com/api/files.upload
   BOT_USER_OAUTH_TOKEN: xoxb-418681667377-4540198287650-Ks5PgWfof8aefsq1GAaiKoLm
   USER_OAUTH_TOKEN: xoxp-418681667377-3326132650688-4549261165861-99366d26a81b79d1ad773a712d80d2a6
   SLACK_CHANNEL_ID: C043MRT02AE
@@ -58,6 +59,22 @@ variables:
     {"type":"divider"}]}
 
   MESSAGE_BUILD: >-
+    {"blocks":[{"type":"divider"},
+    {"type":"section","text":{"type":"mrkdwn",
+    "text":"*Build Complete* :confetti_ball::tada::fire:
+
+    *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
+
+    *Commit:* $CI_COMMIT_TITLE
+
+    *Author:* $GITLAB_USER_NAME
+
+    *Reviewer:* <@U03BU585QFL> (edit *.gitlab-ci.yml* to change)
+
+    *See branch:* <${CI_PROJECT_URL}/-/tree/${CI_COMMIT_BRANCH}|Branch Link>"}},
+    {"type":"divider"}]}
+
+  MESSAGE_BUILD_F: >-
     *Build Complete* :confetti_ball::tada::fire:
 
     *Brunch:* $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME $CI_COMMIT_BRANCH
@@ -267,11 +284,16 @@ Send Notification Build:
     - Build iOS ipa
   script: 
     - echo "Send Slack Messages"
-    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_BUILD}" $WEB_HOOK_URL'
+    - |
+      curl \
+        -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
+        -F "initial_comment=${MESSAGE_BUILD}" \
+        -F "channels=${SLACK_CHANNEL_ID}" \
+        -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
+        "${SLACK_CHANNEL_ID}"
 
 .send_notification_build:
   stage: Slack Report
-  # extends: .docker_job_setting_rules_dev
   extends: .docker_job_setting_rules_merge
   needs: !reference [.needs_build, needs]
   dependencies:
@@ -280,12 +302,12 @@ Send Notification Build:
   script: 
     - echo "Send Slack Messages"
     - |
-      curl -v \
+      curl \
         -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
         -F "initial_comment=${MESSAGE_BUILD}" \
         -F "channels=${SLACK_CHANNEL_ID}" \
         -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-        https://slack.com/api/files.upload
+        "${SLACK_CHANNEL_ID}"
 
 
 # # TODO: Code test code for send file to slack
@@ -304,4 +326,4 @@ Send Notification Build:
     #     -F initial_comment="${MESSAGE_BUILD}" \
     #     -F channels="${SLACK_CHANNEL_ID}" \
     #     -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-    #     https://slack.com/api/files.upload
+    #     "${SLACK_CHANNEL_ID}"
