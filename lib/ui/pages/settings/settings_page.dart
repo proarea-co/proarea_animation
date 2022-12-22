@@ -48,13 +48,7 @@ class SettingsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 48.sp,
-            width: 48.sp,
-            child: const Center(
-              child: AppBackButton(),
-            ),
-          ),
+          _buildBackButton(),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
@@ -64,6 +58,16 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildBackButton() {
+    return SizedBox(
+      height: 48.sp,
+      width: 48.sp,
+      child: const Center(
+        child: AppBackButton(),
       ),
     );
   }

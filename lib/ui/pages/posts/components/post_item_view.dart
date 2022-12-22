@@ -45,6 +45,17 @@ class _ListItemState extends State<PostItemView>
     super.dispose();
   }
 
+  List<BoxShadow> _contentShadows() {
+    return [
+      BoxShadow(
+        color: context.colorScheme.tertiaryContainer,
+        blurRadius: 2,
+        spreadRadius: 2,
+        offset: const Offset(1, 1),
+      )
+    ];
+  }
+
   Offset _translateOffset(bool front, double slideDistance) {
     final value =
         front ? _animationController.value - 1 : _animationController.value;
@@ -102,73 +113,54 @@ class _ListItemState extends State<PostItemView>
 
   Widget _buildBackSide() {
     return _buildTransformFrame(
-      false,
-      Container(
-        height: 80,
-        padding: const EdgeInsets.all(16),
-        margin: const EdgeInsets.only(top: 2),
-        decoration: BoxDecoration(
-          color: context.colorScheme.error,
-          boxShadow: [
-            BoxShadow(
-              color: context.colorScheme.tertiaryContainer,
-              blurRadius: 2,
-              spreadRadius: 2,
-              offset: const Offset(1, 1),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Expanded(child: _buildRemoveButton()),
-            Expanded(child: _buildEditButton()),
-          ],
-        ),
+      Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(child: _buildRemoveButton()),
+          Expanded(child: _buildEditButton()),
+        ],
       ),
+      false,
     );
   }
 
   Widget _buildFrontSide() {
     return _buildTransformFrame(
-      true,
-      Container(
-        height: 80,
-        padding: const EdgeInsets.all(16),
-        margin: const EdgeInsets.only(top: 2),
-        decoration: BoxDecoration(
-          color: context.colorScheme.background,
-          boxShadow: [
-            BoxShadow(
-              color: context.colorScheme.tertiaryContainer,
-              blurRadius: 2,
-              spreadRadius: 2,
-              offset: const Offset(1, 1),
+      Row(
+        children: [
+          Expanded(
+            child: Text(
+              widget.post.title,
+              style: const TextStyle(fontSize: 18),
             ),
-          ],
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(
-                widget.post.title,
-                style: const TextStyle(fontSize: 18),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _buildTransformFrame(bool front, Widget child) {
+  Widget _decoratedFrame(Widget child, [bool front = true]) {
+    return Container(
+      height: 80,
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(top: 2),
+      decoration: BoxDecoration(
+        color:
+            front ? context.colorScheme.background : context.colorScheme.error,
+        boxShadow: _contentShadows(),
+      ),
+      child: child,
+    );
+  }
+
+  Widget _buildTransformFrame(Widget child, [bool front = true]) {
     final slideDistance = MediaQuery.of(context).size.width;
     return Transform.translate(
       offset: _translateOffset(front, slideDistance),
       child: Transform(
         transform: _rotateTransform(front),
         alignment: front ? Alignment.centerRight : Alignment.centerLeft,
-        child: child,
+        child: _decoratedFrame(child, front),
       ),
     );
   }
