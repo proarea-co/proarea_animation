@@ -39,6 +39,37 @@ class _ListItemState extends State<PostItemView>
     );
   }
 
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  List<BoxShadow> _contentShadows() {
+    return [
+      BoxShadow(
+        color: context.colorScheme.tertiaryContainer,
+        blurRadius: 2,
+        spreadRadius: 2,
+        offset: const Offset(1, 1),
+      )
+    ];
+  }
+
+  Offset _translateOffset(bool front, double slideDistance) {
+    final value =
+        front ? _animationController.value - 1 : _animationController.value;
+    return Offset(slideDistance * value, 0);
+  }
+
+  Matrix4 _rotateTransform(bool front) {
+    final value =
+        front ? 1 - _animationController.value : _animationController.value;
+    return Matrix4.identity()
+      ..setEntry(3, 2, 0.001)
+      ..rotateY(math.pi / 2 * value);
+  }
+
   void _onDragUpdate(DragUpdateDetails details) {
     double delta =
         (details.primaryDelta ?? 0) / MediaQuery.of(context).size.width;
@@ -62,12 +93,6 @@ class _ListItemState extends State<PostItemView>
   }
 
   @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onHorizontalDragEnd: _onDragEnd,
@@ -87,120 +112,93 @@ class _ListItemState extends State<PostItemView>
   }
 
   Widget _buildBackSide() {
-    final slideDistance = MediaQuery.of(context).size.width;
-    return Transform.translate(
-      offset: Offset(slideDistance * _animationController.value, 0),
-      child: Transform(
-        transform: Matrix4.identity()
-          ..setEntry(3, 2, 0.001)
-          ..rotateY(-math.pi / 2 * _animationController.value),
-        alignment: Alignment.centerLeft,
-        child: Container(
-          height: 80,
-          padding: const EdgeInsets.all(16),
-          margin: const EdgeInsets.only(top: 2),
-          decoration: BoxDecoration(
-            color: context.colorScheme.error,
-            boxShadow: [
-              BoxShadow(
-                color: context.colorScheme.tertiaryContainer,
-                blurRadius: 2,
-                spreadRadius: 2,
-                offset: const Offset(1, 1),
-              ),
-            ],
-          ),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              _buildRemoveButton(),
-              _buildEditButton(),
-            ],
-          ),
-        ),
+    return _buildTransformFrame(
+      Row(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Expanded(child: _buildRemoveButton()),
+          Expanded(child: _buildEditButton()),
+        ],
       ),
+      false,
     );
   }
 
   Widget _buildFrontSide() {
+    return _buildTransformFrame(
+      Row(
+        children: [
+          Expanded(
+            child: Text(
+              widget.post.title,
+              style: const TextStyle(fontSize: 18),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _decoratedFrame(Widget child, [bool front = true]) {
+    return Container(
+      height: 80,
+      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(top: 2),
+      decoration: BoxDecoration(
+        color:
+            front ? context.colorScheme.background : context.colorScheme.error,
+        boxShadow: _contentShadows(),
+      ),
+      child: child,
+    );
+  }
+
+  Widget _buildTransformFrame(Widget child, [bool front = true]) {
     final slideDistance = MediaQuery.of(context).size.width;
     return Transform.translate(
-      offset: Offset(slideDistance * (_animationController.value - 1), 0),
+      offset: _translateOffset(front, slideDistance),
       child: Transform(
-        transform: Matrix4.identity()
-          ..setEntry(3, 2, 0.001)
-          ..rotateY(
-            math.pi / 2 * (1 - _animationController.value),
-          ),
-        alignment: Alignment.centerRight,
-        child: Container(
-          height: 80,
-          padding: const EdgeInsets.all(16),
-          margin: const EdgeInsets.only(top: 2),
-          decoration: BoxDecoration(
-            color: context.colorScheme.background,
-            boxShadow: [
-              BoxShadow(
-                color: context.colorScheme.tertiaryContainer,
-                blurRadius: 2,
-                spreadRadius: 2,
-                offset: const Offset(1, 1),
-              ),
-            ],
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  widget.post.title,
-                  style: const TextStyle(fontSize: 18),
-                ),
-              ),
-            ],
-          ),
-        ),
+        transform: _rotateTransform(front),
+        alignment: front ? Alignment.centerRight : Alignment.centerLeft,
+        child: _decoratedFrame(child, front),
       ),
     );
   }
 
   Widget _buildEditButton() {
-    return Expanded(
-      child: InkWell(
-        child: Column(
-          children: [
-            Icon(
-              Icons.edit_outlined,
-              color: context.colorScheme.primaryContainer,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              context.strings.edit,
-              style: context.textTheme.headline1,
-            ),
-          ],
-        ),
+    return InkWell(
+      child: Column(
+        children: [
+          Icon(
+            Icons.edit_outlined,
+            color: context.colorScheme.primaryContainer,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            context.strings.edit,
+            style: context.textTheme.headline1,
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildRemoveButton() {
-    return Expanded(
-      child: InkWell(
-        onTap: widget.onRemoveTap,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Icon(
-              Icons.delete_outline,
-              color: context.colorScheme.primaryContainer,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              context.strings.remove,
-              style: context.textTheme.headline1,
-            ),
-          ],
-        ),
+    return InkWell(
+      onTap: widget.onRemoveTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Icon(
+            Icons.delete_outline,
+            color: context.colorScheme.primaryContainer,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            context.strings.remove,
+            style: context.textTheme.headline1,
+          ),
+        ],
       ),
     );
   }

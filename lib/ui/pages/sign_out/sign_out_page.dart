@@ -32,6 +32,9 @@ class _SignOutPageState extends State<SignOutPage>
     super.dispose();
   }
 
+  SignOutAnimationStyles? _animationStyles(BuildContext context) =>
+      context.extension<SignOutAnimationStyles>();
+
   void _playAnimation() {
     if (_controller.isAnimating) return;
 
@@ -41,6 +44,7 @@ class _SignOutPageState extends State<SignOutPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: context.colorScheme.background,
       appBar: AppBar(
         backgroundColor: context.colorScheme.background,
         title: Text(
@@ -48,14 +52,18 @@ class _SignOutPageState extends State<SignOutPage>
           style: context.textTheme.subtitle1,
         ),
       ),
-      body: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: _playAnimation,
-        child: AnimatedButton(
-          controller: _controller.view,
-          begin: context.extension<SignOutAnimationStyles>()?.begin ?? Colors.white,
-          end: context.extension<SignOutAnimationStyles>()?.end ?? Colors.black,
-        ),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: _playAnimation,
+      child: AnimatedButton(
+        controller: _controller.view,
+        begin: _animationStyles(context)?.begin ?? Colors.white,
+        end: _animationStyles(context)?.end ?? Colors.black,
       ),
     );
   }

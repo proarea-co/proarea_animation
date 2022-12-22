@@ -17,7 +17,6 @@ class AppBottomSheet<T> {
       context: context,
       isScrollControlled: true,
       backgroundColor: context.colorScheme.onBackground,
-      // barrierColor: context.colorScheme.primary.withOpacity(0.3),
       builder: (_) => _buildShape(title, body),
     );
   }

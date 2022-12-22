@@ -20,11 +20,9 @@ class SettingsPage extends StatelessWidget {
     BuildContext context,
     SettingsState state,
   ) {
-    final actionsMap = {
-      SettingsStateUsernameSaved: _onUsernameSaved,
-    };
+    final actionsMap = {SettingsStateUsernameSaved: _onUsernameSaved};
 
-    actionsMap[state.status.runtimeType]?.call(context);
+    actionsMap[state.runtimeType]?.call(context);
   }
 
   void _onUsernameSaved(BuildContext context) {
@@ -50,40 +48,48 @@ class SettingsPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 48.sp,
-            width: 48.sp,
-            child: const Center(
-              child: AppBackButton(),
-            ),
-          ),
+          _buildBackButton(),
           Expanded(
             child: Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: 16.sp,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 8.sp),
-                  _buildTitle(context),
-                  SizedBox(height: 28.sp),
-                  UsernameCard(username: state.settings.userName),
-                  SizedBox(height: 24.sp),
-                  const LanguageCard(),
-                  SizedBox(height: 24.sp),
-                  const ThemeCard(),
-                  SizedBox(height: 24.sp),
-                  const Spacer(),
-                  _buildDivider(context),
-                  SizedBox(height: 12.sp),
-                  _buildAboutAppButton(context, state),
-                ],
-              ),
+              child: _buildContent(context, state),
             ),
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildBackButton() {
+    return SizedBox(
+      height: 48.sp,
+      width: 48.sp,
+      child: const Center(
+        child: AppBackButton(),
+      ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context, SettingsState state) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 8.sp),
+        _buildTitle(context),
+        SizedBox(height: 28.sp),
+        UsernameCard(username: state.settings.userName),
+        SizedBox(height: 24.sp),
+        const LanguageCard(),
+        SizedBox(height: 24.sp),
+        const ThemeCard(),
+        SizedBox(height: 24.sp),
+        const Spacer(),
+        _buildDivider(context),
+        SizedBox(height: 12.sp),
+        _buildAboutAppButton(context, state),
+      ],
     );
   }
 

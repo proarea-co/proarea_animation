@@ -30,9 +30,9 @@ class _UserDetailsViewState extends State<UserDetailsView> {
   void onInit() async {
     for (GlobalKey<FadeInItemViewState> key in _keys) {
       await Future.delayed(const Duration(milliseconds: 40));
-      if (key.currentState?.mounted == true) {
-        key.currentState?.show();
-      }
+      if (key.currentState?.mounted != true) continue;
+
+      key.currentState?.show();
     }
   }
 
@@ -40,30 +40,40 @@ class _UserDetailsViewState extends State<UserDetailsView> {
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: ((context, orientation) {
       if (orientation == Orientation.landscape) {
-        return Row(
-          children: [
-            Expanded(
-                child: SingleChildScrollView(
-              child: _buildPersonalInfo(),
-            )),
-            Expanded(
-                child: SingleChildScrollView(
-              child: _buildAddressInfo(),
-            )),
-          ],
-        );
+        return _buildLandscape();
       }
-      return ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          const SizedBox(height: 32),
-          _buildPersonalInfo(),
-          const SizedBox(height: 16),
-          _buildAddressInfo(),
-          const SizedBox(height: 64),
-        ],
-      );
+      return _buildPortrait();
     }));
+  }
+
+  Widget _buildLandscape() {
+    return Row(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: _buildPersonalInfo(),
+          ),
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: _buildAddressInfo(),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPortrait() {
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        const SizedBox(height: 32),
+        _buildPersonalInfo(),
+        const SizedBox(height: 16),
+        _buildAddressInfo(),
+        const SizedBox(height: 64),
+      ],
+    );
   }
 
   Widget _buildPersonalInfo() {
@@ -91,13 +101,6 @@ class _UserDetailsViewState extends State<UserDetailsView> {
     );
   }
 
-  FadeInItemView _buildAddressInfoItem(int keyIndex, String text) {
-    return FadeInItemView(
-      key: _keys[keyIndex],
-      child: AddressItemView(text: text),
-    );
-  }
-
   Widget _buildPersonalInfoItem(int keyIndex, String question) {
     return FadeInItemView(
       key: _keys[keyIndex],
@@ -110,6 +113,13 @@ class _UserDetailsViewState extends State<UserDetailsView> {
           ),
         ),
       ),
+    );
+  }
+
+  FadeInItemView _buildAddressInfoItem(int keyIndex, String text) {
+    return FadeInItemView(
+      key: _keys[keyIndex],
+      child: AddressItemView(text: text),
     );
   }
 }

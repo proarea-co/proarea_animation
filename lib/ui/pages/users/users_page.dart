@@ -25,16 +25,19 @@ class UsersPage extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _UsersPageState extends State<UsersPage> {
-  BoxDecoration get _boxDecoration => BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            context.colorScheme.tertiary,
-            context.colorScheme.onTertiary,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      );
+  BoxDecoration get _boxDecoration {
+    return BoxDecoration(
+      gradient: LinearGradient(
+        colors: [
+          context.colorScheme.tertiary,
+          context.colorScheme.onTertiary,
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
+    );
+  }
+
   UsersCubit get _cubit => context.read();
 
   @override
@@ -42,22 +45,24 @@ class _UsersPageState extends State<UsersPage> {
     return Scaffold(
       body: AppConsumer<UsersCubit, UsersState>(
         withScaffold: false,
-        builder: (state) {
-          return DecoratedBox(
-            decoration: _boxDecoration,
-            child: SafeArea(
-              child: Stack(
-                children: <Widget>[
-                  _buildLine(),
-                  _buildUserDetails(state),
-                  ArrowIconsView(
-                    switchUser: _cubit.switchUser,
-                  ),
-                ],
-              ),
+        builder: _buildBody,
+      ),
+    );
+  }
+
+  Widget _buildBody(UsersState state) {
+    return DecoratedBox(
+      decoration: _boxDecoration,
+      child: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            _buildLine(),
+            _buildUserDetails(state),
+            ArrowIconsView(
+              switchUser: _cubit.switchUser,
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }

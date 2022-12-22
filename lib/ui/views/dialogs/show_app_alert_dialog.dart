@@ -14,18 +14,19 @@ Future<T?> showAppAlertDialog<T>(
   Color? acceptColor,
 }) {
   return showDialog<T>(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return AppAlertDialog(
-          title: title,
-          info: info,
-          cancelText: cancelText,
-          acceptText: acceptText,
-          onCancel: onCancel,
-          onAccept: onAccept,
-          cancelColor: cancelColor,
-          acceptColor: acceptColor,
-        );
-      });
+    context: context,
+    barrierDismissible: false,
+    builder: (context) {
+      return AppAlertDialog(
+        title: title,
+        info: info,
+        cancelText: cancelText,
+        acceptText: acceptText,
+        onCancel: onCancel,
+        onAccept: onAccept,
+        cancelColor: cancelColor,
+        acceptColor: acceptColor,
+      );
+    },
+  );
 }
