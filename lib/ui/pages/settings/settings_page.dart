@@ -20,9 +20,7 @@ class SettingsPage extends StatelessWidget {
     BuildContext context,
     SettingsState state,
   ) {
-    final actionsMap = {
-      SettingsStateUsernameSaved: _onUsernameSaved,
-    };
+    final actionsMap = {SettingsStateUsernameSaved: _onUsernameSaved};
 
     actionsMap[state.status.runtimeType]?.call(context);
   }
