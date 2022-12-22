@@ -52,14 +52,18 @@ class _SignOutPageState extends State<SignOutPage>
           style: context.textTheme.subtitle1,
         ),
       ),
-      body: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: _playAnimation,
-        child: AnimatedButton(
-          controller: _controller.view,
-          begin: _animationStyles(context)?.begin ?? Colors.white,
-          end: _animationStyles(context)?.end ?? Colors.black,
-        ),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    return GestureDetector(
+      behavior: HitTestBehavior.opaque,
+      onTap: _playAnimation,
+      child: AnimatedButton(
+        controller: _controller.view,
+        begin: _animationStyles(context)?.begin ?? Colors.white,
+        end: _animationStyles(context)?.end ?? Colors.black,
       ),
     );
   }

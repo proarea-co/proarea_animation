@@ -45,22 +45,24 @@ class _UsersPageState extends State<UsersPage> {
     return Scaffold(
       body: AppConsumer<UsersCubit, UsersState>(
         withScaffold: false,
-        builder: (state) {
-          return DecoratedBox(
-            decoration: _boxDecoration,
-            child: SafeArea(
-              child: Stack(
-                children: <Widget>[
-                  _buildLine(),
-                  _buildUserDetails(state),
-                  ArrowIconsView(
-                    switchUser: _cubit.switchUser,
-                  ),
-                ],
-              ),
+        builder: _buildBody,
+      ),
+    );
+  }
+
+  Widget _buildBody(UsersState state) {
+    return DecoratedBox(
+      decoration: _boxDecoration,
+      child: SafeArea(
+        child: Stack(
+          children: <Widget>[
+            _buildLine(),
+            _buildUserDetails(state),
+            ArrowIconsView(
+              switchUser: _cubit.switchUser,
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }

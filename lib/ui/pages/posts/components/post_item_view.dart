@@ -121,8 +121,8 @@ class _ListItemState extends State<PostItemView>
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
-            _buildRemoveButton(),
-            _buildEditButton(),
+            Expanded(child: _buildRemoveButton()),
+            Expanded(child: _buildEditButton()),
           ],
         ),
       ),
@@ -174,43 +174,39 @@ class _ListItemState extends State<PostItemView>
   }
 
   Widget _buildEditButton() {
-    return Expanded(
-      child: InkWell(
-        child: Column(
-          children: [
-            Icon(
-              Icons.edit_outlined,
-              color: context.colorScheme.primaryContainer,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              context.strings.edit,
-              style: context.textTheme.headline1,
-            ),
-          ],
-        ),
+    return InkWell(
+      child: Column(
+        children: [
+          Icon(
+            Icons.edit_outlined,
+            color: context.colorScheme.primaryContainer,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            context.strings.edit,
+            style: context.textTheme.headline1,
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildRemoveButton() {
-    return Expanded(
-      child: InkWell(
-        onTap: widget.onRemoveTap,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Icon(
-              Icons.delete_outline,
-              color: context.colorScheme.primaryContainer,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              context.strings.remove,
-              style: context.textTheme.headline1,
-            ),
-          ],
-        ),
+    return InkWell(
+      onTap: widget.onRemoveTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          Icon(
+            Icons.delete_outline,
+            color: context.colorScheme.primaryContainer,
+          ),
+          const SizedBox(height: 4),
+          Text(
+            context.strings.remove,
+            style: context.textTheme.headline1,
+          ),
+        ],
       ),
     );
   }

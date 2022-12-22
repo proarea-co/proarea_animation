@@ -10,27 +10,35 @@ class ShatterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShatterView(
-      child: Container(
-        constraints: const BoxConstraints.expand(),
-        color: context.colorScheme.onPrimary,
-        child: Center(
-          child: Text(
-            '${context.strings.welcomeBack}!',
-            style: context.textTheme.bodyText1?.copyWith(
-                  fontSize: 28,
-                  color: context.colorScheme.primary,
-                ),
+      child: _buildBack(context),
+      widgetBuilder: (onPressed) => _buildFront(context, onPressed),
+    );
+  }
+
+  Widget _buildBack(BuildContext context) {
+    return Container(
+      constraints: const BoxConstraints.expand(),
+      color: context.colorScheme.onPrimary,
+      child: Center(
+        child: Text(
+          '${context.strings.welcomeBack}!',
+          style: context.textTheme.bodyText1?.copyWith(
+            fontSize: 28,
+            color: context.colorScheme.primary,
           ),
         ),
       ),
-      widgetBuilder: (onPressed) => Container(
-        constraints: const BoxConstraints.expand(),
-        color: Colors.deepOrangeAccent,
-        child: Center(
-          child: ElevatedButton(
-            onPressed: onPressed,
-            child: Text(context.strings.shatter.toUpperCase()),
-          ),
+    );
+  }
+
+  Widget _buildFront(BuildContext context, VoidCallback onPressed) {
+    return Container(
+      constraints: const BoxConstraints.expand(),
+      color: Colors.deepOrangeAccent,
+      child: Center(
+        child: ElevatedButton(
+          onPressed: onPressed,
+          child: Text(context.strings.shatter.toUpperCase()),
         ),
       ),
     );

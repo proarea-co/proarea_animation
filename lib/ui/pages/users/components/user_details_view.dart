@@ -40,32 +40,40 @@ class _UserDetailsViewState extends State<UserDetailsView> {
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: ((context, orientation) {
       if (orientation == Orientation.landscape) {
-        return Row(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                child: _buildPersonalInfo(),
-              ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: _buildAddressInfo(),
-              ),
-            ),
-          ],
-        );
+        return _buildLandscape();
       }
-      return ListView(
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
-          const SizedBox(height: 32),
-          _buildPersonalInfo(),
-          const SizedBox(height: 16),
-          _buildAddressInfo(),
-          const SizedBox(height: 64),
-        ],
-      );
+      return _buildPortrait();
     }));
+  }
+
+  Widget _buildLandscape() {
+    return Row(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: _buildPersonalInfo(),
+          ),
+        ),
+        Expanded(
+          child: SingleChildScrollView(
+            child: _buildAddressInfo(),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildPortrait() {
+    return ListView(
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        const SizedBox(height: 32),
+        _buildPersonalInfo(),
+        const SizedBox(height: 16),
+        _buildAddressInfo(),
+        const SizedBox(height: 64),
+      ],
+    );
   }
 
   Widget _buildPersonalInfo() {

@@ -9,10 +9,10 @@ class Triangle {
   Triangle(this.p1, this.p2, this.p3);
 
   List<Triangle> shatter(Random random) {
-    var m12 = _average2(p1, p2, 0.4 + 0.2 * random.nextDouble());
-    var m23 = _average2(p2, p3, 0.4 + 0.2 * random.nextDouble());
-    var m13 = _average2(p1, p3, 0.4 + 0.2 * random.nextDouble());
-    var center = _average3(
+    final m12 = _average2(p1, p2, 0.4 + 0.2 * random.nextDouble());
+    final m23 = _average2(p2, p3, 0.4 + 0.2 * random.nextDouble());
+    final m13 = _average2(p1, p3, 0.4 + 0.2 * random.nextDouble());
+    final center = _average3(
       p1,
       p2,
       p3,
@@ -32,7 +32,7 @@ class Triangle {
   }
 
   Offset _average2(Offset p1, Offset p2, double weight) {
-    var vec = Offset(
+    final vec = Offset(
       p2.dx - p1.dx,
       p2.dy - p1.dy,
     );
@@ -51,14 +51,14 @@ class Triangle {
     double w2,
     double w3,
   ) {
-    var center = Offset(
+    final center = Offset(
       (p1.dx + p2.dx + p3.dx) / 3.0,
       (p1.dy + p2.dy + p3.dy) / 3.0,
     );
 
-    var vec1 = Offset(p1.dx - center.dx, p1.dy - center.dy);
-    var vec2 = Offset(p2.dx - center.dx, p2.dy - center.dy);
-    var vec3 = Offset(p3.dx - center.dx, p3.dy - center.dy);
+    final vec1 = Offset(p1.dx - center.dx, p1.dy - center.dy);
+    final vec2 = Offset(p2.dx - center.dx, p2.dy - center.dy);
+    final vec3 = Offset(p3.dx - center.dx, p3.dy - center.dy);
 
     return Offset(
       center.dx + vec1.dx * w1 + vec2.dx * w2 + vec3.dx * w3,

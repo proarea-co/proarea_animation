@@ -89,18 +89,22 @@ class _ShatterSceneState extends State<ShatterScene> {
       builder: (context, value, child) {
         return Stack(
           children: _parts.map((part) {
-            return Positioned.fill(
-              child: AnimatedShatter(
-                points: part,
-                progress: value,
-                child: !_useFallback
-                    ? Image(image: _memoryImage!)
-                    : widget.builder(context, () {}),
-              ),
-            );
+            return _buildPart(value, part);
           }).toList(),
         );
       },
+    );
+  }
+
+  Widget _buildPart(double progress, List<Offset> part) {
+    return Positioned.fill(
+      child: AnimatedShatter(
+        points: part,
+        progress: progress,
+        child: !_useFallback
+            ? Image(image: _memoryImage!)
+            : widget.builder(context, () {}),
+      ),
     );
   }
 }

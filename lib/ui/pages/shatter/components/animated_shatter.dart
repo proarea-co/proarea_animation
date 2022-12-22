@@ -16,7 +16,7 @@ class AnimatedShatter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var center = Offset(
+    final center = Offset(
       (points[0].dx + points[1].dx + points[2].dx) / 3.0,
       (points[0].dy + points[1].dy + points[2].dy) / 3.0,
     );

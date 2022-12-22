@@ -20,12 +20,7 @@ class AddressItemView extends StatelessWidget {
           _buildDot(context),
           const SizedBox(width: 26),
           Expanded(
-            child: Text(
-              text,
-              style: context.textTheme.subtitle1?.copyWith(
-                color: context.colorScheme.primaryContainer,
-              ),
-            ),
+            child: _buildText(context),
           )
         ],
       ),
@@ -38,6 +33,15 @@ class AddressItemView extends StatelessWidget {
       height: 12,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
+        color: context.colorScheme.primaryContainer,
+      ),
+    );
+  }
+
+  Widget _buildText(BuildContext context) {
+    return Text(
+      text,
+      style: context.textTheme.subtitle1?.copyWith(
         color: context.colorScheme.primaryContainer,
       ),
     );

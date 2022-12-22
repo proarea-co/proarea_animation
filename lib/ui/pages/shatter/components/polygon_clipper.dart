@@ -10,10 +10,7 @@ class PolygonClipper extends CustomClipper<Path> {
     return Path()
       ..addPolygon(
         points.map((relativeOffset) {
-          return Offset(
-            relativeOffset.dx * size.width,
-            relativeOffset.dy * size.height,
-          );
+          return _pointBySize(size, relativeOffset);
         }).toList(),
         true,
       );
@@ -21,4 +18,12 @@ class PolygonClipper extends CustomClipper<Path> {
 
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
+
+  Offset _pointBySize(Size size, Offset offset) {
+    return Offset(
+      offset.dx * size.width,
+      offset.dy * size.height,
+    );
+  }
+
 }

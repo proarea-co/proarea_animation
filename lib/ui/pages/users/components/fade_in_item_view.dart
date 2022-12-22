@@ -53,16 +53,18 @@ class FadeInItemViewState extends State<FadeInItemView>
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: _animation,
-      builder: (context, child) {
-        return Transform.translate(
-          offset: Offset(0, 64 * position * (1 - _animation.value)),
-          child: Opacity(
-            opacity: _animation.value,
-            child: child,
-          ),
-        );
-      },
+      builder: (context, child) => _buildTransform(child),
       child: widget.child,
+    );
+  }
+
+  Widget _buildTransform(Widget? child) {
+    return Transform.translate(
+      offset: Offset(0, 64 * position * (1 - _animation.value)),
+      child: Opacity(
+        opacity: _animation.value,
+        child: child,
+      ),
     );
   }
 }
