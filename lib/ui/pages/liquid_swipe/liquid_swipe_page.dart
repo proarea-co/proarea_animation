@@ -13,21 +13,29 @@ class LiquidSwipePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: <Widget>[
-          LiquidSwipe(
-            pages: LiquidSwipeMock.pages.map(_buildPage).toList(),
-            positionSlideIcon: 0.8,
-            slideIconWidget: const Icon(Icons.arrow_back_ios),
-            waveType: WaveType.liquidReveal,
-            ignoreUserGestureWhileAnimating: true,
-          ),
-          const Positioned(
-            left: 8,
-            top: 4,
-            child: AppBackButton(),
-          ),
+        children: [
+          _buildContent(),
+          _buildBackButton(),
         ],
       ),
+    );
+  }
+
+  Widget _buildContent() {
+    return LiquidSwipe(
+      pages: LiquidSwipeMock.pages.map(_buildPage).toList(),
+      positionSlideIcon: 0.8,
+      slideIconWidget: const Icon(Icons.arrow_back_ios),
+      waveType: WaveType.liquidReveal,
+      ignoreUserGestureWhileAnimating: true,
+    );
+  }
+
+  Widget _buildBackButton() {
+    return const Positioned(
+      left: 8,
+      top: 4,
+      child: AppBackButton(),
     );
   }
 

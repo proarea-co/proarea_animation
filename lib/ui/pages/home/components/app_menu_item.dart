@@ -19,6 +19,20 @@ class AppMenuItem extends StatelessWidget {
     this.selected = false,
   });
 
+  BoxDecoration _getDecoration(BuildContext context) {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(4),
+      gradient: _getGradient(context),
+    );
+  }
+
+  BoxDecoration _getGradientDecoration(BuildContext context) {
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(4),
+      color: _getColor(context),
+    );
+  }
+
   Color? _getColor(BuildContext context) {
     final extension = context.extension<AppMenuItemStyles>();
     final selectedColor = extension?.selectedColor;
@@ -35,34 +49,32 @@ class AppMenuItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 2),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4),
-        gradient: _getGradient(context),
-      ),
+      decoration: _getDecoration(context),
       padding: const EdgeInsets.all(2),
       child: GestureDetector(
         onTap: onTap,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(4),
-            color: _getColor(context),
+        child: _buildContent(context),
+      ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    return Container(
+      decoration: _getGradientDecoration(context),
+      padding: const EdgeInsets.all(16),
+      child: Row(
+        children: [
+          Icon(routeItem.icon),
+          const SizedBox(width: 12),
+          Expanded(
+            child: AutoSizeText(
+              routeItem.name(context),
+              group: group,
+              maxLines: 1,
+              style: const TextStyle(fontSize: 16),
+            ),
           ),
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Icon(routeItem.icon),
-              const SizedBox(width: 12),
-              Expanded(
-                child: AutoSizeText(
-                  routeItem.name(context),
-                  group: group,
-                  maxLines: 1,
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ),
-            ],
-          ),
-        ),
+        ],
       ),
     );
   }
