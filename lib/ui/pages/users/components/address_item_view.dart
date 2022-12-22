@@ -38,7 +38,7 @@ class AddressItemView extends StatelessWidget {
       height: 12,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: context.colorScheme.onBackground,
+        color: context.colorScheme.primaryContainer,
       ),
     );
   }

@@ -30,9 +30,9 @@ class _UserDetailsViewState extends State<UserDetailsView> {
   void onInit() async {
     for (GlobalKey<FadeInItemViewState> key in _keys) {
       await Future.delayed(const Duration(milliseconds: 40));
-      if (key.currentState?.mounted == true) {
-        key.currentState?.show();
-      }
+      if (key.currentState?.mounted != true) continue;
+
+      key.currentState?.show();
     }
   }
 
@@ -43,13 +43,15 @@ class _UserDetailsViewState extends State<UserDetailsView> {
         return Row(
           children: [
             Expanded(
-                child: SingleChildScrollView(
-              child: _buildPersonalInfo(),
-            )),
+              child: SingleChildScrollView(
+                child: _buildPersonalInfo(),
+              ),
+            ),
             Expanded(
-                child: SingleChildScrollView(
-              child: _buildAddressInfo(),
-            )),
+              child: SingleChildScrollView(
+                child: _buildAddressInfo(),
+              ),
+            ),
           ],
         );
       }
@@ -91,13 +93,6 @@ class _UserDetailsViewState extends State<UserDetailsView> {
     );
   }
 
-  FadeInItemView _buildAddressInfoItem(int keyIndex, String text) {
-    return FadeInItemView(
-      key: _keys[keyIndex],
-      child: AddressItemView(text: text),
-    );
-  }
-
   Widget _buildPersonalInfoItem(int keyIndex, String question) {
     return FadeInItemView(
       key: _keys[keyIndex],
@@ -110,6 +105,13 @@ class _UserDetailsViewState extends State<UserDetailsView> {
           ),
         ),
       ),
+    );
+  }
+
+  FadeInItemView _buildAddressInfoItem(int keyIndex, String text) {
+    return FadeInItemView(
+      key: _keys[keyIndex],
+      child: AddressItemView(text: text),
     );
   }
 }

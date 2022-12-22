@@ -25,16 +25,19 @@ class UsersPage extends StatefulWidget with AutoRouteWrapper {
 }
 
 class _UsersPageState extends State<UsersPage> {
-  BoxDecoration get _boxDecoration => BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            context.colorScheme.tertiary,
-            context.colorScheme.onTertiary,
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      );
+  BoxDecoration get _boxDecoration {
+    return BoxDecoration(
+      gradient: LinearGradient(
+        colors: [
+          context.colorScheme.tertiary,
+          context.colorScheme.onTertiary,
+        ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
+    );
+  }
+
   UsersCubit get _cubit => context.read();
 
   @override

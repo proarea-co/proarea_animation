@@ -14,7 +14,6 @@ class FadeInItemView extends StatefulWidget {
 
 class FadeInItemViewState extends State<FadeInItemView>
     with SingleTickerProviderStateMixin {
-  //1 means its below, -1 means its above
   late bool _show = true;
   late AnimationController _animationController;
   late Animation<double> _animation;
