@@ -290,7 +290,7 @@ Send Notification Build:
         -F "initial_comment=${MESSAGE_BUILD}" \
         -F "channels=${SLACK_CHANNEL_ID}" \
         -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-        "${SLACK_CHANNEL_ID}"
+        $SLACK_CHANNEL_ID
 
 .send_notification_build:
   stage: Slack Report
@@ -307,7 +307,7 @@ Send Notification Build:
         -F "initial_comment=${MESSAGE_BUILD}" \
         -F "channels=${SLACK_CHANNEL_ID}" \
         -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-        "${SLACK_CHANNEL_ID}"
+        $SLACK_CHANNEL_ID
 
 
 # # TODO: Code test code for send file to slack
@@ -324,6 +324,6 @@ Send Notification Build:
     #   curl \
     #     -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
     #     -F initial_comment="${MESSAGE_BUILD}" \
-    #     -F channels="${SLACK_CHANNEL_ID}" \
+    #     -F channels=$SLACK_CHANNEL_ID \
     #     -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-    #     "${SLACK_CHANNEL_ID}"
+    #     $SLACK_CHANNEL_ID
