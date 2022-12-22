@@ -85,6 +85,14 @@ class _HomePageState extends State<HomePage>
     return !_fullScreen;
   }
 
+  String _username(SettingsState state) {
+    final username = state.settings.userName;
+
+    if (username.isEmpty) return context.strings.guest;
+
+    return username;
+  }
+
   @override
   Widget build(BuildContext context) {
     return AppBuilder<HomeCubit, HomeState>(
@@ -143,31 +151,37 @@ class _HomePageState extends State<HomePage>
       withScaffold: false,
       withErrorBuilder: false,
       builder: (state) {
-        var username = state.settings.userName;
-        if (username.isEmpty) username = context.strings.guest;
         return Row(
           children: [
-            SizedBox(
-              height: 48,
-              width: 48,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(48),
-                child: Image.asset(
-                  Assets.images.proareaAnimationsLogo.path,
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            _buildUserAvatar(),
             const SizedBox(width: 16),
             Expanded(
-              child: Text(
-                username,
-                style: Theme.of(context).textTheme.headline6,
-              ),
+              child: _buildUserName(state),
             ),
           ],
         );
       },
+    );
+  }
+
+  Widget _buildUserAvatar() {
+    return SizedBox(
+      height: 48,
+      width: 48,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(48),
+        child: Image.asset(
+          Assets.images.proareaAnimationsLogo.path,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildUserName(SettingsState state) {
+    return Text(
+      _username(state),
+      style: Theme.of(context).textTheme.headline6,
     );
   }
 

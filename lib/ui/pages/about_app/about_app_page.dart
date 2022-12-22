@@ -31,6 +31,13 @@ class AboutAppPage extends StatelessWidget {
     );
   }
 
+  BoxDecoration _getDecoration(BuildContext context, bool portrait) {
+    return BoxDecoration(
+      color: _getSheetColor(context),
+      borderRadius: _borderRadius(portrait),
+    );
+  }
+
   Color _getSheetColor(BuildContext context) {
     final theme = context.read<AppControllerCubit>().state.themeType;
     final light = theme == ThemeType.light;
@@ -108,10 +115,7 @@ class AboutAppPage extends StatelessWidget {
   Widget _buildContent(bool portrait) {
     return Builder(builder: (context) {
       return Container(
-        decoration: BoxDecoration(
-          color: _getSheetColor(context),
-          borderRadius: _borderRadius(portrait),
-        ),
+        decoration: _getDecoration(context, portrait),
         child: AppShaderMask(
           child: ListView(
             physics: const AlwaysScrollableScrollPhysics(

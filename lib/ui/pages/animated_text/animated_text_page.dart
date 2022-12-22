@@ -28,29 +28,35 @@ class AnimatedTextPage extends StatelessWidget with AutoRouteWrapper {
   Widget build(BuildContext context) {
     return AppConsumer<AnimatedTextCubit, AnimatedTextState>(
       withScaffold: false,
-      builder: (state) {
-        final text = AnimatedTextsMock.animatedTexts()[state.index];
-        return Scaffold(
-          body: Container(
-            decoration: BoxDecoration(color: text.color),
-            constraints: const BoxConstraints.expand(),
-            child: Center(
-              key: ValueKey(text.label),
-              child: text.child,
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: context.read<AnimatedTextCubit>().next,
-            tooltip: context.strings.next,
-            backgroundColor: context.colorScheme.tertiary,
-            foregroundColor: context.colorScheme.onPrimary,
-            child: const Icon(
-              Icons.play_circle_filled,
-              size: 50.0,
-            ),
-          ),
-        );
-      },
+      builder: (state) => _buildContent(context, state),
+    );
+  }
+
+  Widget _buildContent(BuildContext context, AnimatedTextState state) {
+    final text = AnimatedTextsMock.animatedTexts()[state.index];
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(color: text.color),
+        constraints: const BoxConstraints.expand(),
+        child: Center(
+          key: ValueKey(text.label),
+          child: text.child,
+        ),
+      ),
+      floatingActionButton: _buildButton(context),
+    );
+  }
+
+  Widget _buildButton(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: context.read<AnimatedTextCubit>().next,
+      tooltip: context.strings.next,
+      backgroundColor: context.colorScheme.tertiary,
+      foregroundColor: context.colorScheme.onPrimary,
+      child: const Icon(
+        Icons.play_circle_filled,
+        size: 50.0,
+      ),
     );
   }
 }

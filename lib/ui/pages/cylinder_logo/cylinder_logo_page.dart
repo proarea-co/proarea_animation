@@ -13,8 +13,8 @@ class CylinderLogoPage extends StatefulWidget {
 
 class _CylinderLogoPageState extends State<CylinderLogoPage>
     with SingleTickerProviderStateMixin {
+  static const _count = 16;
   late AnimationController _animationController;
-  final _numberOfTexts = 16;
 
   @override
   void initState() {
@@ -31,7 +31,25 @@ class _CylinderLogoPageState extends State<CylinderLogoPage>
     super.dispose();
   }
 
-  bool isOnLeft(double rotation) => math.cos(rotation) > 0;
+  double get _pi => math.pi;
+
+  double _getRotation(int index) {
+    final rotationValue = _animationController.value * 2 * _pi / _count;
+    final rotation = 2 * _pi * index / _count + _pi / 2 + rotationValue;
+
+    if (!_isOnLeft(rotation)) return rotation;
+
+    return -rotation + 2 * rotationValue - _pi * 2 / _count;
+  }
+
+  bool _isOnLeft(double rotation) => math.cos(rotation) > 0;
+
+  Matrix4 _getTransform(int index) {
+    return Matrix4.identity()
+      ..setEntry(3, 2, 0.001)
+      ..rotateY(_getRotation(index))
+      ..translate(-120.0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,37 +58,23 @@ class _CylinderLogoPageState extends State<CylinderLogoPage>
       body: SizedBox.expand(
         child: Stack(
           alignment: Alignment.center,
-          children: List.generate(
-            _numberOfTexts,
-            (index) {
-              return AnimatedBuilder(
-                animation: _animationController,
-                child: const LinearText(),
-                builder: (context, child) {
-                  final animationRotationValue =
-                      _animationController.value * 2 * math.pi / _numberOfTexts;
-                  double rotation = 2 * math.pi * index / _numberOfTexts +
-                      math.pi / 2 +
-                      animationRotationValue;
-                  if (isOnLeft(rotation)) {
-                    rotation = -rotation +
-                        2 * animationRotationValue -
-                        math.pi * 2 / _numberOfTexts;
-                  }
-                  return Transform(
-                    alignment: Alignment.center,
-                    transform: Matrix4.identity()
-                      ..setEntry(3, 2, 0.001)
-                      ..rotateY(rotation)
-                      ..translate(-120.0),
-                    child: const LinearText(),
-                  );
-                },
-              );
-            },
-          ),
+          children: List.generate(_count, (index) => _buildAnimatedUnit(index)),
         ),
       ),
+    );
+  }
+
+  Widget _buildAnimatedUnit(int index) {
+    return AnimatedBuilder(
+      animation: _animationController,
+      child: const LinearText(),
+      builder: (context, child) {
+        return Transform(
+          alignment: Alignment.center,
+          transform: _getTransform(index),
+          child: const LinearText(),
+        );
+      },
     );
   }
 }

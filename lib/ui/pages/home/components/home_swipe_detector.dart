@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class HomeSwipeDetector extends StatefulWidget {
@@ -21,41 +19,44 @@ class HomeSwipeDetector extends StatefulWidget {
 }
 
 class _HomeSwipeDetectorState extends State<HomeSwipeDetector> {
-  AnimationController get _animationController => widget.animationController;
+  AnimationController get _controller => widget.animationController;
+
+  double get _width => MediaQuery.of(context).size.width;
 
   void _onDragStart(DragStartDetails details) {
-    log('${MediaQuery.of(context).size.width * 0.4}');
-    bool isDragOpenFromLeft = _animationController.isDismissed &&
-        details.globalPosition.dx < MediaQuery.of(context).size.width * 0.4;
-    bool isDragClosedFromRight = _animationController.isCompleted &&
-        details.globalPosition.dx > MediaQuery.of(context).size.width * 0.6;
-    final canBeDragged = isDragClosedFromRight || isDragOpenFromLeft;
+    final openLeft =
+        _controller.isDismissed && details.globalPosition.dx < _width * 0.4;
+
+    final openRight =
+        _controller.isCompleted && details.globalPosition.dx > _width * 0.6;
+
+    final canBeDragged = openRight || openLeft;
+
     widget.setCanBeDragged(canBeDragged);
   }
 
   void _onDragUpdate(DragUpdateDetails details) {
-    if (widget.canBeDragged) {
-      double delta =
-          (details.primaryDelta ?? 0) / MediaQuery.of(context).size.width * 1.2;
-      _animationController.value += delta;
-    }
+    if (!widget.canBeDragged) return;
+
+    final delta = (details.primaryDelta ?? 0) / _width * 1.2;
+    _controller.value += delta;
   }
 
   void _onDragEnd(DragEndDetails details) {
-    if (_animationController.isDismissed || _animationController.isCompleted) {
+    if (_controller.isDismissed || _controller.isCompleted) return;
+
+    if (details.velocity.pixelsPerSecond.dx.abs() >= _width) {
+      final speed = details.velocity.pixelsPerSecond.dx / _width * 0.9;
+      _controller.fling(velocity: speed);
       return;
     }
-    if (details.velocity.pixelsPerSecond.dx.abs() >=
-        MediaQuery.of(context).size.width) {
-      double visualVelocity = details.velocity.pixelsPerSecond.dx /
-          MediaQuery.of(context).size.width *
-          0.9;
-      _animationController.fling(velocity: visualVelocity);
-    } else if (_animationController.value < 0.5) {
-      _animationController.forward();
-    } else {
-      _animationController.reverse();
+
+    if (_controller.value < 0.5) {
+      _controller.forward();
+      return;
     }
+
+    _controller.reverse();
   }
 
   @override
