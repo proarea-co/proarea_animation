@@ -186,14 +186,17 @@ Info MR Approved:
   extends: .bash_job_setting_rules_merge_approved
   stage: Slack Info
   script:
-    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_APPROVED_MR}" $WEB_HOOK_URL'
+    - |
+      curl \
+        -H "Content-type: application/json" \
+        -X POST \
+        --data "${MESSAGE_APPROVED_MR}" \
+        $WEB_HOOK_URL
 
 Info Wrong brunch:
   extends: .bash_job_setting_rules_incorrect_branch
   stage: Slack Info
   script:
-    - echo "$CI_COMMIT_BRANCH =~ $PATTERN_FEAT"
-    - echo "$CI_COMMIT_BRANCH =~ $PATTERN_FIX"
     - |
       curl \
         -H "Content-type: application/json" \
@@ -259,38 +262,12 @@ Send notification Analyze:
   needs: !reference [.needs_analyze, needs]
   script: 
     - echo "Send Slack Messages"
-    - 'curl -X POST -H "Content-type: application/json" --data "${MESSAGE_ANALYZE}" $WEB_HOOK_URL'
-
-
-# # TODO: Code test code for send file to slack
-# Build Android apk Test:
-#   extends: .docker_job_setting_rules_merge
-#   stage: Build
-#   needs: !reference [.needs_analyze, needs]
-#   script:
-#     - flutter build apk
-#     - !reference [.send_notification_build, script]
-#   artifacts:
-#     paths:
-#       - "build/app/outputs/apk/release/pro_an_*.apk"
-#     expire_in: 1 day
-
-Send Notification Build:
-  stage: Slack Report
-  extends: .bash_job_setting_rules_dev
-  needs: !reference [.needs_build, needs]
-  dependencies:
-    - Build Android apk
-    - Build iOS ipa
-  script: 
-    - echo "Send Slack Messages"
     - |
       curl \
-        -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
-        -F "initial_comment=${MESSAGE_BUILD}" \
-        -F "channels=${SLACK_CHANNEL_ID}" \
-        -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-        $SLACK_CHANNEL_ID
+        -H "Content-type: application/json" \
+        -X POST \
+        --data "${MESSAGE_ANALYZE}" \
+        $WEB_HOOK_URL
 
 .send_notification_build:
   stage: Slack Report
@@ -299,31 +276,14 @@ Send Notification Build:
   dependencies:
     - Build Android apk
     - Build iOS ipa
+    - Build Android apk Test
   script: 
     - echo "Send Slack Messages"
     - |
       curl \
         -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
-        -F "initial_comment=${MESSAGE_BUILD}" \
+        -F "initial_comment=${MESSAGE_BUILD_F}" \
         -F "channels=${SLACK_CHANNEL_ID}" \
         -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-        $SLACK_CHANNEL_ID
+        $UPLOAD_URL
 
-
-# # TODO: Code test code for send file to slack
-# Send_notification_build:
-#   stage: Slack Report
-#   extends: .bash_job_setting_rules_merge_request
-#   needs: !reference [.needs_build, needs]
-#   dependencies:
-#     - Build Android apk
-#     - Build iOS ipa
-#   script: 
-#     - echo "Send Slack Messages"
-    # - |
-    #   curl \
-    #     -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
-    #     -F initial_comment="${MESSAGE_BUILD}" \
-    #     -F channels=$SLACK_CHANNEL_ID \
-    #     -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-    #     $SLACK_CHANNEL_ID
