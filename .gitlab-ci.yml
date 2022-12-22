@@ -3,7 +3,7 @@ variables:
   WEB_HOOK_URL: https://hooks.slack.com/services/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
   BOT_USER_OAUTH_TOKEN: xoxb-418681667377-4540198287650-Ks5PgWfof8aefsq1GAaiKoLm
   USER_OAUTH_TOKEN: xoxp-418681667377-3326132650688-4549261165861-99366d26a81b79d1ad773a712d80d2a6
-  SLACK_CHANNEL_ID: C03EXNXQKK5
+  SLACK_CHANNEL_ID: C043MRT02AE
   PATTERN_FEAT: "/^feat\/PROAN-.*/"
   PATTERN_FIX: "/^fix\/PROAN-.*/"
 
@@ -288,22 +288,6 @@ Send Notification Build:
         -F "initial_comment=${MESSAGE_BUILD}" \
         -F "channels=${SLACK_CHANNEL_ID}" \
         -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-        https://slack.com/api/files.upload
-    - echo "Send Slack Messages 2"
-    - |
-      curl -v \
-        -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
-        -F initial_comment="${MESSAGE_BUILD}" \
-        -F channels="${SLACK_CHANNEL_ID}" \
-        -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
-        https://slack.com/api/files.upload
-    - echo "Send Slack Messages 3"
-    - |
-      curl -v \
-        -F "file=@$(find build/app/outputs/apk/release -name 'pro_an_*')" \
-        -F initial_comment=$MESSAGE_BUILD \
-        -F channels=$SLACK_CHANNEL_ID \
-        -H "Authorization: Bearer $BOT_USER_OAUTH_TOKEN" \
         https://slack.com/api/files.upload
 
 
