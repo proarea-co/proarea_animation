@@ -4,12 +4,20 @@ import '../../../l10n/localization_helper.dart';
 import '../../../themes/theme_app.dart';
 import 'components/shatter_view.dart';
 
-class ShatterPage extends StatelessWidget {
+class ShatterPage extends StatefulWidget {
   const ShatterPage({super.key});
+
+  @override
+  State<ShatterPage> createState() => _ShatterPageState();
+}
+
+class _ShatterPageState extends State<ShatterPage> {
+  late int _count = 0;
 
   @override
   Widget build(BuildContext context) {
     return ShatterView(
+      key: ValueKey(_count),
       child: _buildBack(context),
       widgetBuilder: (onPressed) => _buildFront(context, onPressed),
     );
@@ -20,12 +28,25 @@ class ShatterPage extends StatelessWidget {
       constraints: const BoxConstraints.expand(),
       color: context.colorScheme.onPrimary,
       child: Center(
-        child: Text(
-          '${context.strings.welcomeBack}!',
-          style: context.textTheme.bodyText1?.copyWith(
-            fontSize: 28,
-            color: context.colorScheme.primary,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              '${context.strings.welcomeBack}!',
+              style: context.textTheme.bodyText1?.copyWith(
+                fontSize: 28,
+                color: context.colorScheme.primary,
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _count++;
+                });
+              },
+              child: Text(context.strings.cancel.toUpperCase()),
+            ),
+          ],
         ),
       ),
     );
