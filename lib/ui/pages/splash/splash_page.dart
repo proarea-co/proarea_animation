@@ -38,25 +38,29 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Lottie.asset(Assets.lottie.scooter),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      context.strings.loading,
-                      style: context.textTheme.headline5,
-                    ),
-                    const SizedBox(width: 4),
-                    JumpingDotsProgressIndicator(
-                      fontSize: 20.0,
-                      color: context.colorScheme.onPrimary,
-                    ),
-                  ],
-                ),
+                _buildLoadingLabile(context),
               ],
             ),
           );
         },
       ),
+    );
+  }
+
+  Widget _buildLoadingLabile(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          context.strings.loading,
+          style: context.textTheme.headline5,
+        ),
+        const SizedBox(width: 4),
+        JumpingDotsProgressIndicator(
+          fontSize: 20.0,
+          color: context.colorScheme.onPrimary,
+        ),
+      ],
     );
   }
 }
