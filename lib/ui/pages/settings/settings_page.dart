@@ -50,13 +50,11 @@ class SettingsPage extends StatelessWidget {
         children: [
           _buildBackButton(),
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16.sp,
-              ),
-              child: _buildContent(context, state),
-            ),
+            child: _buildWrapper(_buildContent(context, state)),
           ),
+          _buildWrapper(_buildDivider(context)),
+          SizedBox(height: 12.sp),
+          _buildWrapper(_buildAboutAppButton(context, state)),
         ],
       ),
     );
@@ -73,23 +71,21 @@ class SettingsPage extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context, SettingsState state) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 8.sp),
-        _buildTitle(context),
-        SizedBox(height: 28.sp),
-        UsernameCard(username: state.settings.userName),
-        SizedBox(height: 24.sp),
-        const LanguageCard(),
-        SizedBox(height: 24.sp),
-        const ThemeCard(),
-        SizedBox(height: 24.sp),
-        const Spacer(),
-        _buildDivider(context),
-        SizedBox(height: 12.sp),
-        _buildAboutAppButton(context, state),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 8.sp),
+          _buildTitle(context),
+          SizedBox(height: 28.sp),
+          UsernameCard(username: state.settings.userName),
+          SizedBox(height: 24.sp),
+          const LanguageCard(),
+          SizedBox(height: 24.sp),
+          const ThemeCard(),
+          SizedBox(height: 24.sp),
+        ],
+      ),
     );
   }
 
@@ -162,6 +158,13 @@ class SettingsPage extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildWrapper(Widget? child) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.sp),
+      child: child,
     );
   }
 }

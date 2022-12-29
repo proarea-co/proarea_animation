@@ -33,28 +33,34 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
           context.router.replace(const HomeRoute());
         },
         builder: (state) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Lottie.asset(Assets.lottie.scooter),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    context.strings.loading,
-                    style: context.textTheme.headline5,
-                  ),
-                  const SizedBox(width: 4),
-                  JumpingDotsProgressIndicator(
-                    fontSize: 20.0,
-                    color: context.colorScheme.onPrimary,
-                  ),
-                ],
-              ),
-            ],
+          return SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Lottie.asset(Assets.lottie.scooter),
+                _buildLoadingLabile(context),
+              ],
+            ),
           );
         },
       ),
+    );
+  }
+
+  Widget _buildLoadingLabile(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          context.strings.loading,
+          style: context.textTheme.headline5,
+        ),
+        const SizedBox(width: 4),
+        JumpingDotsProgressIndicator(
+          fontSize: 20.0,
+          color: context.colorScheme.onPrimary,
+        ),
+      ],
     );
   }
 }

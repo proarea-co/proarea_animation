@@ -18,27 +18,35 @@ class ArrowIconsView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_upward),
-            color: context.colorScheme.onPrimary,
-            onPressed: () {
-              switchUser(false);
-            },
-          ),
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: context.colorScheme.onPrimary,
-            ),
-            child: IconButton(
-              color: context.colorScheme.onTertiary,
-              icon: const Icon(Icons.arrow_downward),
-              onPressed: () {
-                switchUser(true);
-              },
-            ),
-          ),
+          _buildUpButton(context),
+          _buildDownButton(context),
         ],
+      ),
+    );
+  }
+
+  Widget _buildUpButton(BuildContext context) {
+    return IconButton(
+      icon: const Icon(Icons.arrow_upward),
+      color: context.colorScheme.onPrimary,
+      onPressed: () {
+        switchUser(false);
+      },
+    );
+  }
+
+  Widget _buildDownButton(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: context.colorScheme.onPrimary,
+      ),
+      child: IconButton(
+        color: context.colorScheme.onTertiary,
+        icon: const Icon(Icons.arrow_downward),
+        onPressed: () {
+          switchUser(true);
+        },
       ),
     );
   }
