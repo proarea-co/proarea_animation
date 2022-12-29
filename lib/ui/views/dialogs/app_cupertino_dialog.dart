@@ -43,7 +43,7 @@ class _AppCupertinoDialogState extends State<AppCupertinoDialog> {
         color: Colors.transparent,
         child: TextField(
           controller: _textEditingController,
-          style: context.textTheme.bodyText2,
+          style: context.textTheme.bodyText2?.copyWith(fontSize: 14.sp),
           decoration: InputDecoration(hintText: context.strings.username),
         ),
       ),
