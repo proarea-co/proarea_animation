@@ -7,6 +7,8 @@ import '../../../di/di.dart';
 import '../../../mock/mock_posts.dart';
 import '../../../models/post.dart';
 
+// TODO: All these classes should be placed in separate files. Do the same for all services
+
 @immutable
 abstract class PostsService extends BaseService {
   const PostsService();

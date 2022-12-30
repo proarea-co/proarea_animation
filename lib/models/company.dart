@@ -9,6 +9,8 @@ part 'company.g.dart';
 class Company extends Equatable {
   final String name;
   final String catchPhrase;
+
+  // TODO: Why 'bs'? Do we get this field from API?
   @JsonKey(name: 'bs')
   final String businessScheme;
 
