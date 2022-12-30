@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../l10n/localization_helper.dart';
 import '../../../../models/post.dart';
-import '../../../../themes/theme_app.dart';
+import '../../../../themes/app_theme.dart';
 
 class PostItemView extends StatefulWidget {
   final int index;

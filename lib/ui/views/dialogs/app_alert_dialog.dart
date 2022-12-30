@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../themes/constants/light_style_constants.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 
 class AppAlertDialog extends StatelessWidget {
   final String title;

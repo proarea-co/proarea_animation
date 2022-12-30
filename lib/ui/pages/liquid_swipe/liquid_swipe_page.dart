@@ -3,7 +3,7 @@ import 'package:liquid_swipe/liquid_swipe.dart';
 
 import '../../../mock/liquid_swipe_mock.dart';
 import '../../../models/liquid_swipe/liquid_swipe_model.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../../views/buttons/app_back_button.dart';
 
 class LiquidSwipePage extends StatelessWidget {

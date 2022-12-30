@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import 'components/linear_text.dart';
 
 class CylinderLogoPage extends StatefulWidget {

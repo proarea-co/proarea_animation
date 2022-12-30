@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../themes/theme_app.dart';
+import '../../themes/app_theme.dart';
 import '../../../base/service/base_service.dart';
 
 @injectable

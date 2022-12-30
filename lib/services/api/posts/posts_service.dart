@@ -7,34 +7,12 @@ import '../../../di/di.dart';
 import '../../../mock/mock_posts.dart';
 import '../../../models/post.dart';
 
-// TODO: All these classes should be placed in separate files. Do the same for all services
+part 'posts_service_dev.dart';
+part 'posts_service_mock.dart';
 
 @immutable
 abstract class PostsService extends BaseService {
   const PostsService();
 
   Future<List<Post>> getPosts();
-}
-
-@Injectable(as: PostsService, env: [Environment.dev])
-@immutable
-class PostsServiceDev extends PostsService {
-  final AppApi _appApi;
-  const PostsServiceDev(this._appApi);
-
-  @override
-  Future<List<Post>> getPosts() async {
-    return makeErrorParsedCall(() async => _appApi.getPosts());
-  }
-}
-
-@Injectable(as: PostsService, env: [EnvironmentExtension.mock])
-@immutable
-class PostsServiceMock extends PostsService {
-  @override
-  Future<List<Post>> getPosts() async {
-    return makeErrorParsedCall(() async {
-      return mockPosts.map((json) => Post.fromJson(json)).toList();
-    });
-  }
 }

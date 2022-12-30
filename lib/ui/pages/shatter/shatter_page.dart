@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../l10n/localization_helper.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import 'components/shatter_view.dart';
 
 class ShatterPage extends StatefulWidget {

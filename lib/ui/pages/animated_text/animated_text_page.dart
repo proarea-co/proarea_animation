@@ -6,7 +6,7 @@ import '../../../bloc/animated_text/animated_text_cubit.dart';
 import '../../../di/di.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../mock/animated_texts_mock.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../../views/base_builders/app_consumer.dart';
 
 class AnimatedTextPage extends StatelessWidget with AutoRouteWrapper {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../themes/theme_app.dart';
+import '../../../../themes/app_theme.dart';
 
 class SettingsListTile extends StatelessWidget {
   final String asset;

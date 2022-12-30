@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../models/user.dart';
-import '../../../../themes/theme_app.dart';
+import '../../../../themes/app_theme.dart';
 import 'address_item_view.dart';
 import 'fade_in_item_view.dart';
 

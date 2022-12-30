@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../l10n/localization_helper.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 
 class AppCupertinoDialog extends StatefulWidget {
   final SettingsCubit settingsCubit;

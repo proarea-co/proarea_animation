@@ -6,7 +6,7 @@ import '../../../bloc/posts/posts_cubit.dart';
 import '../../../di/di.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../models/post.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../../views/base_builders/app_consumer.dart';
 import 'components/post_item_view.dart';
 
