@@ -7,7 +7,7 @@ import 'package:sizer/sizer.dart';
 import '../../../bloc/app_controller/app_controller_cubit.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../l10n/localization_helper.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../../views/base_builders/app_builder.dart';
 import '../design/app_shader_mask.dart';
 

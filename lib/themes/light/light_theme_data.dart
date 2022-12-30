@@ -1,4 +1,4 @@
-part of '../theme_app.dart';
+part of '../app_theme.dart';
 
 final _lightThemeData = ThemeData(
   brightness: Brightness.light,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../l10n/localization_helper.dart';
 import '../../../themes/extensions/sign_out_animation_styles.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import 'components/animated_button.dart';
 
 class SignOutPage extends StatefulWidget {

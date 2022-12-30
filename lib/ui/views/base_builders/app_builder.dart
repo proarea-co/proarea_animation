@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../base/bloc/base_cubit.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../errors/error_view.dart';
 import '../loaders/app_loader.dart';
 

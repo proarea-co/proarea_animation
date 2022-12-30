@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../gen/assets.gen.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 
 class AppLoader extends StatelessWidget {
   final double size;

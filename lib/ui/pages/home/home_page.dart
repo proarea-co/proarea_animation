@@ -10,7 +10,7 @@ import '../../../gen/assets.gen.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../models/tab_item/tab_item.dart';
 import '../../../themes/extensions/app_menu_item_styles.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../../views/base_builders/app_builder.dart';
 import 'components/app_menu_item.dart';
 import 'components/home_swipe_detector.dart';

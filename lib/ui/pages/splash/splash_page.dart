@@ -9,7 +9,7 @@ import '../../../di/di.dart';
 import '../../../gen/assets.gen.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../routes/router.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../../views/base_builders/app_consumer.dart';
 
 class SplashPage extends StatelessWidget with AutoRouteWrapper {

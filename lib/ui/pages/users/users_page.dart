@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../bloc/users/users_cubit.dart';
 import '../../../di/di.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../../views/base_builders/app_consumer.dart';
 import 'components/arrow_icons_view.dart';
 import 'components/user_details_view.dart';

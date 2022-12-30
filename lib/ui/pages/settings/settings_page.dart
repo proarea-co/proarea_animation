@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 import '../../../bloc/settings/settings_cubit.dart';
 import '../../../l10n/localization_helper.dart';
 import '../../../routes/router.dart';
-import '../../../themes/theme_app.dart';
+import '../../../themes/app_theme.dart';
 import '../../views/base_builders/app_consumer.dart';
 import '../../views/buttons/app_back_button.dart';
 import '../../views/snack_bar/show_snack_bar.dart';

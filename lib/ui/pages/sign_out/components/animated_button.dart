@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../l10n/localization_helper.dart';
-import '../../../../themes/theme_app.dart';
+import '../../../../themes/app_theme.dart';
 
 class AnimatedButton extends StatelessWidget {
   final Animation<double> controller;

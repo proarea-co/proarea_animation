@@ -11,8 +11,6 @@ import 'extensions/sign_out_animation_styles.dart';
 part 'dark/dark_theme_data.dart';
 part 'light/light_theme_data.dart';
 
-// TODO: Rename this file to "app_theme" ("Тема приложения", а не "Тематическое приложение")
-
 enum ThemeType {
   light,
   dark;
