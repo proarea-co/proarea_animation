@@ -1,16 +1,29 @@
-# proarea_animations
+# ProArea Animation
 
-A new Flutter project.
+Introductory application from the ProArea team of specialists.
 
-## Getting Started
+## About
 
-This project is a starting point for a Flutter application.
+* In the app, you can find a list of the most commonly used visual effects such as:
+  * Animatedly routing
+  * List of posts with Dismissible effects
+  * Animated List
+  * Liquid Swipe
+  * Shatter effects
+  * Animated Text
+  * Animated 3D Text
+  * Settings options (Edit: Username, Language, App Theme)
 
-A few resources to get you started if this is your first Flutter project:
+* The design team created a unique, great interface, and our programmers implemented design solutions in the application.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Packages
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- State Management: [Cubit](https://pub.dev/packages/flutter_bloc)
+
+- API: [Dio](https://pub.dev/packages/dio) & [Retrofit](https://pub.dev/packages/retrofit)
+
+- Model Generation: [Equatable](https://pub.dev/packages/equatable) and [json_annotation](https://pub.dev/packages/json_annotation)
+
+- Routing: [AutoRoute](https://pub.dev/packages/auto_route)
+
+- Localization is i18n: [Intl](https://pub.dev/packages/intl) with [flutter_localizations](https://pub.dev/packages/flutter_localizations) generation
