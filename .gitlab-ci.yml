@@ -1,15 +1,17 @@
 ---
 variables:
-  WEB_HOOK_URL: https://hooks.slack.com/services/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
+  CHAT_POST_MESSAGE: https://slack.com/api/chat.postMessage
   UPLOAD_URL: https://slack.com/api/files.upload
-  BOT_USER_OAUTH_TOKEN: xoxb-418681667377-4540198287650-DGf8jqBQVO4gv6nANvfPnn5h
-  USER_OAUTH_TOKEN: xoxp-418681667377-3326132650688-4619758068630-ad4d51b4d05429b3f49c104311b819bc
+  BOT_USER_OAUTH_TOKEN: xoxb-418681667377-4540198287650-iG9eK81o9fK4w0XjiTTm16dj
+  USER_OAUTH_TOKEN: xoxp-418681667377-3326132650688-4626468847570-db120f0bd78997aaa54f23c5986c9852
   SLACK_CHANNEL_ID: C043MRT02AE
   PATTERN_FEAT: "/^feat\/PROAN-.*/"
   PATTERN_FIX: "/^fix\/PROAN-.*/"
 
   MESSAGE_APPROVED_MR: >-
-    {"blocks":[{"type":"divider"},
+    {
+    "channel":"${SLACK_CHANNEL_ID}",
+    "blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
     "text":"*MR Approved* :white_check_mark:
 
@@ -23,7 +25,9 @@ variables:
     {"type":"divider"}]}
 
   MESSAGE_WRONG_BRANCH: >-
-    {"blocks":[{"type":"divider"},
+    {
+    "channel":"${SLACK_CHANNEL_ID}",
+    "blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
     "text":"*Wrong Brunch* :x:
 
@@ -41,7 +45,9 @@ variables:
     {"type":"divider"}]}
 
   MESSAGE_ANALYZE: >-
-    {"blocks":[{"type":"divider"},
+    {
+    "channel":"${SLACK_CHANNEL_ID}",
+    "blocks":[{"type":"divider"},
     {"type":"section","text":{"type":"mrkdwn",
     "text":"*Analyze Complete*:information_source:
 
@@ -189,9 +195,10 @@ Info MR Approved:
     - |
       curl \
         -H "Content-type: application/json" \
+        -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
         -X POST \
         --data "${MESSAGE_APPROVED_MR}" \
-        $WEB_HOOK_URL
+        $CHAT_POST_MESSAGE
 
 Info Wrong brunch:
   extends: .bash_job_setting_rules_incorrect_branch
@@ -200,9 +207,10 @@ Info Wrong brunch:
     - |
       curl \
         -H "Content-type: application/json" \
+        -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
         -X POST \
         --data "${MESSAGE_WRONG_BRANCH}" \
-        $WEB_HOOK_URL
+        $CHAT_POST_MESSAGE
 
 ##* Analyze stage Section <-----------------------------------------------------
 Flutter analyze:
@@ -265,9 +273,10 @@ Send notification Analyze:
     - |
       curl \
         -H "Content-type: application/json" \
+        -H "Authorization: Bearer ${BOT_USER_OAUTH_TOKEN}" \
         -X POST \
         --data "${MESSAGE_ANALYZE}" \
-        $WEB_HOOK_URL
+        $CHAT_POST_MESSAGE
 
 .send_notification_build:
   stage: Slack Report
