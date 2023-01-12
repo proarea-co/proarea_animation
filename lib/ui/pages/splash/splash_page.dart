@@ -32,18 +32,50 @@ class SplashPage extends StatelessWidget with AutoRouteWrapper {
           if (state is! SplashLoaded) return;
           context.router.replace(const HomeRoute());
         },
-        builder: (state) {
-          return SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Lottie.asset(Assets.lottie.scooter),
-                _buildLoadingLabile(context),
-              ],
-            ),
-          );
-        },
+        builder: (_) => _buildContent(context),
       ),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
+    return LayoutBuilder(
+      builder: ((context, constraints) {
+        Orientation.portrait;
+        final size = constraints.biggest.shortestSide;
+        final portrait = constraints.biggest.height > constraints.biggest.width;
+
+        if (portrait) return _buildPortrait(size, context);
+
+        return _buildLandscape(size, context);
+      }),
+    );
+  }
+
+  Widget _buildPortrait(double size, BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Lottie.asset(
+          Assets.lottie.scooter,
+          width: size,
+          height: size,
+        ),
+        _buildLoadingLabile(context),
+      ],
+    );
+  }
+
+  Widget _buildLandscape(double size, BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Lottie.asset(
+          Assets.lottie.scooter,
+          width: size,
+          height: size,
+        ),
+        _buildLoadingLabile(context),
+      ],
     );
   }
 
